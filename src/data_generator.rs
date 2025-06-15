@@ -114,30 +114,20 @@ impl DataGenerator {
 
     /// Generate random square matrix pair
     pub fn generate_random_matrices(size: usize) -> (Matrix, Matrix) {
-        // Create matrices with pre-generated random values to avoid closure borrowing issues
-        let mut values_a = Vec::new();
-        let mut values_b = Vec::new();
         let mut rng = rng();
+
+        // Generate all random values first
+        let mut values_a = Vec::with_capacity(size * size);
+        let mut values_b = Vec::with_capacity(size * size);
 
         for _ in 0..(size * size) {
             values_a.push(rng.gen_range(-100.0..=100.0));
             values_b.push(rng.gen_range(-100.0..=100.0));
         }
 
-        let mut idx_a = 0;
-        let mut idx_b = 0;
-
-        let matrix_a = Matrix::new(size, |_, _| {
-            let val = values_a[idx_a];
-            idx_a += 1;
-            val
-        });
-
-        let matrix_b = Matrix::new(size, |_, _| {
-            let val = values_b[idx_b];
-            idx_b += 1;
-            val
-        });
+        // Create matrices using the pre-generated values
+        let matrix_a = Matrix::new(size, |i, j| values_a[i * size + j]);
+        let matrix_b = Matrix::new(size, |i, j| values_b[i * size + j]);
 
         (matrix_a, matrix_b)
     }
@@ -149,18 +139,16 @@ impl DataGenerator {
 
     /// Generate sparse matrix (many elements are 0)
     pub fn generate_sparse_matrix(size: usize, density: f64) -> Matrix {
-        // Pre-generate random values to avoid closure borrowing issues
-        let mut values = Vec::new();
         let mut rng = rng();
 
+        // Pre-generate all random values
+        let mut values = Vec::with_capacity(size * size);
         for _ in 0..(size * size) {
             values.push((rng.gen::<f64>(), rng.gen_range(-100.0..=100.0)));
         }
 
-        let mut idx = 0;
-        Matrix::new(size, |_, _| {
-            let (density_val, random_val) = values[idx];
-            idx += 1;
+        Matrix::new(size, |i, j| {
+            let (density_val, random_val) = values[i * size + j];
             if density_val < density {
                 random_val
             } else {
@@ -171,13 +159,10 @@ impl DataGenerator {
 
     /// Generate diagonal matrix
     pub fn generate_diagonal_matrix(size: usize) -> Matrix {
-        // Pre-generate random values for diagonal elements
-        let mut diagonal_values = Vec::new();
         let mut rng = rng();
 
-        for _ in 0..size {
-            diagonal_values.push(rng.gen_range(1.0..=100.0));
-        }
+        // Pre-generate diagonal values
+        let diagonal_values: Vec<f64> = (0..size).map(|_| rng.gen_range(1.0..=100.0)).collect();
 
         Matrix::new(size, |i, j| if i == j { diagonal_values[i] } else { 0.0 })
     }
