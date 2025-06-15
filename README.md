@@ -72,9 +72,6 @@ cargo run --release
 
 # Run tests
 cargo test
-
-# Run benchmarks
-cargo bench
 ```
 
 ## How to Read This Report
