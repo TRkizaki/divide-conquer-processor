@@ -1,5 +1,4 @@
-# Project Report
-
+# Project Report by Advanced Algorithms master 2024-2025 
 ## Overview
 
 This project is a research and implementation initiative focused on high-performance computing and data processing using Rust. It combines parallel processing, numerical computation, and data visualization technologies to implement efficient algorithms and conduct performance evaluations.
