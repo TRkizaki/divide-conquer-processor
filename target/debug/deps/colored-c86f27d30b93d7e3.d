@@ -1,0 +1,10 @@
+/Users/tetsutetsutetsurou/divide-conquer-processor/target/debug/deps/libcolored-c86f27d30b93d7e3.rmeta: /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/lib.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/color.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/control.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/error.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/style.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/customcolors.rs
+
+/Users/tetsutetsutetsurou/divide-conquer-processor/target/debug/deps/colored-c86f27d30b93d7e3.d: /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/lib.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/color.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/control.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/error.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/style.rs /Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/customcolors.rs
+
+/Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/lib.rs:
+/Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/color.rs:
+/Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/control.rs:
+/Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/error.rs:
+/Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/style.rs:
+/Users/tetsutetsutetsurou/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/customcolors.rs:

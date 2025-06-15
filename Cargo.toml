@@ -1,0 +1,28 @@
+[package]
+name = "divide-conquer-processor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# 並列処理用
+rayon = "1.8"
+# 時間測定用
+criterion = { version = "0.6.0", features = ["html_reports"] }
+# ランダム数生成
+rand = "0.9.1"
+# 統計計算
+statistical = "1.0"
+# メモリ使用量測定
+memory-stats = "1.1"
+# CLI作成
+clap = { version = "4.4", features = ["derive"] }
+# 可視化用
+plotters = "0.3"
+# シリアライゼーション
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+# カラー出力
+colored = "3.0"
+
+[dev-dependencies]
+criterion = { version = "0.6.0", features = ["html_reports"] }
