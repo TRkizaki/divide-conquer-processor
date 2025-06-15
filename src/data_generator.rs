@@ -10,7 +10,7 @@ impl DataGenerator {
     pub fn generate_random_integers(size: usize) -> Vec<i32> {
         let mut rng = rng();
         (0..size)
-            .map(|_| rng.gen_range(-1000000..=1000000))
+            .map(|_| rng.random_range(-1000000..=1000000))
             .collect()
     }
 
@@ -41,7 +41,7 @@ impl DataGenerator {
         let unique_vals: Vec<i32> = (0..unique_values as i32).collect();
 
         (0..size)
-            .map(|_| unique_vals[rng.gen_range(0..unique_vals.len())])
+            .map(|_| unique_vals[rng.random_range(0..unique_vals.len())])
             .collect()
     }
 
@@ -50,8 +50,8 @@ impl DataGenerator {
         let mut rng = rng();
         (0..count)
             .map(|_| Point {
-                x: rng.gen_range(-1000.0..=1000.0),
-                y: rng.gen_range(-1000.0..=1000.0),
+                x: rng.random_range(-1000.0..=1000.0),
+                y: rng.random_range(-1000.0..=1000.0),
             })
             .collect()
     }
@@ -94,13 +94,13 @@ impl DataGenerator {
 
         for _ in 0..cluster_count {
             // Randomly determine cluster center
-            let center_x = rng.gen_range(-500.0..=500.0);
-            let center_y = rng.gen_range(-500.0..=500.0);
+            let center_x = rng.random_range(-500.0..=500.0);
+            let center_y = rng.random_range(-500.0..=500.0);
 
             // Generate points within cluster
             for _ in 0..points_per_cluster {
-                let angle = rng.gen_range(0.0..2.0 * std::f64::consts::PI);
-                let distance = rng.gen_range(0.0..cluster_radius);
+                let angle = rng.random_range(0.0..2.0 * std::f64::consts::PI);
+                let distance = rng.random_range(0.0..cluster_radius);
 
                 points.push(Point {
                     x: center_x + distance * angle.cos(),
@@ -121,8 +121,8 @@ impl DataGenerator {
         let mut values_b = Vec::with_capacity(size * size);
 
         for _ in 0..(size * size) {
-            values_a.push(rng.gen_range(-100.0..=100.0));
-            values_b.push(rng.gen_range(-100.0..=100.0));
+            values_a.push(rng.random_range(-100.0..=100.0));
+            values_b.push(rng.random_range(-100.0..=100.0));
         }
 
         // Create matrices using the pre-generated values
@@ -144,7 +144,7 @@ impl DataGenerator {
         // Pre-generate all random values
         let mut values = Vec::with_capacity(size * size);
         for _ in 0..(size * size) {
-            values.push((rng.gen::<f64>(), rng.gen_range(-100.0..=100.0)));
+            values.push((rng.random::<f64>(), rng.random_range(-100.0..=100.0)));
         }
 
         Matrix::new(size, |i, j| {
@@ -162,7 +162,7 @@ impl DataGenerator {
         let mut rng = rng();
 
         // Pre-generate diagonal values
-        let diagonal_values: Vec<f64> = (0..size).map(|_| rng.gen_range(1.0..=100.0)).collect();
+        let diagonal_values: Vec<f64> = (0..size).map(|_| rng.random_range(1.0..=100.0)).collect();
 
         Matrix::new(size, |i, j| if i == j { diagonal_values[i] } else { 0.0 })
     }
