@@ -65,28 +65,55 @@ pub fn parallel_merge_sort(arr: &mut [i32]) {
         return;
     }
 
-    let mid = arr.len() / 2;
-    let (left, right) = arr.split_at_mut(mid);
+    // Use a completely different approach to avoid borrowing issues
+    let mut temp = arr.to_vec();
+    parallel_merge_sort_recursive(&mut temp);
+    arr.copy_from_slice(&temp);
+}
 
-    rayon::join(|| parallel_merge_sort(left), || parallel_merge_sort(right));
-
-    // Merge the sorted halves
-    let mut temp = Vec::with_capacity(arr.len());
-    let (mut i, mut j) = (0, 0);
-
-    while i < left.len() && j < right.len() {
-        if left[i] <= right[j] {
-            temp.push(left[i]);
-            i += 1;
-        } else {
-            temp.push(right[j]);
-            j += 1;
-        }
+fn parallel_merge_sort_recursive(arr: &mut [i32]) {
+    if arr.len() <= 1000 {
+        merge_sort(arr);
+        return;
     }
 
-    temp.extend_from_slice(&left[i..]);
-    temp.extend_from_slice(&right[j..]);
-    arr.copy_from_slice(&temp);
+    let mid = arr.len() / 2;
+
+    // Create temporary vectors for left and right halves
+    let mut left_vec = arr[..mid].to_vec();
+    let mut right_vec = arr[mid..].to_vec();
+
+    // Sort both halves in parallel
+    rayon::join(
+        || parallel_merge_sort_recursive(&mut left_vec),
+        || parallel_merge_sort_recursive(&mut right_vec),
+    );
+
+    // Merge the sorted halves back into the original array
+    let (mut i, mut j, mut k) = (0, 0, 0);
+
+    while i < left_vec.len() && j < right_vec.len() {
+        if left_vec[i] <= right_vec[j] {
+            arr[k] = left_vec[i];
+            i += 1;
+        } else {
+            arr[k] = right_vec[j];
+            j += 1;
+        }
+        k += 1;
+    }
+
+    while i < left_vec.len() {
+        arr[k] = left_vec[i];
+        i += 1;
+        k += 1;
+    }
+
+    while j < right_vec.len() {
+        arr[k] = right_vec[j];
+        j += 1;
+        k += 1;
+    }
 }
 
 /// Sequential quick sort implementation
@@ -132,38 +159,42 @@ pub fn parallel_quick_sort(arr: &mut [i32]) {
         return;
     }
 
-    if arr.len() <= 1 {
+    // Use a similar approach as parallel merge sort
+    let mut temp = arr.to_vec();
+    parallel_quick_sort_recursive(&mut temp);
+    arr.copy_from_slice(&temp);
+}
+
+fn parallel_quick_sort_recursive(arr: &mut [i32]) {
+    if arr.len() <= 1000 {
+        quick_sort(arr);
         return;
     }
 
-    // Use a simpler approach that doesn't cause borrowing issues
-    parallel_quick_sort_helper(arr);
-}
-
-fn parallel_quick_sort_helper(arr: &mut [i32]) {
     if arr.len() <= 1 {
         return;
     }
 
     let pivot_index = partition(arr, 0, arr.len() - 1);
 
-    // Split array into two parts: before and after pivot
-    let (left_part, right_part) = arr.split_at_mut(pivot_index);
-    let right_part = if right_part.len() > 1 {
-        &mut right_part[1..]
+    // Create temporary vectors for left and right parts
+    let mut left_vec = arr[..pivot_index].to_vec();
+    let mut right_vec = if pivot_index + 1 < arr.len() {
+        arr[pivot_index + 1..].to_vec()
     } else {
-        &mut []
+        Vec::new()
     };
 
-    // Use parallel processing for larger arrays
-    if arr.len() > 1000 {
-        rayon::join(
-            || parallel_quick_sort_helper(left_part),
-            || parallel_quick_sort_helper(right_part),
-        );
-    } else {
-        quick_sort(left_part);
-        quick_sort(right_part);
+    // Sort both parts in parallel
+    rayon::join(
+        || parallel_quick_sort_recursive(&mut left_vec),
+        || parallel_quick_sort_recursive(&mut right_vec),
+    );
+
+    // Copy back the sorted results
+    arr[..pivot_index].copy_from_slice(&left_vec);
+    if !right_vec.is_empty() {
+        arr[pivot_index + 1..].copy_from_slice(&right_vec);
     }
 }
 
