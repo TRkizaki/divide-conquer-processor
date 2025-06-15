@@ -18,7 +18,7 @@ pub fn generate_performance_charts(
     let root = BitMapBackend::new(output_file, (1200, 800)).into_drawing_area();
     root.fill(&WHITE)?;
 
-    // Split the drawing area into multiple charts - fix the destructuring
+    // Split the drawing area into multiple charts
     let areas = root.split_evenly((2, 1));
     let upper = &areas[0];
     let lower = &areas[1];
@@ -209,7 +209,12 @@ fn draw_algorithm_comparison_chart(
         .map(|(size, _)| *size)
         .unwrap_or(1000);
 
-    let comparison_results = size_groups.get(&comparison_size).unwrap_or(&Vec::new());
+    // Create a separate scope for comparison_results to avoid borrowing issues
+    let comparison_results = if let Some(results) = size_groups.get(&comparison_size) {
+        results.clone()
+    } else {
+        Vec::new()
+    };
 
     if comparison_results.is_empty() {
         let mut chart = ChartBuilder::on(&drawing_area)
@@ -255,7 +260,7 @@ fn draw_algorithm_comparison_chart(
         })
         .draw()?;
 
-    // Draw bars for each algorithm (fixed Rectangle usage)
+    // Draw bars for each algorithm
     for (i, result) in comparison_results.iter().enumerate() {
         let time_ms = result.execution_time.as_secs_f64() * 1000.0;
         let color = if result.parallel { BLUE } else { RED };
