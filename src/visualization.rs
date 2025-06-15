@@ -18,18 +18,23 @@ pub fn generate_performance_charts(
     let root = BitMapBackend::new(output_file, (1200, 800)).into_drawing_area();
     root.fill(&WHITE)?;
 
-    // Split the drawing area into multiple charts
-    let (upper, lower) = root.split_evenly((2, 1));
-    let (execution_chart, memory_chart) = upper.split_evenly((1, 2));
+    // Split the drawing area into multiple charts - fix the destructuring
+    let areas = root.split_evenly((2, 1));
+    let upper = &areas[0];
+    let lower = &areas[1];
+
+    let upper_areas = upper.split_evenly((1, 2));
+    let execution_chart = &upper_areas[0];
+    let memory_chart = &upper_areas[1];
 
     // Generate execution time chart
-    draw_execution_time_chart(execution_chart, &results)?;
+    draw_execution_time_chart(execution_chart.clone(), &results)?;
 
     // Generate memory usage chart
-    draw_memory_usage_chart(memory_chart, &results)?;
+    draw_memory_usage_chart(memory_chart.clone(), &results)?;
 
     // Generate algorithm comparison chart
-    draw_algorithm_comparison_chart(lower, &results)?;
+    draw_algorithm_comparison_chart(lower.clone(), &results)?;
 
     root.present()?;
     println!(
@@ -255,7 +260,7 @@ fn draw_algorithm_comparison_chart(
         let time_ms = result.execution_time.as_secs_f64() * 1000.0;
         let color = if result.parallel { BLUE } else { RED };
 
-        // Create rectangles as individual elements instead of using Rectangle::new
+        // Create rectangles as individual elements
         chart
             .draw_series(std::iter::once(Rectangle::new(
                 [(i, 0.0), (i, time_ms)],
