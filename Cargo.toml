@@ -1,7 +1,11 @@
 [package]
 name = "divide-conquer-processor"
 version = "0.1.0"
-edition = "2021"
+edition = "2025"
+license = "MIT"
+authors = ["TETSUROU KIZAKI <trkizaki.web@gmail.com>"]
+description = "High-performance divide and conquer algorithms for large-scale data processing"
+repository = "https://github.com/TRkizaki/divide-conquer-processor"
 
 [dependencies]
 # 並列処理用
