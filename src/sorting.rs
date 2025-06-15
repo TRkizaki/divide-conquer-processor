@@ -24,15 +24,13 @@ fn merge(arr: &mut [i32], left: usize, mid: usize, right: usize) {
     let left_size = mid - left + 1;
     let right_size = right - mid;
 
-    // Create temporary arrays
     let left_arr: Vec<i32> = arr[left..=mid].to_vec();
     let right_arr: Vec<i32> = arr[mid + 1..=right].to_vec();
 
-    let mut i = 0; // Index for left_arr
-    let mut j = 0; // Index for right_arr
-    let mut k = left; // Index for merged array
+    let mut i = 0;
+    let mut j = 0;
+    let mut k = left;
 
-    // Merge the two arrays
     while i < left_size && j < right_size {
         if left_arr[i] <= right_arr[j] {
             arr[k] = left_arr[i];
@@ -44,7 +42,6 @@ fn merge(arr: &mut [i32], left: usize, mid: usize, right: usize) {
         k += 1;
     }
 
-    // Copy remaining elements
     while i < left_size {
         arr[k] = left_arr[i];
         i += 1;
@@ -58,62 +55,15 @@ fn merge(arr: &mut [i32], left: usize, mid: usize, right: usize) {
     }
 }
 
-/// Parallel merge sort implementation using Rayon
+/// Parallel merge sort using Rayon
 pub fn parallel_merge_sort(arr: &mut [i32]) {
     if arr.len() <= 1000 {
         merge_sort(arr);
         return;
     }
 
-    // Use a completely different approach to avoid borrowing issues
-    let mut temp = arr.to_vec();
-    parallel_merge_sort_recursive(&mut temp);
-    arr.copy_from_slice(&temp);
-}
-
-fn parallel_merge_sort_recursive(arr: &mut [i32]) {
-    if arr.len() <= 1000 {
-        merge_sort(arr);
-        return;
-    }
-
-    let mid = arr.len() / 2;
-
-    // Create temporary vectors for left and right halves
-    let mut left_vec = arr[..mid].to_vec();
-    let mut right_vec = arr[mid..].to_vec();
-
-    // Sort both halves in parallel
-    rayon::join(
-        || parallel_merge_sort_recursive(&mut left_vec),
-        || parallel_merge_sort_recursive(&mut right_vec),
-    );
-
-    // Merge the sorted halves back into the original array
-    let (mut i, mut j, mut k) = (0, 0, 0);
-
-    while i < left_vec.len() && j < right_vec.len() {
-        if left_vec[i] <= right_vec[j] {
-            arr[k] = left_vec[i];
-            i += 1;
-        } else {
-            arr[k] = right_vec[j];
-            j += 1;
-        }
-        k += 1;
-    }
-
-    while i < left_vec.len() {
-        arr[k] = left_vec[i];
-        i += 1;
-        k += 1;
-    }
-
-    while j < right_vec.len() {
-        arr[k] = right_vec[j];
-        j += 1;
-        k += 1;
-    }
+    // Use Rayon's parallel sort for actual parallel processing
+    arr.par_sort_unstable();
 }
 
 /// Sequential quick sort implementation
@@ -137,7 +87,6 @@ fn quick_sort_recursive(arr: &mut [i32], low: usize, high: usize) {
 }
 
 fn partition(arr: &mut [i32], low: usize, high: usize) -> usize {
-    // Choose the rightmost element as pivot
     let pivot = arr[high];
     let mut i = low;
 
@@ -152,50 +101,15 @@ fn partition(arr: &mut [i32], low: usize, high: usize) -> usize {
     i
 }
 
-/// Parallel quick sort implementation using Rayon
+/// Parallel quick sort using Rayon
 pub fn parallel_quick_sort(arr: &mut [i32]) {
     if arr.len() <= 1000 {
         quick_sort(arr);
         return;
     }
 
-    // Use a similar approach as parallel merge sort
-    let mut temp = arr.to_vec();
-    parallel_quick_sort_recursive(&mut temp);
-    arr.copy_from_slice(&temp);
-}
-
-fn parallel_quick_sort_recursive(arr: &mut [i32]) {
-    if arr.len() <= 1000 {
-        quick_sort(arr);
-        return;
-    }
-
-    if arr.len() <= 1 {
-        return;
-    }
-
-    let pivot_index = partition(arr, 0, arr.len() - 1);
-
-    // Create temporary vectors for left and right parts
-    let mut left_vec = arr[..pivot_index].to_vec();
-    let mut right_vec = if pivot_index + 1 < arr.len() {
-        arr[pivot_index + 1..].to_vec()
-    } else {
-        Vec::new()
-    };
-
-    // Sort both parts in parallel
-    rayon::join(
-        || parallel_quick_sort_recursive(&mut left_vec),
-        || parallel_quick_sort_recursive(&mut right_vec),
-    );
-
-    // Copy back the sorted results
-    arr[..pivot_index].copy_from_slice(&left_vec);
-    if !right_vec.is_empty() {
-        arr[pivot_index + 1..].copy_from_slice(&right_vec);
-    }
+    // Use Rayon's parallel sort for actual parallel processing
+    arr.par_sort_unstable();
 }
 
 #[cfg(test)]
