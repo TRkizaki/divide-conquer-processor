@@ -37,17 +37,17 @@ impl BenchmarkRunner {
     pub fn benchmark_sort(&mut self, algorithm: &str, data: &[i32], runs: usize, parallel: bool) {
         let mut total_time = Duration::new(0, 0);
         let mut memory_usage = None;
-        
+
         println!("{}", format!("  Testing {}...", algorithm).cyan());
-        
+
         for run in 0..runs {
             let mut test_data = data.to_vec();
-            
+
             // Start memory measurement
             let memory_before = Self::measure_memory();
-            
+
             let start = Instant::now();
-            
+
             match algorithm {
                 "Merge Sort" => {
                     if parallel {
@@ -65,25 +65,25 @@ impl BenchmarkRunner {
                 }
                 _ => panic!("Unknown sorting algorithm: {}", algorithm),
             }
-            
+
             let elapsed = start.elapsed();
             total_time += elapsed;
-            
+
             // End memory measurement
             if let (Some(before), Some(after)) = (memory_before, Self::measure_memory()) {
                 if after > before {
                     memory_usage = Some(after - before);
                 }
             }
-            
+
             print!(".");
             std::io::Write::flush(&mut std::io::stdout()).unwrap();
         }
-        
+
         println!();
-        
+
         let avg_time = total_time / runs as u32;
-        
+
         let result = BenchmarkResult {
             algorithm_name: format!("{}{}", algorithm, if parallel { " (Parallel)" } else { "" }),
             data_size: data.len(),
@@ -91,9 +91,9 @@ impl BenchmarkRunner {
             memory_used: memory_usage,
             parallel,
         };
-        
+
         self.results.push(result);
-        
+
         println!(
             "    {}: {:.2}ms",
             if parallel { "Parallel" } else { "Sequential" },
@@ -110,35 +110,45 @@ impl BenchmarkRunner {
         use_strassen: bool,
     ) {
         println!("{}", format!("  Testing {}...", algorithm).cyan());
-        
+
         let memory_before = Self::measure_memory();
         let start = Instant::now();
-        
+
         let _result = if use_strassen {
             crate::matrix::strassen_multiply(matrix_a, matrix_b)
         } else {
             crate::matrix::standard_multiply(matrix_a, matrix_b)
         };
-        
+
         let elapsed = start.elapsed();
         let memory_usage = memory_before
             .zip(Self::measure_memory())
-            .and_then(|(before, after)| if after > before { Some(after - before) } else { None });
-        
+            .and_then(|(before, after)| {
+                if after > before {
+                    Some(after - before)
+                } else {
+                    None
+                }
+            });
+
         let result = BenchmarkResult {
             algorithm_name: format!(
                 "{}{}",
                 algorithm,
-                if use_strassen { " (Strassen)" } else { " (Standard)" }
+                if use_strassen {
+                    " (Strassen)"
+                } else {
+                    " (Standard)"
+                }
             ),
             data_size: matrix_a.size(),
             execution_time: elapsed,
             memory_used: memory_usage,
             parallel: false,
         };
-        
+
         self.results.push(result);
-        
+
         println!(
             "    {}: {:.2}ms",
             if use_strassen { "Strassen" } else { "Standard" },
@@ -149,17 +159,23 @@ impl BenchmarkRunner {
     /// Benchmark closest pair problem
     pub fn benchmark_closest_pair(&mut self, algorithm: &str, points: &[Point]) {
         println!("{}", format!("  Testing {}...", algorithm).cyan());
-        
+
         let memory_before = Self::measure_memory();
         let start = Instant::now();
-        
+
         let _result = crate::geometry::closest_pair_divide_conquer(points);
-        
+
         let elapsed = start.elapsed();
         let memory_usage = memory_before
             .zip(Self::measure_memory())
-            .and_then(|(before, after)| if after > before { Some(after - before) } else { None });
-        
+            .and_then(|(before, after)| {
+                if after > before {
+                    Some(after - before)
+                } else {
+                    None
+                }
+            });
+
         let result = BenchmarkResult {
             algorithm_name: algorithm.to_string(),
             data_size: points.len(),
@@ -167,9 +183,9 @@ impl BenchmarkRunner {
             memory_used: memory_usage,
             parallel: false,
         };
-        
+
         self.results.push(result);
-        
+
         println!(
             "    Divide & Conquer: {:.2}ms",
             elapsed.as_secs_f64() * 1000.0
@@ -182,9 +198,9 @@ impl BenchmarkRunner {
             println!("{}", "No benchmark results available".yellow());
             return;
         }
-        
+
         println!("\n{}", "=== Benchmark Results ===".bright_green().bold());
-        
+
         // Group results by algorithm
         let mut grouped_results = HashMap::new();
         for result in &self.results {
@@ -193,10 +209,10 @@ impl BenchmarkRunner {
                 .or_insert_with(Vec::new)
                 .push(result);
         }
-        
+
         for (algorithm, results) in grouped_results {
             println!("\n{}", format!("--- {} ---", algorithm).bright_yellow());
-            
+
             for result in results {
                 println!(
                     "Data size: {}, Execution time: {:.2}ms{}",
@@ -210,7 +226,7 @@ impl BenchmarkRunner {
                 );
             }
         }
-        
+
         // Display best performance
         if let Some(fastest) = self.results.iter().min_by_key(|r| r.execution_time) {
             println!(
@@ -231,19 +247,23 @@ impl BenchmarkRunner {
 
     /// Save results as CSV
     pub fn save_results_csv(&self, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
-        let mut csv_content = String::from("Algorithm,DataSize,ExecutionTime(ms),MemoryUsed(MB),Parallel\n");
-        
+        let mut csv_content =
+            String::from("Algorithm,DataSize,ExecutionTime(ms),MemoryUsed(MB),Parallel\n");
+
         for result in &self.results {
             csv_content.push_str(&format!(
                 "{},{},{:.3},{},{}\n",
                 result.algorithm_name,
                 result.data_size,
                 result.execution_time.as_secs_f64() * 1000.0,
-                result.memory_used.map_or("N/A".to_string(), |m| format!("{:.2}", m as f64 / 1024.0 / 1024.0)),
+                result.memory_used.map_or("N/A".to_string(), |m| format!(
+                    "{:.2}",
+                    m as f64 / 1024.0 / 1024.0
+                )),
                 result.parallel
             ));
         }
-        
+
         std::fs::write(filename, csv_content)?;
         Ok(())
     }
@@ -253,10 +273,3 @@ impl BenchmarkRunner {
         &self.results
     }
 }
-        &self.results
-    }
-}
-        &self.results
-    }
-}
-    
