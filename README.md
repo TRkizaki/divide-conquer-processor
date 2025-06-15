@@ -216,6 +216,22 @@ This project demonstrates the successful integration of theoretical computer sci
 **Implementation**: Production-quality code suitable for educational and commercial applications
 
 ---
+# Evidence
+<img width="636" alt="4_1_Basic_sort_test_release" src="https://github.com/user-attachments/assets/805ee8da-ac3e-40f7-9ff3-6e1f93f367f6" />
+<img width="709" alt="4_2_parallel_merge_sort" src="https://github.com/user-attachments/assets/ce732e86-ce94-470a-b4f1-d98c5245617e" />
+<img width="730" alt="4_3_parallel_merge_sort_extreme-release" src="https://github.com/user-attachments/assets/9b3f611c-7c94-422d-aa09-bba8bbe19ae6" />
+<img width="626" alt="5_1_matrixbasic128" src="https://github.com/user-attachments/assets/f0a44f23-0724-459a-9fc9-90f8db031ef7" />
+<img width="708" alt="5_2_strassenmatrix128" src="https://github.com/user-attachments/assets/8f570562-64f8-49bc-aaf0-25d8d3598a80" />
+<img width="710" alt="5_3_strassenmatrix256" src="https://github.com/user-attachments/assets/b1a8e52c-5a57-4d74-aae8-89a94eac79b5" />
+<img width="614" alt="5_4_matrixbasic256" src="https://github.com/user-attachments/assets/a37afe8e-6353-4e3a-9312-9e7b2e4f6364" />
+<img width="692" alt="5_5_strassenmatrix512" src="https://github.com/user-attachments/assets/ffc0e0ce-66d3-47ba-94bf-74340d6a7148" />
+<img width="614" alt="5_6_matrixbasic512" src="https://github.com/user-attachments/assets/b26de4a0-f3ad-4aa5-b10a-b0396fc3337d" />
+<img width="718" alt="5_7_strassenmatrix1024" src="https://github.com/user-attachments/assets/9ce24486-a465-4191-a692-6b1a95e3080b" />
+<img width="620" alt="5_8_matrixbasic1024" src="https://github.com/user-attachments/assets/22985f26-e2c7-4f20-8b2a-70fadadb4584" />
+<img width="673" alt="6_1_closest_pair_problem1000" src="https://github.com/user-attachments/assets/94df611e-54fa-425a-b7a1-a429fab280c2" />
+<img width="663" alt="6_2_closest_pair_problem50000" src="https://github.com/user-attachments/assets/d702fe83-ac16-4a93-805a-a91703901cac" />
+<img width="705" alt="6_3_closest_pair_problem_100000" src="https://github.com/user-attachments/assets/8f77ef80-f3b6-44f4-a047-917f00de2ee9" />
+
 # To supplement 
 # **A. What is the Closest Pair Problem?**
 
