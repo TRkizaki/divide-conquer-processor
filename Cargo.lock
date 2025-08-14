@@ -164,6 +164,7 @@ dependencies = [
  "iana-time-zone",
  "js-sys",
  "num-traits",
+ "serde",
  "wasm-bindgen",
  "windows-link",
 ]
@@ -415,6 +416,7 @@ dependencies = [
 name = "divide-conquer-processor"
 version = "0.1.0"
 dependencies = [
+ "chrono",
  "clap",
  "colored",
  "criterion",
