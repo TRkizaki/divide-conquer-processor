@@ -1,0 +1,1169 @@
+{
+  "system_specs": {
+    "cpu_model": "13th Gen Intel(R) Core(TM) i7-13650HX",
+    "cpu_cores": 14,
+    "cpu_threads": 20,
+    "cpu_max_freq_mhz": 4900.0,
+    "memory_total_gb": 24.0,
+    "os_version": "Linux 6.12.10-76061203-generic (Pop!_OS)",
+    "rust_version": "1.89.0",
+    "arch": "x86_64"
+  },
+  "benchmark_date": "1755205580",
+  "methodology": "Multiple runs with statistical analysis, memory monitoring, and comparative benchmarking",
+  "detailed_results": [
+    {
+      "algorithm_name": "Merge Sort",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.07414019999999999,
+      "std_dev_time_ms": 0.005740040566058742,
+      "min_time_ms": 0.068361,
+      "max_time_ms": 0.08258399999999999,
+      "median_time_ms": 0.073019,
+      "mean_memory_mb": 0.12109375,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.08258399999999999,
+        0.07687899999999999,
+        0.073019,
+        0.06985799999999999,
+        0.068361
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort (Parallel)",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.065897,
+      "std_dev_time_ms": 0.0010322705556199889,
+      "min_time_ms": 0.064909,
+      "max_time_ms": 0.067233,
+      "median_time_ms": 0.065482,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": 1.125092189325766,
+      "efficiency": 0.0562546094662883,
+      "individual_runs_ms": [
+        0.067233,
+        0.066745,
+        0.065482,
+        0.064909,
+        0.06511600000000001
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.0317102,
+      "std_dev_time_ms": 0.004071702985238485,
+      "min_time_ms": 0.026647999999999998,
+      "max_time_ms": 0.036382,
+      "median_time_ms": 0.032936,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.036382,
+        0.034208999999999996,
+        0.032936,
+        0.028376000000000002,
+        0.026647999999999998
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort (Parallel)",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.0246454,
+      "std_dev_time_ms": 0.0010021353700972741,
+      "min_time_ms": 0.023417,
+      "max_time_ms": 0.025991,
+      "median_time_ms": 0.024648,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": 1.2866579564543486,
+      "efficiency": 0.06433289782271742,
+      "individual_runs_ms": [
+        0.025991,
+        0.025173,
+        0.024648,
+        0.023998,
+        0.023417
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.009596799999999999,
+      "std_dev_time_ms": 0.0036591951574082514,
+      "min_time_ms": 0.006732999999999999,
+      "max_time_ms": 0.015535,
+      "median_time_ms": 0.008042,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.015535,
+        0.010643,
+        0.008042,
+        0.007031,
+        0.006732999999999999
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_unstable",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.0071113999999999995,
+      "std_dev_time_ms": 0.0013816739123251906,
+      "min_time_ms": 0.0061140000000000005,
+      "max_time_ms": 0.009439999999999999,
+      "median_time_ms": 0.0066300000000000005,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.009439999999999999,
+        0.007246,
+        0.0066300000000000005,
+        0.0061140000000000005,
+        0.006127
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_by",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.009444,
+      "std_dev_time_ms": 0.00392181909322702,
+      "min_time_ms": 0.006499,
+      "max_time_ms": 0.015827,
+      "median_time_ms": 0.007408,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.015827,
+        0.010611,
+        0.007408,
+        0.006875,
+        0.006499
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.0257846,
+      "std_dev_time_ms": 0.005088487525778165,
+      "min_time_ms": 0.022042,
+      "max_time_ms": 0.034225,
+      "median_time_ms": 0.023328,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.034225,
+        0.026875,
+        0.023328,
+        0.022453,
+        0.022042
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort_unstable",
+      "data_size": 1000,
+      "runs": 5,
+      "mean_time_ms": 0.011473399999999998,
+      "std_dev_time_ms": 0.006280537341661142,
+      "min_time_ms": 0.006876,
+      "max_time_ms": 0.021926,
+      "median_time_ms": 0.008596999999999999,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.021926,
+        0.012693,
+        0.008596999999999999,
+        0.007275,
+        0.006876
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.42683160000000003,
+      "std_dev_time_ms": 0.009363427086275631,
+      "min_time_ms": 0.417472,
+      "max_time_ms": 0.440829,
+      "median_time_ms": 0.42351500000000003,
+      "mean_memory_mb": 0.04296875,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.440829,
+        0.431429,
+        0.42351500000000003,
+        0.417472,
+        0.420913
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort (Parallel)",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.3646124,
+      "std_dev_time_ms": 0.22226132067298618,
+      "min_time_ms": 0.160973,
+      "max_time_ms": 0.743104,
+      "median_time_ms": 0.290743,
+      "mean_memory_mb": 0.283203125,
+      "parallel": true,
+      "speedup_vs_sequential": 1.1706447723664912,
+      "efficiency": 0.05853223861832456,
+      "individual_runs_ms": [
+        0.743104,
+        0.34818000000000005,
+        0.290743,
+        0.280062,
+        0.160973
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.2191462,
+      "std_dev_time_ms": 0.006874744555254404,
+      "min_time_ms": 0.211855,
+      "max_time_ms": 0.229692,
+      "median_time_ms": 0.218989,
+      "mean_memory_mb": 0.0234375,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.229692,
+        0.220748,
+        0.218989,
+        0.214447,
+        0.211855
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort (Parallel)",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.18236219999999997,
+      "std_dev_time_ms": 0.020102420891524485,
+      "min_time_ms": 0.161426,
+      "max_time_ms": 0.209052,
+      "median_time_ms": 0.181605,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": 1.2017084680926202,
+      "efficiency": 0.06008542340463101,
+      "individual_runs_ms": [
+        0.209052,
+        0.164819,
+        0.194909,
+        0.161426,
+        0.181605
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.0610908,
+      "std_dev_time_ms": 0.007623549678463438,
+      "min_time_ms": 0.055303000000000005,
+      "max_time_ms": 0.073376,
+      "median_time_ms": 0.057474,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.073376,
+        0.06357600000000001,
+        0.057474,
+        0.055303000000000005,
+        0.055725
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_unstable",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.041753399999999996,
+      "std_dev_time_ms": 0.005104337743527554,
+      "min_time_ms": 0.036624000000000004,
+      "max_time_ms": 0.049505999999999994,
+      "median_time_ms": 0.040554,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.049505999999999994,
+        0.043812,
+        0.040554,
+        0.038271,
+        0.036624000000000004
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_by",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.0588888,
+      "std_dev_time_ms": 0.00958364540245516,
+      "min_time_ms": 0.04947,
+      "max_time_ms": 0.073333,
+      "median_time_ms": 0.056005000000000006,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.073333,
+        0.06326899999999999,
+        0.056005000000000006,
+        0.052367000000000004,
+        0.04947
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.420911,
+      "std_dev_time_ms": 0.135482526000588,
+      "min_time_ms": 0.32728,
+      "max_time_ms": 0.651181,
+      "median_time_ms": 0.35113300000000003,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.651181,
+        0.435056,
+        0.339905,
+        0.35113300000000003,
+        0.32728
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort_unstable",
+      "data_size": 5000,
+      "runs": 5,
+      "mean_time_ms": 0.08151499999999999,
+      "std_dev_time_ms": 0.014340501996094832,
+      "min_time_ms": 0.069339,
+      "max_time_ms": 0.10460799999999999,
+      "median_time_ms": 0.076861,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.10460799999999999,
+        0.085447,
+        0.076861,
+        0.07132000000000001,
+        0.069339
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.9938692000000001,
+      "std_dev_time_ms": 0.14847505399628583,
+      "min_time_ms": 0.9060360000000001,
+      "max_time_ms": 1.25786,
+      "median_time_ms": 0.938472,
+      "mean_memory_mb": 0.05859375,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.25786,
+        0.9478620000000001,
+        0.938472,
+        0.9191159999999999,
+        0.9060360000000001
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort (Parallel)",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.4058149999999999,
+      "std_dev_time_ms": 0.07772297620395144,
+      "min_time_ms": 0.27013,
+      "max_time_ms": 0.461617,
+      "median_time_ms": 0.433664,
+      "mean_memory_mb": 0.00390625,
+      "parallel": true,
+      "speedup_vs_sequential": 2.449069649963654,
+      "efficiency": 0.1224534824981827,
+      "individual_runs_ms": [
+        0.27013,
+        0.41586599999999996,
+        0.44779800000000003,
+        0.461617,
+        0.433664
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.4713716,
+      "std_dev_time_ms": 0.014009118826678555,
+      "min_time_ms": 0.45756600000000003,
+      "max_time_ms": 0.493428,
+      "median_time_ms": 0.470219,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.493428,
+        0.47420300000000004,
+        0.470219,
+        0.461442,
+        0.45756600000000003
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort (Parallel)",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.40871219999999997,
+      "std_dev_time_ms": 0.09113675987876683,
+      "min_time_ms": 0.311201,
+      "max_time_ms": 0.5336730000000001,
+      "median_time_ms": 0.395065,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": 1.1533093457939352,
+      "efficiency": 0.05766546728969676,
+      "individual_runs_ms": [
+        0.464335,
+        0.395065,
+        0.5336730000000001,
+        0.339287,
+        0.311201
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.131361,
+      "std_dev_time_ms": 0.010779593336485382,
+      "min_time_ms": 0.121478,
+      "max_time_ms": 0.148963,
+      "median_time_ms": 0.12832300000000002,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.148963,
+        0.133328,
+        0.12832300000000002,
+        0.124713,
+        0.121478
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_unstable",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.0901392,
+      "std_dev_time_ms": 0.007078114416989879,
+      "min_time_ms": 0.083354,
+      "max_time_ms": 0.100515,
+      "median_time_ms": 0.088801,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.100515,
+        0.093616,
+        0.088801,
+        0.083354,
+        0.08441
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_by",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.13056220000000002,
+      "std_dev_time_ms": 0.010747615465767283,
+      "min_time_ms": 0.120427,
+      "max_time_ms": 0.146986,
+      "median_time_ms": 0.12736799999999998,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.146986,
+        0.135122,
+        0.12736799999999998,
+        0.12290799999999999,
+        0.120427
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.3213278,
+      "std_dev_time_ms": 0.1468469165175081,
+      "min_time_ms": 0.201497,
+      "max_time_ms": 0.523867,
+      "median_time_ms": 0.247972,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.523867,
+        0.429456,
+        0.203847,
+        0.201497,
+        0.247972
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort_unstable",
+      "data_size": 10000,
+      "runs": 5,
+      "mean_time_ms": 0.10436419999999999,
+      "std_dev_time_ms": 0.0168821678761941,
+      "min_time_ms": 0.08192100000000001,
+      "max_time_ms": 0.12109400000000001,
+      "median_time_ms": 0.11334,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.11436400000000001,
+        0.12109400000000001,
+        0.11334,
+        0.091102,
+        0.08192100000000001
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 2.4230646,
+      "std_dev_time_ms": 0.018376361753622665,
+      "min_time_ms": 2.3993819999999997,
+      "max_time_ms": 2.447512,
+      "median_time_ms": 2.424799,
+      "mean_memory_mb": 0.109375,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        2.447512,
+        2.431461,
+        2.424799,
+        2.412169,
+        2.3993819999999997
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort (Parallel)",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 0.366701,
+      "std_dev_time_ms": 0.05732196682337408,
+      "min_time_ms": 0.29302100000000003,
+      "max_time_ms": 0.450737,
+      "median_time_ms": 0.358036,
+      "mean_memory_mb": 0.00390625,
+      "parallel": true,
+      "speedup_vs_sequential": 6.607739275322402,
+      "efficiency": 0.3303869637661201,
+      "individual_runs_ms": [
+        0.358036,
+        0.38282499999999997,
+        0.34888600000000003,
+        0.450737,
+        0.29302100000000003
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 1.2744002,
+      "std_dev_time_ms": 0.04538951330648957,
+      "min_time_ms": 1.2237820000000001,
+      "max_time_ms": 1.346064,
+      "median_time_ms": 1.260145,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.346064,
+        1.283588,
+        1.258422,
+        1.260145,
+        1.2237820000000001
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort (Parallel)",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 0.46324339999999997,
+      "std_dev_time_ms": 0.16270885419146677,
+      "min_time_ms": 0.26380400000000004,
+      "max_time_ms": 0.617879,
+      "median_time_ms": 0.513241,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": 2.7510380072333467,
+      "efficiency": 0.13755190036166734,
+      "individual_runs_ms": [
+        0.319765,
+        0.617879,
+        0.26380400000000004,
+        0.6015280000000001,
+        0.513241
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 0.3532254,
+      "std_dev_time_ms": 0.01671215966893566,
+      "min_time_ms": 0.340505,
+      "max_time_ms": 0.382378,
+      "median_time_ms": 0.346816,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.382378,
+        0.350878,
+        0.34555,
+        0.346816,
+        0.340505
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_unstable",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 0.2558086,
+      "std_dev_time_ms": 0.00918633709919248,
+      "min_time_ms": 0.24595999999999998,
+      "max_time_ms": 0.267834,
+      "median_time_ms": 0.254089,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.267834,
+        0.262395,
+        0.254089,
+        0.24876500000000001,
+        0.24595999999999998
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_by",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 0.35337379999999996,
+      "std_dev_time_ms": 0.01274951264558768,
+      "min_time_ms": 0.34178600000000003,
+      "max_time_ms": 0.37406100000000003,
+      "median_time_ms": 0.351562,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.37406100000000003,
+        0.355121,
+        0.351562,
+        0.344339,
+        0.34178600000000003
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 0.3545686,
+      "std_dev_time_ms": 0.13202061955353792,
+      "min_time_ms": 0.208584,
+      "max_time_ms": 0.517919,
+      "median_time_ms": 0.403431,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.517919,
+        0.403431,
+        0.208584,
+        0.228874,
+        0.414035
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort_unstable",
+      "data_size": 25000,
+      "runs": 5,
+      "mean_time_ms": 0.1766838,
+      "std_dev_time_ms": 0.017007904006667005,
+      "min_time_ms": 0.160748,
+      "max_time_ms": 0.20465899999999998,
+      "median_time_ms": 0.17453600000000002,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.16595100000000002,
+        0.17453600000000002,
+        0.20465899999999998,
+        0.177525,
+        0.160748
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 5.2569368,
+      "std_dev_time_ms": 0.11471491398113873,
+      "min_time_ms": 5.130284,
+      "max_time_ms": 5.375948,
+      "median_time_ms": 5.274692999999999,
+      "mean_memory_mb": 0.19140625,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        5.146839,
+        5.274692999999999,
+        5.130284,
+        5.356920000000001,
+        5.375948
+      ]
+    },
+    {
+      "algorithm_name": "Merge Sort (Parallel)",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 0.6214890000000001,
+      "std_dev_time_ms": 0.4469722227454409,
+      "min_time_ms": 0.361562,
+      "max_time_ms": 1.412622,
+      "median_time_ms": 0.44119899999999995,
+      "mean_memory_mb": 0.00390625,
+      "parallel": true,
+      "speedup_vs_sequential": 8.458616001248613,
+      "efficiency": 0.42293080006243067,
+      "individual_runs_ms": [
+        0.522214,
+        0.361562,
+        1.412622,
+        0.369848,
+        0.44119899999999995
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 2.8478492,
+      "std_dev_time_ms": 0.31254420479941725,
+      "min_time_ms": 2.61099,
+      "max_time_ms": 3.3756440000000003,
+      "median_time_ms": 2.760288,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        2.628437,
+        2.863887,
+        2.760288,
+        2.61099,
+        3.3756440000000003
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort (Parallel)",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 0.5139942000000001,
+      "std_dev_time_ms": 0.07081497538797848,
+      "min_time_ms": 0.42838099999999996,
+      "max_time_ms": 0.5784969999999999,
+      "median_time_ms": 0.541027,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": 5.540625166587483,
+      "efficiency": 0.27703125832937414,
+      "individual_runs_ms": [
+        0.44850100000000004,
+        0.42838099999999996,
+        0.573565,
+        0.5784969999999999,
+        0.541027
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 1.3560488,
+      "std_dev_time_ms": 0.0746381829374215,
+      "min_time_ms": 1.266697,
+      "max_time_ms": 1.440453,
+      "median_time_ms": 1.331159,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.4262439999999998,
+        1.440453,
+        1.315691,
+        1.266697,
+        1.331159
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_unstable",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 0.8744506000000001,
+      "std_dev_time_ms": 0.13878339730962064,
+      "min_time_ms": 0.722121,
+      "max_time_ms": 1.0757150000000002,
+      "median_time_ms": 0.852731,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.0757150000000002,
+        0.939867,
+        0.852731,
+        0.781819,
+        0.722121
+      ]
+    },
+    {
+      "algorithm_name": "std::slice::sort_by",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 0.7821268,
+      "std_dev_time_ms": 0.08678227935298777,
+      "min_time_ms": 0.7166969999999999,
+      "max_time_ms": 0.918734,
+      "median_time_ms": 0.73498,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.918734,
+        0.8184359999999999,
+        0.73498,
+        0.721787,
+        0.7166969999999999
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 0.495169,
+      "std_dev_time_ms": 0.20455324319355092,
+      "min_time_ms": 0.333512,
+      "max_time_ms": 0.8218179999999999,
+      "median_time_ms": 0.38580899999999996,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.8218179999999999,
+        0.333512,
+        0.5698920000000001,
+        0.38580899999999996,
+        0.36481399999999997
+      ]
+    },
+    {
+      "algorithm_name": "rayon::par_sort_unstable",
+      "data_size": 50000,
+      "runs": 5,
+      "mean_time_ms": 0.4175436,
+      "std_dev_time_ms": 0.02648013969562847,
+      "min_time_ms": 0.393519,
+      "max_time_ms": 0.46304799999999996,
+      "median_time_ms": 0.410183,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.41173000000000004,
+        0.409238,
+        0.393519,
+        0.410183,
+        0.46304799999999996
+      ]
+    }
+  ],
+  "scalability_results": [
+    {
+      "algorithm_name": "Merge Sort",
+      "data_sizes": [
+        1000,
+        5000,
+        10000,
+        25000,
+        50000
+      ],
+      "execution_times_ms": [
+        0.171694,
+        0.431685,
+        0.906419,
+        2.841589,
+        5.121758
+      ],
+      "memory_usage_mb": [
+        0.03125,
+        0.04296875,
+        0.0390625,
+        0.109375,
+        0.19140625
+      ],
+      "parallel": false
+    },
+    {
+      "algorithm_name": "Merge Sort (Parallel)",
+      "data_sizes": [
+        1000,
+        5000,
+        10000,
+        25000,
+        50000
+      ],
+      "execution_times_ms": [
+        0.074595,
+        0.178907,
+        0.268642,
+        0.613297,
+        0.459861
+      ],
+      "memory_usage_mb": [
+        0.03125,
+        0.04296875,
+        0.0390625,
+        0.109375,
+        0.140625
+      ],
+      "parallel": true
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_sizes": [
+        1000,
+        5000,
+        10000,
+        25000,
+        50000
+      ],
+      "execution_times_ms": [
+        0.03885,
+        0.215052,
+        0.45449500000000004,
+        1.382968,
+        2.7328349999999997
+      ],
+      "memory_usage_mb": [
+        0.03125,
+        0.04296875,
+        0.0390625,
+        0.109375,
+        0.140625
+      ],
+      "parallel": false
+    },
+    {
+      "algorithm_name": "Quick Sort (Parallel)",
+      "data_sizes": [
+        1000,
+        5000,
+        10000,
+        25000,
+        50000
+      ],
+      "execution_times_ms": [
+        0.043191,
+        0.24956799999999998,
+        0.16265100000000002,
+        0.46646,
+        0.566181
+      ],
+      "memory_usage_mb": [
+        0.03125,
+        0.04296875,
+        0.0390625,
+        0.109375,
+        0.140625
+      ],
+      "parallel": true
+    }
+  ],
+  "parallel_efficiency_results": [
+    {
+      "algorithm_name": "Merge Sort",
+      "data_size": 50000,
+      "thread_counts": [
+        1,
+        2,
+        4,
+        8,
+        14,
+        20
+      ],
+      "execution_times_ms": [
+        1.6864,
+        0.862989,
+        0.640845,
+        0.416074,
+        0.413378,
+        0.44126000000000004
+      ],
+      "speedups": [
+        4.524147888994308,
+        8.8408114124282,
+        11.90541082477042,
+        18.336937660127766,
+        18.456528891232722,
+        17.290311834292705
+      ],
+      "efficiencies": [
+        4.524147888994308,
+        4.4204057062141,
+        2.976352706192605,
+        2.292117207515971,
+        1.3183234922309086,
+        0.8645155917146352
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_size": 50000,
+      "thread_counts": [
+        1,
+        2,
+        4,
+        8,
+        14,
+        20
+      ],
+      "execution_times_ms": [
+        2.30388,
+        1.34736,
+        0.51168,
+        0.283269,
+        0.23577299999999998,
+        0.34812899999999997
+      ],
+      "speedups": [
+        1.6848021598347138,
+        2.880879646122789,
+        7.585956066291432,
+        13.702812520960643,
+        16.463216738133717,
+        11.149838134714432
+      ],
+      "efficiencies": [
+        1.6848021598347138,
+        1.4404398230613944,
+        1.896489016572858,
+        1.7128515651200804,
+        1.175944052723837,
+        0.5574919067357216
+      ]
+    }
+  ],
+  "comparative_analysis": {
+    "rayon::par_sort_unstable_vs_std_size_1000": 0.6198162706782646,
+    "rayon::par_sort_vs_std_size_5000": 0.09919769262385635,
+    "rayon::par_sort_unstable_vs_std_size_50000": 2.0942737476996416,
+    "rayon::par_sort_vs_std_size_25000": 0.7214643372255749,
+    "Quick Sort_vs_std_size_1000": 0.22426222477310137,
+    "Quick Sort_vs_std_size_50000": 0.30705649723306977,
+    "rayon::par_sort_vs_std_size_1000": 0.27580028389038413,
+    "Merge Sort_vs_std_size_10000": 0.09069523434270826,
+    "Quick Sort_vs_std_size_10000": 0.19122747318675967,
+    "Quick Sort (Parallel)_vs_std_size_5000": 0.228958632874576,
+    "rayon::par_sort_vs_std_size_10000": 0.28052101312118033,
+    "Quick Sort_vs_std_size_25000": 0.20072862512105694,
+    "Merge Sort (Parallel)_vs_std_size_10000": 0.2221189458250681,
+    "Merge Sort (Parallel)_vs_std_size_50000": 1.4070250639995237,
+    "Quick Sort (Parallel)_vs_std_size_10000": 0.2205444319988491,
+    "Merge Sort_vs_std_size_25000": 0.10557234008536132,
+    "Merge Sort (Parallel)_vs_std_size_25000": 0.6975944979697356,
+    "Quick Sort_vs_std_size_5000": 0.19052760212132355,
+    "Quick Sort (Parallel)_vs_std_size_25000": 0.552212076847722,
+    "rayon::par_sort_vs_std_size_50000": 1.7659639436232883,
+    "rayon::par_sort_unstable_vs_std_size_5000": 0.5122173833036865,
+    "Merge Sort_vs_std_size_5000": 0.09782171704250574,
+    "Quick Sort (Parallel)_vs_std_size_50000": 1.7012849561337462,
+    "Merge Sort_vs_std_size_1000": 0.09591827375701711,
+    "Merge Sort_vs_std_size_50000": 0.16634223184878313,
+    "Merge Sort (Parallel)_vs_std_size_5000": 0.11451448167972345,
+    "Quick Sort (Parallel)_vs_std_size_1000": 0.2885487758364644,
+    "rayon::par_sort_unstable_vs_std_size_10000": 0.8636984713148763,
+    "Merge Sort (Parallel)_vs_std_size_1000": 0.10791690061763054,
+    "rayon::par_sort_unstable_vs_std_size_25000": 1.4478327950836465
+  }
+}
