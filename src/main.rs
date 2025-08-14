@@ -3,6 +3,7 @@ use colored::*;
 
 // Module declarations
 mod benchmark;
+mod comprehensive_benchmark;
 mod data_generator;
 mod geometry;
 mod matrix;
@@ -10,6 +11,7 @@ mod sorting;
 mod visualization;
 
 use benchmark::BenchmarkRunner;
+use comprehensive_benchmark::ComprehensiveBenchmarkRunner;
 use data_generator::DataGenerator;
 
 #[derive(Parser)]
@@ -54,6 +56,15 @@ enum Commands {
         #[arg(short, long)]
         small: bool,
     },
+    /// Comprehensive benchmark with detailed analysis and publication-ready data
+    Publication {
+        /// Number of runs per test
+        #[arg(short, long, default_value_t = 10)]
+        runs: usize,
+        /// Include extended scalability analysis
+        #[arg(short, long)]
+        extended: bool,
+    },
     /// Generate visualization of results
     Visualize {
         /// Input results file path
@@ -86,6 +97,10 @@ fn main() {
         Commands::All { small } => {
             println!("{}", "Running comprehensive benchmark...".green());
             run_comprehensive_benchmark(*small);
+        }
+        Commands::Publication { runs, extended } => {
+            println!("{}", "Running publication-quality benchmark...".green());
+            run_publication_benchmark(*runs, *extended);
         }
         Commands::Visualize { input, output } => {
             println!("{}", "Generating visualization...".green());
@@ -163,6 +178,54 @@ fn run_comprehensive_benchmark(small: bool) {
         
         // Closest pair problem
         run_geometry_benchmark(size);
+    }
+}
+
+fn run_publication_benchmark(runs: usize, extended: bool) {
+    println!("{}", "=== Publication-Quality Comprehensive Benchmark ===".bright_magenta().bold());
+    
+    let mut runner = ComprehensiveBenchmarkRunner::new();
+    
+    // Standard data sizes for comprehensive analysis
+    let standard_sizes = vec![1000, 5000, 10000, 25000, 50000];
+    let extended_sizes = vec![100000, 250000, 500000, 1000000];
+    
+    // 1. Comprehensive sorting benchmarks with std library comparisons
+    let benchmark_sizes = if extended {
+        [&standard_sizes[..], &extended_sizes[..]].concat()
+    } else {
+        standard_sizes.clone()
+    };
+    
+    runner.benchmark_sorting_comprehensive(&benchmark_sizes, runs);
+    
+    // 2. Calculate speedups
+    runner.calculate_speedups();
+    
+    // 3. Scalability analysis
+    println!("\n{}", "=== Scalability Analysis ===".bright_green().bold());
+    runner.analyze_scalability("Merge Sort", &standard_sizes, false);
+    runner.analyze_scalability("Merge Sort", &standard_sizes, true);
+    runner.analyze_scalability("Quick Sort", &standard_sizes, false);
+    runner.analyze_scalability("Quick Sort", &standard_sizes, true);
+    
+    // 4. Parallel efficiency analysis
+    println!("\n{}", "=== Parallel Efficiency Analysis ===".bright_green().bold());
+    let thread_counts = vec![1, 2, 4, 8, 14, 20]; // Based on system specs
+    runner.analyze_parallel_efficiency("Merge Sort", 50000, &thread_counts);
+    runner.analyze_parallel_efficiency("Quick Sort", 50000, &thread_counts);
+    
+    // 5. Save comprehensive results
+    match runner.save_comprehensive_results("publication_benchmark") {
+        Ok(_) => {
+            println!("\n{}", "✓ Publication-quality benchmark data generated successfully!".bright_green().bold());
+            println!("Generated files:");
+            println!("  • publication_benchmark_full_report.json - Complete structured data");
+            println!("  • publication_benchmark_detailed_results.csv - Detailed performance metrics");
+            println!("  • publication_benchmark_scalability.csv - Scalability analysis data");
+            println!("  • publication_benchmark_parallel_efficiency.csv - Parallel efficiency analysis");
+        }
+        Err(e) => println!("{}", format!("Error saving results: {}", e).red()),
     }
 }
 
