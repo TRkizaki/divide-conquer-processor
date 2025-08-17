@@ -14,54 +14,82 @@ This project provides high-performance implementations of fundamental divide-and
 
 ### Algorithm Implementations
 - **Sorting Algorithms**: Merge Sort and Quick Sort with sequential and parallel variants
-- **Matrix Operations**: Standard and Strassen multiplication algorithms
+- **Advanced Matrix Operations**: Standard, Strassen, Winograd, Cache-optimized, SIMD, and Parallel algorithms
 - **Computational Geometry**: Closest pair problem using divide-and-conquer
-- **Performance Optimizations**: Multi-threaded implementations using Rayon
+- **Performance Optimizations**: Multi-threaded implementations using Rayon with SIMD vectorization
 
-### Comprehensive Benchmarking
-- **Statistical Analysis**: Multiple runs with confidence intervals and effect sizes
-- **Memory Monitoring**: Real-time memory usage tracking and analysis
+### Comprehensive Benchmarking Framework
+- **Performance Benchmarking**: Time and memory analysis with statistical reliability
+- **Advanced Hardware Analysis**: Hardware-aware performance analysis (cache, energy, NUMA effects)
+- **Cross-Platform Validation**: Statistical validation across data distributions and compiler optimizations
 - **Scalability Testing**: Performance analysis across data sizes (1K → 1M+ elements)
-- **Parallel Efficiency**: Thread scaling analysis (1-20+ cores)
-- **Comparative Analysis**: Benchmarks against Rust standard library
+- **Parallel Efficiency**: Thread scaling analysis (1-24+ cores with extended testing)
 
-### Publication-Quality Results
-- **Structured Data Export**: JSON and CSV formats for statistical analysis
-- **Reproducible Research**: Complete methodology documentation
-- **System Specifications**: Detailed hardware/software configuration
-- **Statistical Rigor**: Confidence intervals, outlier detection, effect sizes
+### Advanced Performance Analysis
+- **Hardware Metrics**: L1/L2/L3 cache performance, energy consumption via Intel RAPL
+- **Statistical Validation**: ANOVA analysis, confidence intervals, empirical constant analysis
+- **Cross-Platform Testing**: Data distribution sensitivity, compiler optimization impact
+- **Publication-Quality Results**: Structured data export with comprehensive statistical measures
 
 ## Project Structure
 
 ```
 divide-conquer-processor/
 ├── src/
-│   ├── main.rs                      # CLI interface and command handling
-│   ├── sorting.rs                   # Divide-and-conquer sorting algorithms
-│   ├── matrix.rs                    # Matrix multiplication implementations
-│   ├── geometry.rs                  # Computational geometry algorithms
-│   ├── benchmark.rs                 # Basic benchmarking framework
-│   ├── comprehensive_benchmark.rs   # Publication-quality benchmarking
-│   ├── data_generator.rs           # Test data generation utilities
-│   └── visualization.rs            # Performance visualization tools
-├── METHODOLOGY.md                   # Detailed experimental methodology
-├── REPRODUCIBILITY_GUIDE.md        # Complete reproduction instructions
-├── REPORT_FOR_PROJECT.md          # Comprehensive project analysis
-└── Publication Data/               # Generated benchmark results
-    ├── publication_benchmark_full_report.json
-    ├── publication_benchmark_detailed_results.csv
-    ├── publication_benchmark_scalability.csv
-    └── publication_benchmark_parallel_efficiency.csv
+│   ├── main.rs                           # CLI interface with advanced commands
+│   ├── sorting.rs                        # Divide-and-conquer sorting algorithms
+│   ├── matrix.rs                         # Advanced matrix implementations (7+ algorithms)
+│   ├── geometry.rs                       # Computational geometry algorithms
+│   ├── benchmark.rs                      # Benchmarking framework
+│   ├── advanced_benchmark.rs             # Hardware-aware performance analysis
+│   ├── cross_platform_validation.rs     # Statistical validation framework
+│   ├── comprehensive_benchmark.rs        # Comprehensive benchmarking
+│   ├── data_generator.rs                # Test data generation utilities
+│   └── visualization.rs                 # Performance visualization tools
+├── Documentation/
+│   ├── Core/
+│   │   ├── benchmark.md                  # Benchmarking framework
+│   │   ├── matrix.md                     # Matrix operations
+│   │   ├── sorting.md                    # Sorting algorithm implementations
+│   │   ├── geometry.md                   # Computational geometry
+│   │   ├── visualization.md              # Performance visualization
+│   │   └── rayon.md                      # Parallel processing framework
+│   ├── Advanced/
+│   │   ├── advanced_benchmark.md         # Hardware-aware benchmarking
+│   │   ├── Advanced_matrix.md            # Advanced matrix algorithms
+│   │   └── Cross-Platform_Validation.md # Cross-platform validation
+│   └── Research/
+│       ├── METHODOLOGY.md               # Detailed experimental methodology
+│       ├── REPRODUCIBILITY_GUIDE.md     # Complete reproduction instructions
+│       └── REPORT_FOR_PROJECT.md        # Comprehensive project analysis
+└── Generated Data/                       # Benchmark results and validation data
+    ├── Publication Benchmarks/
+    │   ├── publication_benchmark_full_report.json
+    │   ├── publication_benchmark_detailed_results.csv
+    │   ├── publication_benchmark_scalability.csv
+    │   └── publication_benchmark_parallel_efficiency.csv
+    ├── Advanced Benchmarks/
+    │   ├── advanced_benchmark_advanced_benchmark.json
+    │   └── advanced_benchmark_advanced_metrics.csv
+    └── Cross-Platform Validation/
+        ├── cross_platform_validation_validation_report.json
+        ├── cross_platform_validation_validation_results.csv
+        ├── cross_platform_validation_distribution_analysis.csv
+        ├── cross_platform_validation_optimization_impact.csv
+        └── cross_platform_validation_thread_scaling.csv
 ```
 
 ## Technology Stack
 
 - **Language**: Rust 1.89.0+ (stable)
 - **Parallel Processing**: [Rayon](https://github.com/rayon-rs/rayon) work-stealing framework
-- **Benchmarking**: [Criterion](https://github.com/bheisler/criterion.rs) statistical benchmarking
+- **Hardware Monitoring**: [sysinfo](https://crates.io/crates/sysinfo) for system metrics
+- **Performance Counters**: [perf-event](https://crates.io/crates/perf-event) for cache analysis
+- **SIMD Optimization**: AVX2 vectorization for x86_64 architectures
 - **Serialization**: [Serde](https://serde.rs/) for structured data export
 - **Memory Monitoring**: [memory-stats](https://crates.io/crates/memory-stats) for runtime analysis
-- **Statistical Analysis**: Custom implementation with confidence intervals
+- **Statistical Analysis**: Custom ANOVA implementation with confidence intervals
+- **Energy Monitoring**: Intel RAPL for power consumption measurement
 
 ## Quick Start
 
@@ -86,19 +114,23 @@ cargo build --release
 ### Running Benchmarks
 
 ```bash
-# Quick validation (3 runs per test)
-cargo run --release -- publication --runs 3
-
-# Standard publication benchmark (10 runs)
-cargo run --release -- publication --runs 10
-
-# Extended analysis with large datasets
-cargo run --release -- publication --runs 20 --extended
-
-# Individual algorithm tests
+# Algorithm benchmarks
 cargo run --release -- sort --size 50000 --runs 10 --parallel
 cargo run --release -- matrix --size 512 --strassen
 cargo run --release -- geometry --points 10000
+
+# Advanced hardware-aware benchmarking
+cargo run --release -- advanced --runs 5 --cache --energy --numa
+
+# Cross-platform validation
+cargo run --release -- validate --runs 3 --optimization --threading
+
+# Publication-quality comprehensive benchmarks
+cargo run --release -- publication --runs 10
+cargo run --release -- publication --runs 20 --extended
+
+# Quick validation (3 runs per test)
+cargo run --release -- publication --runs 3
 ```
 
 ### Command Line Interface
@@ -107,20 +139,31 @@ cargo run --release -- geometry --points 10000
 # Available commands
 cargo run --release -- --help
 
-# Sort algorithms benchmark
+# Algorithm benchmarks
 cargo run --release -- sort [OPTIONS]
   --size <SIZE>        Data size [default: 10000]
   --runs <RUNS>        Number of runs [default: 5]
   --parallel           Enable parallel processing
 
-# Matrix multiplication benchmark
 cargo run --release -- matrix [OPTIONS]
   --size <SIZE>        Matrix size (N x N) [default: 512]
   --strassen           Use Strassen algorithm
 
-# Computational geometry benchmark
 cargo run --release -- geometry [OPTIONS]
   --points <POINTS>    Number of points [default: 10000]
+
+# Advanced performance analysis
+cargo run --release -- advanced [OPTIONS]
+  --runs <RUNS>        Number of runs [default: 3]
+  --cache              Enable cache performance analysis
+  --energy             Enable energy consumption monitoring
+  --numa               Enable NUMA effects analysis
+
+# Cross-platform validation
+cargo run --release -- validate [OPTIONS]
+  --runs <RUNS>        Number of runs per test [default: 2]
+  --optimization       Enable compiler optimization analysis
+  --threading          Enable extended thread scaling analysis
 
 # Comprehensive benchmarks
 cargo run --release -- all [--small]
@@ -146,12 +189,24 @@ cargo run --release -- publication [--runs <RUNS>] [--extended]
 
 ## Generated Data Files
 
-After running publication benchmarks, the following files are generated:
+The framework generates comprehensive benchmark data in multiple formats:
 
+### Publication Benchmarks
 - **`publication_benchmark_full_report.json`** - Complete structured dataset
 - **`publication_benchmark_detailed_results.csv`** - Statistical performance metrics
 - **`publication_benchmark_scalability.csv`** - Performance vs data size analysis
 - **`publication_benchmark_parallel_efficiency.csv`** - Thread scaling analysis
+
+### Advanced Performance Analysis
+- **`advanced_benchmark_advanced_benchmark.json`** - Hardware-aware metrics
+- **`advanced_benchmark_advanced_metrics.csv`** - Cache, energy, and NUMA data
+
+### Cross-Platform Validation Results
+- **`cross_platform_validation_validation_report.json`** - Comprehensive validation report
+- **`cross_platform_validation_validation_results.csv`** - Statistical validation data
+- **`cross_platform_validation_distribution_analysis.csv`** - Data distribution performance
+- **`cross_platform_validation_optimization_impact.csv`** - Compiler optimization analysis
+- **`cross_platform_validation_thread_scaling.csv`** - Extended threading analysis
 
 ## Documentation
 
@@ -161,12 +216,19 @@ After running publication benchmarks, the following files are generated:
 - **[REPORT_FOR_PROJECT.md](./REPORT_FOR_PROJECT.md)** - Comprehensive project analysis
 
 ### Implementation Documentation
-- **[benchmark.md](./benchmark.md)** - Benchmarking framework implementation
+
+#### Core Implementations
+- **[benchmark.md](./benchmark.md)** - Benchmarking framework
 - **[sorting.md](./sorting.md)** - Divide-and-conquer sorting algorithms
-- **[matrix.md](./matrix.md)** - Matrix multiplication implementations
+- **[matrix.md](./matrix.md)** - Matrix operations and API
 - **[geometry.md](./geometry.md)** - Computational geometry algorithms
 - **[visualization.md](./visualization.md)** - Performance visualization tools
 - **[rayon.md](./rayon.md)** - Parallel processing with Rayon
+
+#### Advanced Performance Analysis
+- **[advanced_benchmark.md](./advanced_benchmark.md)** - Hardware-aware performance analysis
+- **[Advanced_matrix.md](./Advanced_matrix.md)** - Advanced matrix algorithms (Strassen, SIMD, etc.)
+- **[Cross-Platform_Validation.md](./Cross-Platform_Validation.md)** - Cross-platform validation framework
 
 ## Testing
 
