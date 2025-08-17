@@ -30,5 +30,10 @@ colored = "3.0"
 
 chrono = { version = "0.4", features = ["serde"] }
 
+# Advanced benchmarking dependencies
+libc = "0.2"
+sysinfo = "0.32"
+perf-event = "0.4"
+
 [dev-dependencies]
 criterion = { version = "0.6.0", features = ["html_reports"] }
