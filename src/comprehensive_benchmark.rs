@@ -8,6 +8,8 @@ use statistical::{mean, standard_deviation};
 
 use crate::sorting;
 use crate::data_generator::DataGenerator;
+use crate::geometry::{Point, KdTree, LineSegment, convex_hull_graham_scan, closest_pair_brute_force, closest_pair_divide_conquer, find_intersecting_segments};
+use crate::matrix::{Matrix, standard_multiply, strassen_multiply, cache_optimized_multiply, parallel_multiply, simd_multiply, winograd_multiply, parallel_winograd_multiply, determinant, inverse, solve_linear_system, lu_decomposition, qr_decomposition, cholesky_decomposition, matrix_rank, condition_number_approx};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SystemSpecs {
@@ -607,6 +609,638 @@ impl ComprehensiveBenchmarkRunner {
         }
         
         std::fs::write(filename, csv_content)?;
+        Ok(())
+    }
+
+    /// Comprehensive geometry algorithms benchmarking
+    pub fn run_geometry_benchmarks(&mut self, runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("\n{}", "🔺 Running Geometry Algorithm Benchmarks".bright_yellow().bold());
+        
+        let data_sizes = vec![1000, 5000, 10000, 25000, 50000];
+        
+        for &size in &data_sizes {
+            println!("\n{} Data size: {}", "📊".bright_blue(), size.to_string().bright_white().bold());
+            
+            // Generate test data
+            let points = DataGenerator::generate_random_points(size);
+            let segments = DataGenerator::generate_random_line_segments(size.min(1000)); // Limit segments for performance
+            
+            // KdTree vs Brute Force Nearest Neighbor Search
+            self.benchmark_kdtree_vs_bruteforce(&points, runs)?;
+            
+            // Closest Pair Problem: Divide & Conquer vs Brute Force
+            self.benchmark_closest_pair_algorithms(&points, runs)?;
+            
+            // Convex Hull Algorithm
+            self.benchmark_convex_hull(&points, runs)?;
+            
+            // Line Segment Intersection (smaller dataset)
+            if segments.len() > 0 {
+                self.benchmark_line_segment_intersection(&segments, runs)?;
+            }
+        }
+        
+        Ok(())
+    }
+
+    fn benchmark_kdtree_vs_bruteforce(&mut self, points: &[Point], runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("  {} KdTree vs Brute Force Nearest Neighbor", "🔍".bright_green());
+        
+        if points.is_empty() {
+            return Ok(());
+        }
+        
+        // Build KdTree once
+        let tree = KdTree::build(points);
+        let query_point = points[0]; // Use first point as query
+        
+        // Benchmark KdTree search
+        let mut kdtree_times = Vec::new();
+        let mut memory_usage = None;
+        
+        for _ in 0..runs {
+            let start_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            let start = Instant::now();
+            
+            let _result = tree.nearest_neighbor(&query_point);
+            
+            let duration = start.elapsed();
+            kdtree_times.push(duration.as_secs_f64() * 1000.0);
+            
+            let end_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            if let (Some(start_mem), Some(end_mem)) = (start_memory, end_memory) {
+                memory_usage = Some(end_mem - start_mem);
+            }
+        }
+        
+        // Benchmark brute force search (O(n))
+        let mut bruteforce_times = Vec::new();
+        
+        for _ in 0..runs {
+            let start = Instant::now();
+            
+            let mut min_distance = f64::INFINITY;
+            let mut _nearest = points[0];
+            for &point in points {
+                let distance = query_point.distance_to(&point);
+                if distance < min_distance && distance > 0.0 {
+                    min_distance = distance;
+                    _nearest = point;
+                }
+            }
+            
+            let duration = start.elapsed();
+            bruteforce_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Calculate statistics and store results
+        self.store_geometry_benchmark_result("KdTree Nearest Neighbor", points.len(), runs, &kdtree_times, memory_usage, false)?;
+        self.store_geometry_benchmark_result("Brute Force Nearest Neighbor", points.len(), runs, &bruteforce_times, None, false)?;
+        
+        let kdtree_mean = mean(&kdtree_times);
+        let bruteforce_mean = mean(&bruteforce_times);
+        let speedup = bruteforce_mean / kdtree_mean;
+        
+        println!("    KdTree: {:.3}ms, Brute Force: {:.3}ms, Speedup: {:.1}x", 
+                kdtree_mean, bruteforce_mean, speedup);
+        
+        Ok(())
+    }
+
+    fn benchmark_closest_pair_algorithms(&mut self, points: &[Point], runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("  {} Closest Pair: Divide & Conquer vs Brute Force", "📏".bright_green());
+        
+        if points.len() < 2 {
+            return Ok(());
+        }
+        
+        // Benchmark divide and conquer approach
+        let mut dc_times = Vec::new();
+        let mut memory_usage = None;
+        
+        for _ in 0..runs {
+            let start_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            let start = Instant::now();
+            
+            let _result = closest_pair_divide_conquer(points);
+            
+            let duration = start.elapsed();
+            dc_times.push(duration.as_secs_f64() * 1000.0);
+            
+            let end_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            if let (Some(start_mem), Some(end_mem)) = (start_memory, end_memory) {
+                memory_usage = Some(end_mem - start_mem);
+            }
+        }
+        
+        // Benchmark brute force approach (only for smaller datasets to avoid timeout)
+        let mut bf_times = Vec::new();
+        
+        if points.len() <= 10000 {
+            for _ in 0..runs {
+                let start = Instant::now();
+                
+                let _result = closest_pair_brute_force(points);
+                
+                let duration = start.elapsed();
+                bf_times.push(duration.as_secs_f64() * 1000.0);
+            }
+            
+            self.store_geometry_benchmark_result("Closest Pair Brute Force", points.len(), runs, &bf_times, None, false)?;
+            
+            let dc_mean = mean(&dc_times);
+            let bf_mean = mean(&bf_times);
+            let speedup = bf_mean / dc_mean;
+            
+            println!("    Divide & Conquer: {:.3}ms, Brute Force: {:.3}ms, Speedup: {:.1}x", 
+                    dc_mean, bf_mean, speedup);
+        } else {
+            let dc_mean = mean(&dc_times);
+            println!("    Divide & Conquer: {:.3}ms (Brute Force skipped for large dataset)", dc_mean);
+        }
+        
+        self.store_geometry_benchmark_result("Closest Pair Divide & Conquer", points.len(), runs, &dc_times, memory_usage, false)?;
+        
+        Ok(())
+    }
+
+    fn benchmark_convex_hull(&mut self, points: &[Point], runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("  {} Convex Hull (Graham Scan)", "📐".bright_green());
+        
+        if points.len() < 3 {
+            return Ok(());
+        }
+        
+        let mut hull_times = Vec::new();
+        let mut memory_usage = None;
+        
+        for _ in 0..runs {
+            let start_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            let start = Instant::now();
+            
+            let _hull = convex_hull_graham_scan(points);
+            
+            let duration = start.elapsed();
+            hull_times.push(duration.as_secs_f64() * 1000.0);
+            
+            let end_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            if let (Some(start_mem), Some(end_mem)) = (start_memory, end_memory) {
+                memory_usage = Some(end_mem - start_mem);
+            }
+        }
+        
+        self.store_geometry_benchmark_result("Convex Hull Graham Scan", points.len(), runs, &hull_times, memory_usage, false)?;
+        
+        let hull_mean = mean(&hull_times);
+        println!("    Convex Hull: {:.3}ms", hull_mean);
+        
+        Ok(())
+    }
+
+    fn benchmark_line_segment_intersection(&mut self, segments: &[LineSegment], runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("  {} Line Segment Intersection Detection", "📏".bright_green());
+        
+        if segments.len() < 2 {
+            return Ok(());
+        }
+        
+        let mut intersection_times = Vec::new();
+        let mut memory_usage = None;
+        
+        for _ in 0..runs {
+            let start_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            let start = Instant::now();
+            
+            let _intersections = find_intersecting_segments(segments);
+            
+            let duration = start.elapsed();
+            intersection_times.push(duration.as_secs_f64() * 1000.0);
+            
+            let end_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            if let (Some(start_mem), Some(end_mem)) = (start_memory, end_memory) {
+                memory_usage = Some(end_mem - start_mem);
+            }
+        }
+        
+        self.store_geometry_benchmark_result("Line Segment Intersection", segments.len(), runs, &intersection_times, memory_usage, false)?;
+        
+        let intersection_mean = mean(&intersection_times);
+        println!("    Intersection Detection: {:.3}ms", intersection_mean);
+        
+        Ok(())
+    }
+
+    fn store_geometry_benchmark_result(
+        &mut self,
+        algorithm_name: &str,
+        data_size: usize,
+        runs: usize,
+        times: &[f64],
+        memory_usage: Option<f64>,
+        parallel: bool,
+    ) -> Result<(), Box<dyn std::error::Error>> {
+        let mean_time = mean(times);
+        let std_dev = standard_deviation(times, Some(mean_time));
+        let mut times_sorted = times.to_vec();
+        times_sorted.sort_by(|a, b| a.partial_cmp(b).unwrap());
+        
+        let result = DetailedBenchmarkResult {
+            algorithm_name: algorithm_name.to_string(),
+            data_size,
+            runs,
+            mean_time_ms: mean_time,
+            std_dev_time_ms: std_dev,
+            min_time_ms: times_sorted[0],
+            max_time_ms: times_sorted[times_sorted.len() - 1],
+            median_time_ms: times_sorted[times_sorted.len() / 2],
+            mean_memory_mb: memory_usage,
+            parallel,
+            speedup_vs_sequential: None,
+            efficiency: None,
+            individual_runs_ms: times.to_vec(),
+        };
+        
+        self.results.push(result);
+        Ok(())
+    }
+
+    /// Comprehensive matrix algorithms benchmarking
+    pub fn run_matrix_benchmarks(&mut self, runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("\n{}", "🔢 Running Matrix Algorithm Benchmarks".bright_yellow().bold());
+        
+        let matrix_sizes = vec![64, 128, 256, 512]; // Reasonable sizes for comprehensive testing
+        
+        for &size in &matrix_sizes {
+            println!("\n{} Matrix size: {}x{}", "📊".bright_blue(), size.to_string().bright_white().bold(), size.to_string().bright_white().bold());
+            
+            // Generate test matrices
+            let (matrix_a, matrix_b) = DataGenerator::generate_random_matrices(size);
+            let identity_matrix = DataGenerator::generate_identity_matrix(size);
+            let sparse_matrix = DataGenerator::generate_sparse_matrix(size, 0.1);
+            
+            // Matrix multiplication algorithms comparison
+            self.benchmark_matrix_multiplication(&matrix_a, &matrix_b, runs)?;
+            
+            // Advanced linear algebra operations
+            self.benchmark_matrix_operations(&matrix_a, &identity_matrix, &sparse_matrix, runs)?;
+            
+            // Linear system solving
+            self.benchmark_linear_system_solving(&matrix_a, &matrix_b, runs)?;
+            
+            // Advanced matrix analysis operations
+            self.benchmark_advanced_matrix_operations(&matrix_a, runs)?;
+        }
+        
+        Ok(())
+    }
+
+    fn benchmark_matrix_multiplication(&mut self, matrix_a: &Matrix, matrix_b: &Matrix, runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("  {} Matrix Multiplication Algorithms", "✖️".bright_green());
+        
+        let size = matrix_a.size();
+        
+        // Standard multiplication
+        let mut standard_times = Vec::new();
+        let mut memory_usage = None;
+        
+        for _ in 0..runs {
+            let start_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            let start = Instant::now();
+            
+            let _result = standard_multiply(matrix_a, matrix_b)?;
+            
+            let duration = start.elapsed();
+            standard_times.push(duration.as_secs_f64() * 1000.0);
+            
+            let end_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            if let (Some(start_mem), Some(end_mem)) = (start_memory, end_memory) {
+                memory_usage = Some(end_mem - start_mem);
+            }
+        }
+        
+        // Cache-optimized multiplication
+        let mut cache_opt_times = Vec::new();
+        let block_size = 64; // Optimal block size for cache
+        
+        for _ in 0..runs {
+            let start = Instant::now();
+            
+            let _result = cache_optimized_multiply(matrix_a, matrix_b, block_size)?;
+            
+            let duration = start.elapsed();
+            cache_opt_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Parallel multiplication
+        let mut parallel_times = Vec::new();
+        
+        for _ in 0..runs {
+            let start = Instant::now();
+            
+            let _result = parallel_multiply(matrix_a, matrix_b)?;
+            
+            let duration = start.elapsed();
+            parallel_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Strassen multiplication (for comparison)
+        let mut strassen_times = Vec::new();
+        
+        for _ in 0..runs {
+            let start = Instant::now();
+            
+            let _result = strassen_multiply(matrix_a, matrix_b)?;
+            
+            let duration = start.elapsed();
+            strassen_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // SIMD multiplication (x86_64 with AVX2 support)
+        let mut simd_times = Vec::new();
+        
+        for _ in 0..runs {
+            let start = Instant::now();
+            
+            let _result = simd_multiply(matrix_a, matrix_b)?;
+            
+            let duration = start.elapsed();
+            simd_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Winograd multiplication
+        let mut winograd_times = Vec::new();
+        
+        for _ in 0..runs {
+            let start = Instant::now();
+            
+            let _result = winograd_multiply(matrix_a, matrix_b)?;
+            
+            let duration = start.elapsed();
+            winograd_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Parallel Winograd multiplication
+        let mut parallel_winograd_times = Vec::new();
+        
+        for _ in 0..runs {
+            let start = Instant::now();
+            
+            let _result = parallel_winograd_multiply(matrix_a, matrix_b)?;
+            
+            let duration = start.elapsed();
+            parallel_winograd_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Store results
+        self.store_geometry_benchmark_result("Standard Matrix Multiply", size * size, runs, &standard_times, memory_usage, false)?;
+        self.store_geometry_benchmark_result("Cache-Optimized Multiply", size * size, runs, &cache_opt_times, None, false)?;
+        self.store_geometry_benchmark_result("Parallel Matrix Multiply", size * size, runs, &parallel_times, None, true)?;
+        self.store_geometry_benchmark_result("Strassen Matrix Multiply", size * size, runs, &strassen_times, None, false)?;
+        self.store_geometry_benchmark_result("SIMD Matrix Multiply", size * size, runs, &simd_times, None, false)?;
+        self.store_geometry_benchmark_result("Winograd Matrix Multiply", size * size, runs, &winograd_times, None, false)?;
+        self.store_geometry_benchmark_result("Parallel Winograd Matrix Multiply", size * size, runs, &parallel_winograd_times, None, true)?;
+        
+        let standard_mean = mean(&standard_times);
+        let cache_opt_mean = mean(&cache_opt_times);
+        let parallel_mean = mean(&parallel_times);
+        let strassen_mean = mean(&strassen_times);
+        let simd_mean = mean(&simd_times);
+        let winograd_mean = mean(&winograd_times);
+        let parallel_winograd_mean = mean(&parallel_winograd_times);
+        
+        let cache_speedup = standard_mean / cache_opt_mean;
+        let parallel_speedup = standard_mean / parallel_mean;
+        let strassen_speedup = standard_mean / strassen_mean;
+        let simd_speedup = standard_mean / simd_mean;
+        let winograd_speedup = standard_mean / winograd_mean;
+        let parallel_winograd_speedup = standard_mean / parallel_winograd_mean;
+        
+        println!("    Standard: {:.3}ms", standard_mean);
+        println!("    Cache-Optimized: {:.3}ms (Speedup: {:.1}x)", cache_opt_mean, cache_speedup);
+        println!("    Parallel: {:.3}ms (Speedup: {:.1}x)", parallel_mean, parallel_speedup);
+        println!("    Strassen: {:.3}ms (Speedup: {:.1}x)", strassen_mean, strassen_speedup);
+        println!("    SIMD: {:.3}ms (Speedup: {:.1}x)", simd_mean, simd_speedup);
+        println!("    Winograd: {:.3}ms (Speedup: {:.1}x)", winograd_mean, winograd_speedup);
+        println!("    Parallel Winograd: {:.3}ms (Speedup: {:.1}x)", parallel_winograd_mean, parallel_winograd_speedup);
+        
+        Ok(())
+    }
+
+    fn benchmark_matrix_operations(&mut self, matrix_a: &Matrix, identity_matrix: &Matrix, sparse_matrix: &Matrix, runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("  {} Advanced Matrix Operations", "🧮".bright_green());
+        
+        let size = matrix_a.size();
+        
+        // Matrix addition
+        let mut addition_times = Vec::new();
+        for _ in 0..runs {
+            let start = Instant::now();
+            let _result = matrix_a.add(identity_matrix)?;
+            let duration = start.elapsed();
+            addition_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Matrix subtraction
+        let mut subtraction_times = Vec::new();
+        for _ in 0..runs {
+            let start = Instant::now();
+            let _result = matrix_a.subtract(identity_matrix)?;
+            let duration = start.elapsed();
+            subtraction_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Determinant calculation
+        let mut determinant_times = Vec::new();
+        for _ in 0..runs {
+            let start = Instant::now();
+            let _det = determinant(matrix_a)?;
+            let duration = start.elapsed();
+            determinant_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Matrix inversion (only for well-conditioned matrices)
+        let mut inversion_times = Vec::new();
+        for _ in 0..runs {
+            let start = Instant::now();
+            // Use identity matrix for inversion as it's guaranteed to be invertible
+            let _inv = inverse(identity_matrix);
+            let duration = start.elapsed();
+            inversion_times.push(duration.as_secs_f64() * 1000.0);
+        }
+        
+        // Store results
+        self.store_geometry_benchmark_result("Matrix Addition", size * size, runs, &addition_times, None, false)?;
+        self.store_geometry_benchmark_result("Matrix Subtraction", size * size, runs, &subtraction_times, None, false)?;
+        self.store_geometry_benchmark_result("Matrix Determinant", size * size, runs, &determinant_times, None, false)?;
+        self.store_geometry_benchmark_result("Matrix Inversion", size * size, runs, &inversion_times, None, false)?;
+        
+        let addition_mean = mean(&addition_times);
+        let subtraction_mean = mean(&subtraction_times);
+        let determinant_mean = mean(&determinant_times);
+        let inversion_mean = mean(&inversion_times);
+        
+        println!("    Addition: {:.3}ms", addition_mean);
+        println!("    Subtraction: {:.3}ms", subtraction_mean);
+        println!("    Determinant: {:.3}ms", determinant_mean);
+        println!("    Inversion: {:.3}ms", inversion_mean);
+        
+        Ok(())
+    }
+
+    fn benchmark_linear_system_solving(&mut self, matrix_a: &Matrix, matrix_b: &Matrix, runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("  {} Linear System Solving", "⚖️".bright_green());
+        
+        let size = matrix_a.size();
+        
+        // Create a well-conditioned system for solving
+        let identity = DataGenerator::generate_identity_matrix(size);
+        let diagonal = DataGenerator::generate_diagonal_matrix(size);
+        
+        // Solve Ax = b with identity matrix (guaranteed solution)
+        let mut solve_times = Vec::new();
+        let mut memory_usage = None;
+        
+        for _ in 0..runs {
+            let start_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            let start = Instant::now();
+            
+            let _solution = solve_linear_system(&diagonal, &identity);
+            
+            let duration = start.elapsed();
+            solve_times.push(duration.as_secs_f64() * 1000.0);
+            
+            let end_memory = memory_stats().map(|stats| stats.physical_mem as f64 / 1024.0 / 1024.0);
+            if let (Some(start_mem), Some(end_mem)) = (start_memory, end_memory) {
+                memory_usage = Some(end_mem - start_mem);
+            }
+        }
+        
+        self.store_geometry_benchmark_result("Linear System Solving", size * size, runs, &solve_times, memory_usage, false)?;
+        
+        let solve_mean = mean(&solve_times);
+        println!("    Linear System Solving: {:.3}ms", solve_mean);
+        
+        Ok(())
+    }
+
+    fn benchmark_advanced_matrix_operations(&mut self, matrix: &Matrix, runs: usize) -> Result<(), Box<dyn std::error::Error>> {
+        println!("  {} Advanced Matrix Analysis", "🔬".bright_green());
+        
+        let size = matrix.size();
+        
+        // Matrix norms benchmarking
+        let mut frobenius_times = Vec::new();
+        let mut one_norm_times = Vec::new();
+        let mut infinity_norm_times = Vec::new();
+        let mut two_norm_times = Vec::new();
+        
+        for _ in 0..runs {
+            // Frobenius norm
+            let start = Instant::now();
+            let _norm = matrix.frobenius_norm();
+            frobenius_times.push(start.elapsed().as_secs_f64() * 1000.0);
+            
+            // 1-norm
+            let start = Instant::now();
+            let _norm = matrix.one_norm();
+            one_norm_times.push(start.elapsed().as_secs_f64() * 1000.0);
+            
+            // Infinity norm
+            let start = Instant::now();
+            let _norm = matrix.infinity_norm();
+            infinity_norm_times.push(start.elapsed().as_secs_f64() * 1000.0);
+            
+            // 2-norm approximation (fewer iterations for speed)
+            let start = Instant::now();
+            let _norm = matrix.two_norm_approx(10);
+            two_norm_times.push(start.elapsed().as_secs_f64() * 1000.0);
+        }
+        
+        // Matrix decomposition benchmarking
+        let mut lu_times = Vec::new();
+        let mut qr_times = Vec::new();
+        let mut cholesky_times = Vec::new();
+        
+        for _ in 0..runs {
+            // LU decomposition
+            let start = Instant::now();
+            let _result = lu_decomposition(matrix);
+            lu_times.push(start.elapsed().as_secs_f64() * 1000.0);
+            
+            // QR decomposition
+            let start = Instant::now();
+            let _result = qr_decomposition(matrix);
+            qr_times.push(start.elapsed().as_secs_f64() * 1000.0);
+            
+            // Cholesky decomposition (only for positive definite matrices)
+            // Create a positive definite matrix for testing
+            let at = matrix.transpose();
+            match standard_multiply(&at, matrix) {
+                Ok(positive_def) => {
+                    let start = Instant::now();
+                    let _result = cholesky_decomposition(&positive_def);
+                    cholesky_times.push(start.elapsed().as_secs_f64() * 1000.0);
+                }
+                Err(_) => cholesky_times.push(0.0),
+            }
+        }
+        
+        // Matrix analysis benchmarking
+        let mut rank_times = Vec::new();
+        let mut condition_times = Vec::new();
+        let mut trace_times = Vec::new();
+        let mut transpose_times = Vec::new();
+        
+        for _ in 0..runs {
+            // Matrix rank
+            let start = Instant::now();
+            let _rank = matrix_rank(matrix);
+            rank_times.push(start.elapsed().as_secs_f64() * 1000.0);
+            
+            // Condition number
+            let start = Instant::now();
+            let _cond = condition_number_approx(matrix, 5);
+            condition_times.push(start.elapsed().as_secs_f64() * 1000.0);
+            
+            // Trace
+            let start = Instant::now();
+            let _trace = matrix.trace();
+            trace_times.push(start.elapsed().as_secs_f64() * 1000.0);
+            
+            // Transpose
+            let start = Instant::now();
+            let _transpose = matrix.transpose();
+            transpose_times.push(start.elapsed().as_secs_f64() * 1000.0);
+        }
+        
+        // Store all results
+        self.store_geometry_benchmark_result("Matrix Frobenius Norm", size * size, runs, &frobenius_times, None, false)?;
+        self.store_geometry_benchmark_result("Matrix 1-Norm", size * size, runs, &one_norm_times, None, false)?;
+        self.store_geometry_benchmark_result("Matrix Infinity-Norm", size * size, runs, &infinity_norm_times, None, false)?;
+        self.store_geometry_benchmark_result("Matrix 2-Norm Approx", size * size, runs, &two_norm_times, None, false)?;
+        
+        self.store_geometry_benchmark_result("LU Decomposition", size * size, runs, &lu_times, None, false)?;
+        self.store_geometry_benchmark_result("QR Decomposition", size * size, runs, &qr_times, None, false)?;
+        self.store_geometry_benchmark_result("Cholesky Decomposition", size * size, runs, &cholesky_times, None, false)?;
+        
+        self.store_geometry_benchmark_result("Matrix Rank", size * size, runs, &rank_times, None, false)?;
+        self.store_geometry_benchmark_result("Condition Number", size * size, runs, &condition_times, None, false)?;
+        self.store_geometry_benchmark_result("Matrix Trace", size * size, runs, &trace_times, None, false)?;
+        self.store_geometry_benchmark_result("Matrix Transpose", size * size, runs, &transpose_times, None, false)?;
+        
+        // Display results
+        println!("    Frobenius Norm: {:.3}ms", mean(&frobenius_times));
+        println!("    1-Norm: {:.3}ms", mean(&one_norm_times));
+        println!("    Infinity-Norm: {:.3}ms", mean(&infinity_norm_times));
+        println!("    2-Norm (approx): {:.3}ms", mean(&two_norm_times));
+        println!("    LU Decomposition: {:.3}ms", mean(&lu_times));
+        println!("    QR Decomposition: {:.3}ms", mean(&qr_times));
+        println!("    Cholesky Decomposition: {:.3}ms", mean(&cholesky_times));
+        println!("    Matrix Rank: {:.3}ms", mean(&rank_times));
+        println!("    Condition Number: {:.3}ms", mean(&condition_times));
+        println!("    Matrix Trace: {:.3}ms", mean(&trace_times));
+        println!("    Matrix Transpose: {:.3}ms", mean(&transpose_times));
+        
         Ok(())
     }
 }

@@ -1,4 +1,4 @@
-use crate::geometry::Point;
+use crate::geometry::{Point, LineSegment};
 use crate::matrix::Matrix;
 use rand::prelude::*;
 use rand::rng;
@@ -110,6 +110,24 @@ impl DataGenerator {
         }
 
         points
+    }
+
+    /// Generate random line segments
+    pub fn generate_random_line_segments(count: usize) -> Vec<LineSegment> {
+        let mut rng = rng();
+        (0..count)
+            .map(|_| {
+                let start = Point {
+                    x: rng.random_range(-1000.0..=1000.0),
+                    y: rng.random_range(-1000.0..=1000.0),
+                };
+                let end = Point {
+                    x: rng.random_range(-1000.0..=1000.0),
+                    y: rng.random_range(-1000.0..=1000.0),
+                };
+                LineSegment::new(start, end)
+            })
+            .collect()
     }
 
     /// Generate random square matrix pair
