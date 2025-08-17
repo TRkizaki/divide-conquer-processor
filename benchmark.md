@@ -170,3 +170,27 @@ The framework includes robust error handling for:
 The benchmark runner is designed for single-threaded use but can benchmark multi-threaded algorithms safely through the parallel algorithm implementations.
 
 This benchmarking framework provides a comprehensive solution for algorithm performance analysis, offering detailed insights into execution time, memory usage, and comparative performance across different implementations and configurations.
+
+## Advanced Analysis
+
+For hardware-level performance analysis, cache behavior, energy consumption, NUMA effects, statistical regression analysis, and publication-quality research data, see [advanced_benchmark.md](advanced_benchmark.md).
+
+### When to Use Advanced Benchmarking
+
+- **Research and Academic Publications**: Need statistical validation and hardware-aware metrics
+- **Performance Optimization**: Require cache analysis and memory bandwidth insights  
+- **Energy Efficiency Studies**: Want to measure power consumption and efficiency
+- **Cross-Platform Analysis**: Need detailed system-level performance characterization
+- **Algorithm Comparison**: Require empirical constant analysis and confidence intervals
+
+### Quick Comparison
+
+| Feature | Basic Benchmark | Advanced Benchmark |
+|---------|----------------|-------------------|
+| **Target Use** | General performance testing | Research & optimization |
+| **Metrics** | Time, Memory | Time + Cache + Energy + NUMA + Statistical |
+| **Output** | Simple CSV/JSON | Publication-ready data with regression analysis |
+| **Analysis** | Basic averages | Confidence intervals, empirical constants |
+| **Hardware Awareness** | Limited | Comprehensive (L1/L2/L3 cache, power, memory bandwidth) |
+
+The basic benchmarking system is perfect for day-to-day performance testing, while advanced benchmarking provides the depth needed for research and detailed optimization work.
