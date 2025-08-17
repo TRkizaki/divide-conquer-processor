@@ -9,952 +9,2977 @@
     "rust_version": "1.89.0",
     "arch": "x86_64"
   },
-  "benchmark_date": "1755205580",
+  "benchmark_date": "1755459434",
   "methodology": "Multiple runs with statistical analysis, memory monitoring, and comparative benchmarking",
   "detailed_results": [
     {
       "algorithm_name": "Merge Sort",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.07414019999999999,
-      "std_dev_time_ms": 0.005740040566058742,
-      "min_time_ms": 0.068361,
-      "max_time_ms": 0.08258399999999999,
-      "median_time_ms": 0.073019,
+      "runs": 2,
+      "mean_time_ms": 0.11127700000000001,
+      "std_dev_time_ms": 0.004566495592902728,
+      "min_time_ms": 0.108048,
+      "max_time_ms": 0.11450600000000001,
+      "median_time_ms": 0.11450600000000001,
       "mean_memory_mb": 0.12109375,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.08258399999999999,
-        0.07687899999999999,
-        0.073019,
-        0.06985799999999999,
-        0.068361
+        0.11450600000000001,
+        0.108048
       ]
     },
     {
       "algorithm_name": "Merge Sort (Parallel)",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.065897,
-      "std_dev_time_ms": 0.0010322705556199889,
-      "min_time_ms": 0.064909,
-      "max_time_ms": 0.067233,
-      "median_time_ms": 0.065482,
+      "runs": 2,
+      "mean_time_ms": 0.07829900000000001,
+      "std_dev_time_ms": 0.005214205404469606,
+      "min_time_ms": 0.074612,
+      "max_time_ms": 0.081986,
+      "median_time_ms": 0.081986,
       "mean_memory_mb": null,
       "parallel": true,
-      "speedup_vs_sequential": 1.125092189325766,
-      "efficiency": 0.0562546094662883,
+      "speedup_vs_sequential": 1.4211803471308702,
+      "efficiency": 0.0710590173565435,
       "individual_runs_ms": [
-        0.067233,
-        0.066745,
-        0.065482,
-        0.064909,
-        0.06511600000000001
+        0.081986,
+        0.074612
       ]
     },
     {
       "algorithm_name": "Quick Sort",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.0317102,
-      "std_dev_time_ms": 0.004071702985238485,
-      "min_time_ms": 0.026647999999999998,
-      "max_time_ms": 0.036382,
-      "median_time_ms": 0.032936,
+      "runs": 2,
+      "mean_time_ms": 0.0368995,
+      "std_dev_time_ms": 0.0021022284604676083,
+      "min_time_ms": 0.035413,
+      "max_time_ms": 0.038386,
+      "median_time_ms": 0.038386,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.036382,
-        0.034208999999999996,
-        0.032936,
-        0.028376000000000002,
-        0.026647999999999998
+        0.038386,
+        0.035413
       ]
     },
     {
       "algorithm_name": "Quick Sort (Parallel)",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.0246454,
-      "std_dev_time_ms": 0.0010021353700972741,
-      "min_time_ms": 0.023417,
-      "max_time_ms": 0.025991,
-      "median_time_ms": 0.024648,
+      "runs": 2,
+      "mean_time_ms": 0.0336935,
+      "std_dev_time_ms": 0.00043345645686735534,
+      "min_time_ms": 0.033387,
+      "max_time_ms": 0.034,
+      "median_time_ms": 0.034,
       "mean_memory_mb": null,
       "parallel": true,
-      "speedup_vs_sequential": 1.2866579564543486,
-      "efficiency": 0.06433289782271742,
+      "speedup_vs_sequential": 1.0951518838945198,
+      "efficiency": 0.05475759419472599,
       "individual_runs_ms": [
-        0.025991,
-        0.025173,
-        0.024648,
-        0.023998,
-        0.023417
+        0.033387,
+        0.034
       ]
     },
     {
       "algorithm_name": "std::slice::sort",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.009596799999999999,
-      "std_dev_time_ms": 0.0036591951574082514,
-      "min_time_ms": 0.006732999999999999,
-      "max_time_ms": 0.015535,
-      "median_time_ms": 0.008042,
+      "runs": 2,
+      "mean_time_ms": 0.0171725,
+      "std_dev_time_ms": 0.00840537830796449,
+      "min_time_ms": 0.011229000000000001,
+      "max_time_ms": 0.023116,
+      "median_time_ms": 0.023116,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.015535,
-        0.010643,
-        0.008042,
-        0.007031,
-        0.006732999999999999
+        0.023116,
+        0.011229000000000001
       ]
     },
     {
       "algorithm_name": "std::slice::sort_unstable",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.0071113999999999995,
-      "std_dev_time_ms": 0.0013816739123251906,
-      "min_time_ms": 0.0061140000000000005,
-      "max_time_ms": 0.009439999999999999,
-      "median_time_ms": 0.0066300000000000005,
+      "runs": 2,
+      "mean_time_ms": 0.0088635,
+      "std_dev_time_ms": 0.0016963491680665281,
+      "min_time_ms": 0.007664,
+      "max_time_ms": 0.010063,
+      "median_time_ms": 0.010063,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.009439999999999999,
-        0.007246,
-        0.0066300000000000005,
-        0.0061140000000000005,
-        0.006127
+        0.010063,
+        0.007664
       ]
     },
     {
       "algorithm_name": "std::slice::sort_by",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.009444,
-      "std_dev_time_ms": 0.00392181909322702,
-      "min_time_ms": 0.006499,
-      "max_time_ms": 0.015827,
-      "median_time_ms": 0.007408,
+      "runs": 2,
+      "mean_time_ms": 0.013079499999999999,
+      "std_dev_time_ms": 0.0034938146058427293,
+      "min_time_ms": 0.010609,
+      "max_time_ms": 0.015549999999999998,
+      "median_time_ms": 0.015549999999999998,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.015827,
-        0.010611,
-        0.007408,
-        0.006875,
-        0.006499
+        0.015549999999999998,
+        0.010609
       ]
     },
     {
       "algorithm_name": "rayon::par_sort",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.0257846,
-      "std_dev_time_ms": 0.005088487525778165,
-      "min_time_ms": 0.022042,
-      "max_time_ms": 0.034225,
-      "median_time_ms": 0.023328,
+      "runs": 2,
+      "mean_time_ms": 0.0319685,
+      "std_dev_time_ms": 0.005363404935299965,
+      "min_time_ms": 0.028176,
+      "max_time_ms": 0.035761,
+      "median_time_ms": 0.035761,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.034225,
-        0.026875,
-        0.023328,
-        0.022453,
-        0.022042
+        0.035761,
+        0.028176
       ]
     },
     {
       "algorithm_name": "rayon::par_sort_unstable",
       "data_size": 1000,
-      "runs": 5,
-      "mean_time_ms": 0.011473399999999998,
-      "std_dev_time_ms": 0.006280537341661142,
-      "min_time_ms": 0.006876,
-      "max_time_ms": 0.021926,
-      "median_time_ms": 0.008596999999999999,
+      "runs": 2,
+      "mean_time_ms": 0.018548500000000002,
+      "std_dev_time_ms": 0.006194962509975344,
+      "min_time_ms": 0.014168,
+      "max_time_ms": 0.022929,
+      "median_time_ms": 0.022929,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.021926,
-        0.012693,
-        0.008596999999999999,
-        0.007275,
-        0.006876
+        0.022929,
+        0.014168
       ]
     },
     {
       "algorithm_name": "Merge Sort",
       "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.42683160000000003,
-      "std_dev_time_ms": 0.009363427086275631,
-      "min_time_ms": 0.417472,
-      "max_time_ms": 0.440829,
-      "median_time_ms": 0.42351500000000003,
+      "runs": 2,
+      "mean_time_ms": 0.448543,
+      "std_dev_time_ms": 0.00828870568906868,
+      "min_time_ms": 0.442682,
+      "max_time_ms": 0.454404,
+      "median_time_ms": 0.454404,
       "mean_memory_mb": 0.04296875,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.440829,
-        0.431429,
-        0.42351500000000003,
-        0.417472,
-        0.420913
+        0.454404,
+        0.442682
       ]
     },
     {
       "algorithm_name": "Merge Sort (Parallel)",
       "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.3646124,
-      "std_dev_time_ms": 0.22226132067298618,
-      "min_time_ms": 0.160973,
-      "max_time_ms": 0.743104,
-      "median_time_ms": 0.290743,
-      "mean_memory_mb": 0.283203125,
+      "runs": 2,
+      "mean_time_ms": 0.6741519999999999,
+      "std_dev_time_ms": 0.48527324179270376,
+      "min_time_ms": 0.331012,
+      "max_time_ms": 1.0172919999999999,
+      "median_time_ms": 1.0172919999999999,
+      "mean_memory_mb": 0.251953125,
       "parallel": true,
-      "speedup_vs_sequential": 1.1706447723664912,
-      "efficiency": 0.05853223861832456,
+      "speedup_vs_sequential": 0.6653440173729368,
+      "efficiency": 0.03326720086864684,
       "individual_runs_ms": [
-        0.743104,
-        0.34818000000000005,
-        0.290743,
-        0.280062,
-        0.160973
+        1.0172919999999999,
+        0.331012
       ]
     },
     {
       "algorithm_name": "Quick Sort",
       "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.2191462,
-      "std_dev_time_ms": 0.006874744555254404,
-      "min_time_ms": 0.211855,
-      "max_time_ms": 0.229692,
-      "median_time_ms": 0.218989,
+      "runs": 2,
+      "mean_time_ms": 0.213437,
+      "std_dev_time_ms": 0.00536835468276828,
+      "min_time_ms": 0.209641,
+      "max_time_ms": 0.217233,
+      "median_time_ms": 0.217233,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.217233,
+        0.209641
+      ]
+    },
+    {
+      "algorithm_name": "Quick Sort (Parallel)",
+      "data_size": 5000,
+      "runs": 2,
+      "mean_time_ms": 0.2990625,
+      "std_dev_time_ms": 0.0959961095071045,
+      "min_time_ms": 0.231183,
+      "max_time_ms": 0.366942,
+      "median_time_ms": 0.366942,
       "mean_memory_mb": 0.0234375,
-      "parallel": false,
-      "speedup_vs_sequential": null,
-      "efficiency": null,
-      "individual_runs_ms": [
-        0.229692,
-        0.220748,
-        0.218989,
-        0.214447,
-        0.211855
-      ]
-    },
-    {
-      "algorithm_name": "Quick Sort (Parallel)",
-      "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.18236219999999997,
-      "std_dev_time_ms": 0.020102420891524485,
-      "min_time_ms": 0.161426,
-      "max_time_ms": 0.209052,
-      "median_time_ms": 0.181605,
-      "mean_memory_mb": null,
       "parallel": true,
-      "speedup_vs_sequential": 1.2017084680926202,
-      "efficiency": 0.06008542340463101,
+      "speedup_vs_sequential": 0.7136869383490072,
+      "efficiency": 0.03568434691745036,
       "individual_runs_ms": [
-        0.209052,
-        0.164819,
-        0.194909,
-        0.161426,
-        0.181605
+        0.231183,
+        0.366942
       ]
     },
     {
       "algorithm_name": "std::slice::sort",
       "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.0610908,
-      "std_dev_time_ms": 0.007623549678463438,
-      "min_time_ms": 0.055303000000000005,
-      "max_time_ms": 0.073376,
-      "median_time_ms": 0.057474,
+      "runs": 2,
+      "mean_time_ms": 0.0684945,
+      "std_dev_time_ms": 0.008090008683555276,
+      "min_time_ms": 0.06277400000000001,
+      "max_time_ms": 0.07421499999999999,
+      "median_time_ms": 0.07421499999999999,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.073376,
-        0.06357600000000001,
-        0.057474,
-        0.055303000000000005,
-        0.055725
+        0.07421499999999999,
+        0.06277400000000001
       ]
     },
     {
       "algorithm_name": "std::slice::sort_unstable",
       "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.041753399999999996,
-      "std_dev_time_ms": 0.005104337743527554,
-      "min_time_ms": 0.036624000000000004,
-      "max_time_ms": 0.049505999999999994,
-      "median_time_ms": 0.040554,
+      "runs": 2,
+      "mean_time_ms": 0.046831000000000005,
+      "std_dev_time_ms": 0.0028736819587421277,
+      "min_time_ms": 0.044799000000000005,
+      "max_time_ms": 0.048863000000000004,
+      "median_time_ms": 0.048863000000000004,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.049505999999999994,
-        0.043812,
-        0.040554,
-        0.038271,
-        0.036624000000000004
+        0.048863000000000004,
+        0.044799000000000005
       ]
     },
     {
       "algorithm_name": "std::slice::sort_by",
       "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.0588888,
-      "std_dev_time_ms": 0.00958364540245516,
-      "min_time_ms": 0.04947,
-      "max_time_ms": 0.073333,
-      "median_time_ms": 0.056005000000000006,
+      "runs": 2,
+      "mean_time_ms": 0.0729065,
+      "std_dev_time_ms": 0.00638022448664622,
+      "min_time_ms": 0.068395,
+      "max_time_ms": 0.077418,
+      "median_time_ms": 0.077418,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.073333,
-        0.06326899999999999,
-        0.056005000000000006,
-        0.052367000000000004,
-        0.04947
+        0.077418,
+        0.068395
       ]
     },
     {
       "algorithm_name": "rayon::par_sort",
       "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.420911,
-      "std_dev_time_ms": 0.135482526000588,
-      "min_time_ms": 0.32728,
-      "max_time_ms": 0.651181,
-      "median_time_ms": 0.35113300000000003,
+      "runs": 2,
+      "mean_time_ms": 0.265869,
+      "std_dev_time_ms": 0.1784468815137995,
+      "min_time_ms": 0.139688,
+      "max_time_ms": 0.39205,
+      "median_time_ms": 0.39205,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.651181,
-        0.435056,
-        0.339905,
-        0.35113300000000003,
-        0.32728
+        0.39205,
+        0.139688
       ]
     },
     {
       "algorithm_name": "rayon::par_sort_unstable",
       "data_size": 5000,
-      "runs": 5,
-      "mean_time_ms": 0.08151499999999999,
-      "std_dev_time_ms": 0.014340501996094832,
-      "min_time_ms": 0.069339,
-      "max_time_ms": 0.10460799999999999,
-      "median_time_ms": 0.076861,
+      "runs": 2,
+      "mean_time_ms": 0.149557,
+      "std_dev_time_ms": 0.062489854680579944,
+      "min_time_ms": 0.10537,
+      "max_time_ms": 0.193744,
+      "median_time_ms": 0.193744,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.10460799999999999,
-        0.085447,
-        0.076861,
-        0.07132000000000001,
-        0.069339
+        0.10537,
+        0.193744
       ]
     },
     {
       "algorithm_name": "Merge Sort",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.9938692000000001,
-      "std_dev_time_ms": 0.14847505399628583,
-      "min_time_ms": 0.9060360000000001,
-      "max_time_ms": 1.25786,
-      "median_time_ms": 0.938472,
-      "mean_memory_mb": 0.05859375,
+      "runs": 2,
+      "mean_time_ms": 0.9535775,
+      "std_dev_time_ms": 0.008074452334369157,
+      "min_time_ms": 0.947868,
+      "max_time_ms": 0.959287,
+      "median_time_ms": 0.959287,
+      "mean_memory_mb": 0.0625,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        1.25786,
-        0.9478620000000001,
-        0.938472,
-        0.9191159999999999,
-        0.9060360000000001
+        0.959287,
+        0.947868
       ]
     },
     {
       "algorithm_name": "Merge Sort (Parallel)",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.4058149999999999,
-      "std_dev_time_ms": 0.07772297620395144,
-      "min_time_ms": 0.27013,
-      "max_time_ms": 0.461617,
-      "median_time_ms": 0.433664,
-      "mean_memory_mb": 0.00390625,
+      "runs": 2,
+      "mean_time_ms": 0.27595600000000003,
+      "std_dev_time_ms": 0.046010024038246305,
+      "min_time_ms": 0.243422,
+      "max_time_ms": 0.30849000000000004,
+      "median_time_ms": 0.30849000000000004,
+      "mean_memory_mb": null,
       "parallel": true,
-      "speedup_vs_sequential": 2.449069649963654,
-      "efficiency": 0.1224534824981827,
+      "speedup_vs_sequential": 3.455541825508414,
+      "efficiency": 0.17277709127542068,
       "individual_runs_ms": [
-        0.27013,
-        0.41586599999999996,
-        0.44779800000000003,
-        0.461617,
-        0.433664
+        0.243422,
+        0.30849000000000004
       ]
     },
     {
       "algorithm_name": "Quick Sort",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.4713716,
-      "std_dev_time_ms": 0.014009118826678555,
-      "min_time_ms": 0.45756600000000003,
-      "max_time_ms": 0.493428,
-      "median_time_ms": 0.470219,
+      "runs": 2,
+      "mean_time_ms": 0.44326899999999997,
+      "std_dev_time_ms": 0.015318761307625377,
+      "min_time_ms": 0.43243699999999996,
+      "max_time_ms": 0.454101,
+      "median_time_ms": 0.454101,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.493428,
-        0.47420300000000004,
-        0.470219,
-        0.461442,
-        0.45756600000000003
+        0.454101,
+        0.43243699999999996
       ]
     },
     {
       "algorithm_name": "Quick Sort (Parallel)",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.40871219999999997,
-      "std_dev_time_ms": 0.09113675987876683,
-      "min_time_ms": 0.311201,
-      "max_time_ms": 0.5336730000000001,
-      "median_time_ms": 0.395065,
+      "runs": 2,
+      "mean_time_ms": 0.306242,
+      "std_dev_time_ms": 0.03236286316134593,
+      "min_time_ms": 0.283358,
+      "max_time_ms": 0.32912600000000003,
+      "median_time_ms": 0.32912600000000003,
       "mean_memory_mb": null,
       "parallel": true,
-      "speedup_vs_sequential": 1.1533093457939352,
-      "efficiency": 0.05766546728969676,
+      "speedup_vs_sequential": 1.4474467904467707,
+      "efficiency": 0.07237233952233854,
       "individual_runs_ms": [
-        0.464335,
-        0.395065,
-        0.5336730000000001,
-        0.339287,
-        0.311201
+        0.32912600000000003,
+        0.283358
       ]
     },
     {
       "algorithm_name": "std::slice::sort",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.131361,
-      "std_dev_time_ms": 0.010779593336485382,
-      "min_time_ms": 0.121478,
-      "max_time_ms": 0.148963,
-      "median_time_ms": 0.12832300000000002,
+      "runs": 2,
+      "mean_time_ms": 0.21311,
+      "std_dev_time_ms": 0.009250370911482403,
+      "min_time_ms": 0.206569,
+      "max_time_ms": 0.21965099999999999,
+      "median_time_ms": 0.21965099999999999,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.148963,
-        0.133328,
-        0.12832300000000002,
-        0.124713,
-        0.121478
+        0.21965099999999999,
+        0.206569
       ]
     },
     {
       "algorithm_name": "std::slice::sort_unstable",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.0901392,
-      "std_dev_time_ms": 0.007078114416989879,
-      "min_time_ms": 0.083354,
-      "max_time_ms": 0.100515,
-      "median_time_ms": 0.088801,
+      "runs": 2,
+      "mean_time_ms": 0.14008900000000002,
+      "std_dev_time_ms": 0.0008174154390516225,
+      "min_time_ms": 0.13951100000000002,
+      "max_time_ms": 0.140667,
+      "median_time_ms": 0.140667,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.100515,
-        0.093616,
-        0.088801,
-        0.083354,
-        0.08441
+        0.140667,
+        0.13951100000000002
       ]
     },
     {
       "algorithm_name": "std::slice::sort_by",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.13056220000000002,
-      "std_dev_time_ms": 0.010747615465767283,
-      "min_time_ms": 0.120427,
-      "max_time_ms": 0.146986,
-      "median_time_ms": 0.12736799999999998,
+      "runs": 2,
+      "mean_time_ms": 0.214888,
+      "std_dev_time_ms": 0.004555181884403741,
+      "min_time_ms": 0.211667,
+      "max_time_ms": 0.218109,
+      "median_time_ms": 0.218109,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.146986,
-        0.135122,
-        0.12736799999999998,
-        0.12290799999999999,
-        0.120427
+        0.218109,
+        0.211667
       ]
     },
     {
       "algorithm_name": "rayon::par_sort",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.3213278,
-      "std_dev_time_ms": 0.1468469165175081,
-      "min_time_ms": 0.201497,
-      "max_time_ms": 0.523867,
-      "median_time_ms": 0.247972,
+      "runs": 2,
+      "mean_time_ms": 0.331801,
+      "std_dev_time_ms": 0.1598768432262784,
+      "min_time_ms": 0.218751,
+      "max_time_ms": 0.444851,
+      "median_time_ms": 0.444851,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.523867,
-        0.429456,
-        0.203847,
-        0.201497,
-        0.247972
+        0.444851,
+        0.218751
       ]
     },
     {
       "algorithm_name": "rayon::par_sort_unstable",
       "data_size": 10000,
-      "runs": 5,
-      "mean_time_ms": 0.10436419999999999,
-      "std_dev_time_ms": 0.0168821678761941,
-      "min_time_ms": 0.08192100000000001,
-      "max_time_ms": 0.12109400000000001,
-      "median_time_ms": 0.11334,
+      "runs": 2,
+      "mean_time_ms": 0.098913,
+      "std_dev_time_ms": 0.020381645860921057,
+      "min_time_ms": 0.08450099999999999,
+      "max_time_ms": 0.11332500000000001,
+      "median_time_ms": 0.11332500000000001,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.11436400000000001,
-        0.12109400000000001,
-        0.11334,
-        0.091102,
-        0.08192100000000001
+        0.11332500000000001,
+        0.08450099999999999
       ]
     },
     {
       "algorithm_name": "Merge Sort",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 2.4230646,
-      "std_dev_time_ms": 0.018376361753622665,
-      "min_time_ms": 2.3993819999999997,
-      "max_time_ms": 2.447512,
-      "median_time_ms": 2.424799,
-      "mean_memory_mb": 0.109375,
+      "runs": 2,
+      "mean_time_ms": 2.5532455,
+      "std_dev_time_ms": 0.12221704316706407,
+      "min_time_ms": 2.466825,
+      "max_time_ms": 2.639666,
+      "median_time_ms": 2.639666,
+      "mean_memory_mb": 0.10546875,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        2.447512,
-        2.431461,
-        2.424799,
-        2.412169,
-        2.3993819999999997
+        2.639666,
+        2.466825
       ]
     },
     {
       "algorithm_name": "Merge Sort (Parallel)",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 0.366701,
-      "std_dev_time_ms": 0.05732196682337408,
-      "min_time_ms": 0.29302100000000003,
-      "max_time_ms": 0.450737,
-      "median_time_ms": 0.358036,
-      "mean_memory_mb": 0.00390625,
+      "runs": 2,
+      "mean_time_ms": 0.35154250000000004,
+      "std_dev_time_ms": 0.0008350931085813039,
+      "min_time_ms": 0.35095200000000004,
+      "max_time_ms": 0.35213300000000003,
+      "median_time_ms": 0.35213300000000003,
+      "mean_memory_mb": 0.0078125,
       "parallel": true,
-      "speedup_vs_sequential": 6.607739275322402,
-      "efficiency": 0.3303869637661201,
+      "speedup_vs_sequential": 7.262978160535354,
+      "efficiency": 0.3631489080267677,
       "individual_runs_ms": [
-        0.358036,
-        0.38282499999999997,
-        0.34888600000000003,
-        0.450737,
-        0.29302100000000003
+        0.35213300000000003,
+        0.35095200000000004
       ]
     },
     {
       "algorithm_name": "Quick Sort",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 1.2744002,
-      "std_dev_time_ms": 0.04538951330648957,
-      "min_time_ms": 1.2237820000000001,
-      "max_time_ms": 1.346064,
-      "median_time_ms": 1.260145,
+      "runs": 2,
+      "mean_time_ms": 1.2805665,
+      "std_dev_time_ms": 0.04064520488938402,
+      "min_time_ms": 1.2518259999999999,
+      "max_time_ms": 1.309307,
+      "median_time_ms": 1.309307,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        1.346064,
-        1.283588,
-        1.258422,
-        1.260145,
-        1.2237820000000001
+        1.309307,
+        1.2518259999999999
       ]
     },
     {
       "algorithm_name": "Quick Sort (Parallel)",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 0.46324339999999997,
-      "std_dev_time_ms": 0.16270885419146677,
-      "min_time_ms": 0.26380400000000004,
-      "max_time_ms": 0.617879,
-      "median_time_ms": 0.513241,
-      "mean_memory_mb": null,
+      "runs": 2,
+      "mean_time_ms": 0.33690549999999997,
+      "std_dev_time_ms": 0.034986936426329183,
+      "min_time_ms": 0.312166,
+      "max_time_ms": 0.361645,
+      "median_time_ms": 0.361645,
+      "mean_memory_mb": 0.00390625,
       "parallel": true,
-      "speedup_vs_sequential": 2.7510380072333467,
-      "efficiency": 0.13755190036166734,
+      "speedup_vs_sequential": 3.800966443112386,
+      "efficiency": 0.19004832215561931,
       "individual_runs_ms": [
-        0.319765,
-        0.617879,
-        0.26380400000000004,
-        0.6015280000000001,
-        0.513241
+        0.361645,
+        0.312166
       ]
     },
     {
       "algorithm_name": "std::slice::sort",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 0.3532254,
-      "std_dev_time_ms": 0.01671215966893566,
-      "min_time_ms": 0.340505,
-      "max_time_ms": 0.382378,
-      "median_time_ms": 0.346816,
+      "runs": 2,
+      "mean_time_ms": 0.5056775,
+      "std_dev_time_ms": 0.10308980473596796,
+      "min_time_ms": 0.432782,
+      "max_time_ms": 0.578573,
+      "median_time_ms": 0.578573,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.382378,
-        0.350878,
-        0.34555,
-        0.346816,
-        0.340505
+        0.578573,
+        0.432782
       ]
     },
     {
       "algorithm_name": "std::slice::sort_unstable",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 0.2558086,
-      "std_dev_time_ms": 0.00918633709919248,
-      "min_time_ms": 0.24595999999999998,
-      "max_time_ms": 0.267834,
-      "median_time_ms": 0.254089,
+      "runs": 2,
+      "mean_time_ms": 0.323253,
+      "std_dev_time_ms": 0.005948182243341259,
+      "min_time_ms": 0.31904699999999997,
+      "max_time_ms": 0.327459,
+      "median_time_ms": 0.327459,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.267834,
-        0.262395,
-        0.254089,
-        0.24876500000000001,
-        0.24595999999999998
+        0.327459,
+        0.31904699999999997
       ]
     },
     {
       "algorithm_name": "std::slice::sort_by",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 0.35337379999999996,
-      "std_dev_time_ms": 0.01274951264558768,
-      "min_time_ms": 0.34178600000000003,
-      "max_time_ms": 0.37406100000000003,
-      "median_time_ms": 0.351562,
+      "runs": 2,
+      "mean_time_ms": 0.59174,
+      "std_dev_time_ms": 0.022049003650958954,
+      "min_time_ms": 0.576149,
+      "max_time_ms": 0.6073310000000001,
+      "median_time_ms": 0.6073310000000001,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.37406100000000003,
-        0.355121,
-        0.351562,
-        0.344339,
-        0.34178600000000003
+        0.6073310000000001,
+        0.576149
       ]
     },
     {
       "algorithm_name": "rayon::par_sort",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 0.3545686,
-      "std_dev_time_ms": 0.13202061955353792,
-      "min_time_ms": 0.208584,
-      "max_time_ms": 0.517919,
-      "median_time_ms": 0.403431,
+      "runs": 2,
+      "mean_time_ms": 0.38937900000000003,
+      "std_dev_time_ms": 0.09508889150684216,
+      "min_time_ms": 0.322141,
+      "max_time_ms": 0.456617,
+      "median_time_ms": 0.456617,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.517919,
-        0.403431,
-        0.208584,
-        0.228874,
-        0.414035
+        0.456617,
+        0.322141
       ]
     },
     {
       "algorithm_name": "rayon::par_sort_unstable",
       "data_size": 25000,
-      "runs": 5,
-      "mean_time_ms": 0.1766838,
-      "std_dev_time_ms": 0.017007904006667005,
-      "min_time_ms": 0.160748,
-      "max_time_ms": 0.20465899999999998,
-      "median_time_ms": 0.17453600000000002,
+      "runs": 2,
+      "mean_time_ms": 0.2420035,
+      "std_dev_time_ms": 0.0946200797109155,
+      "min_time_ms": 0.175097,
+      "max_time_ms": 0.30891,
+      "median_time_ms": 0.30891,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.16595100000000002,
-        0.17453600000000002,
-        0.20465899999999998,
-        0.177525,
-        0.160748
+        0.175097,
+        0.30891
       ]
     },
     {
       "algorithm_name": "Merge Sort",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 5.2569368,
-      "std_dev_time_ms": 0.11471491398113873,
-      "min_time_ms": 5.130284,
-      "max_time_ms": 5.375948,
-      "median_time_ms": 5.274692999999999,
+      "runs": 2,
+      "mean_time_ms": 5.1917100000000005,
+      "std_dev_time_ms": 0.014086981294798554,
+      "min_time_ms": 5.181749,
+      "max_time_ms": 5.201671,
+      "median_time_ms": 5.201671,
       "mean_memory_mb": 0.19140625,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        5.146839,
-        5.274692999999999,
-        5.130284,
-        5.356920000000001,
-        5.375948
+        5.201671,
+        5.181749
       ]
     },
     {
       "algorithm_name": "Merge Sort (Parallel)",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 0.6214890000000001,
-      "std_dev_time_ms": 0.4469722227454409,
-      "min_time_ms": 0.361562,
-      "max_time_ms": 1.412622,
-      "median_time_ms": 0.44119899999999995,
-      "mean_memory_mb": 0.00390625,
+      "runs": 2,
+      "mean_time_ms": 0.339376,
+      "std_dev_time_ms": 0.05791770223342772,
+      "min_time_ms": 0.298422,
+      "max_time_ms": 0.38033,
+      "median_time_ms": 0.38033,
+      "mean_memory_mb": null,
       "parallel": true,
-      "speedup_vs_sequential": 8.458616001248613,
-      "efficiency": 0.42293080006243067,
+      "speedup_vs_sequential": 15.297811277167508,
+      "efficiency": 0.7648905638583754,
       "individual_runs_ms": [
-        0.522214,
-        0.361562,
-        1.412622,
-        0.369848,
-        0.44119899999999995
+        0.38033,
+        0.298422
       ]
     },
     {
       "algorithm_name": "Quick Sort",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 2.8478492,
-      "std_dev_time_ms": 0.31254420479941725,
-      "min_time_ms": 2.61099,
-      "max_time_ms": 3.3756440000000003,
-      "median_time_ms": 2.760288,
+      "runs": 2,
+      "mean_time_ms": 3.0232099999999997,
+      "std_dev_time_ms": 0.3025441216120384,
+      "min_time_ms": 2.809279,
+      "max_time_ms": 3.237141,
+      "median_time_ms": 3.237141,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        2.628437,
-        2.863887,
-        2.760288,
-        2.61099,
-        3.3756440000000003
+        3.237141,
+        2.809279
       ]
     },
     {
       "algorithm_name": "Quick Sort (Parallel)",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 0.5139942000000001,
-      "std_dev_time_ms": 0.07081497538797848,
-      "min_time_ms": 0.42838099999999996,
-      "max_time_ms": 0.5784969999999999,
-      "median_time_ms": 0.541027,
-      "mean_memory_mb": null,
+      "runs": 2,
+      "mean_time_ms": 0.383147,
+      "std_dev_time_ms": 0.007426035416021091,
+      "min_time_ms": 0.377896,
+      "max_time_ms": 0.38839799999999997,
+      "median_time_ms": 0.38839799999999997,
+      "mean_memory_mb": 0.005859375,
       "parallel": true,
-      "speedup_vs_sequential": 5.540625166587483,
-      "efficiency": 0.27703125832937414,
+      "speedup_vs_sequential": 7.890470237271855,
+      "efficiency": 0.39452351186359275,
       "individual_runs_ms": [
-        0.44850100000000004,
-        0.42838099999999996,
-        0.573565,
-        0.5784969999999999,
-        0.541027
+        0.38839799999999997,
+        0.377896
       ]
     },
     {
       "algorithm_name": "std::slice::sort",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 1.3560488,
-      "std_dev_time_ms": 0.0746381829374215,
-      "min_time_ms": 1.266697,
-      "max_time_ms": 1.440453,
-      "median_time_ms": 1.331159,
+      "runs": 2,
+      "mean_time_ms": 0.7412455,
+      "std_dev_time_ms": 0.01805880008472322,
+      "min_time_ms": 0.728476,
+      "max_time_ms": 0.754015,
+      "median_time_ms": 0.754015,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        1.4262439999999998,
-        1.440453,
-        1.315691,
-        1.266697,
-        1.331159
+        0.754015,
+        0.728476
       ]
     },
     {
       "algorithm_name": "std::slice::sort_unstable",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 0.8744506000000001,
-      "std_dev_time_ms": 0.13878339730962064,
-      "min_time_ms": 0.722121,
-      "max_time_ms": 1.0757150000000002,
-      "median_time_ms": 0.852731,
+      "runs": 2,
+      "mean_time_ms": 0.5592785,
+      "std_dev_time_ms": 0.012086576210821674,
+      "min_time_ms": 0.550732,
+      "max_time_ms": 0.567825,
+      "median_time_ms": 0.567825,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        1.0757150000000002,
-        0.939867,
-        0.852731,
-        0.781819,
-        0.722121
+        0.567825,
+        0.550732
       ]
     },
     {
       "algorithm_name": "std::slice::sort_by",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 0.7821268,
-      "std_dev_time_ms": 0.08678227935298777,
-      "min_time_ms": 0.7166969999999999,
-      "max_time_ms": 0.918734,
-      "median_time_ms": 0.73498,
+      "runs": 2,
+      "mean_time_ms": 0.767335,
+      "std_dev_time_ms": 0.016191331075609626,
+      "min_time_ms": 0.755886,
+      "max_time_ms": 0.778784,
+      "median_time_ms": 0.778784,
       "mean_memory_mb": null,
       "parallel": false,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.918734,
-        0.8184359999999999,
-        0.73498,
-        0.721787,
-        0.7166969999999999
+        0.778784,
+        0.755886
       ]
     },
     {
       "algorithm_name": "rayon::par_sort",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 0.495169,
-      "std_dev_time_ms": 0.20455324319355092,
-      "min_time_ms": 0.333512,
-      "max_time_ms": 0.8218179999999999,
-      "median_time_ms": 0.38580899999999996,
+      "runs": 2,
+      "mean_time_ms": 0.434187,
+      "std_dev_time_ms": 0.1826739658517327,
+      "min_time_ms": 0.305017,
+      "max_time_ms": 0.563357,
+      "median_time_ms": 0.563357,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.8218179999999999,
-        0.333512,
-        0.5698920000000001,
-        0.38580899999999996,
-        0.36481399999999997
+        0.563357,
+        0.305017
       ]
     },
     {
       "algorithm_name": "rayon::par_sort_unstable",
       "data_size": 50000,
-      "runs": 5,
-      "mean_time_ms": 0.4175436,
-      "std_dev_time_ms": 0.02648013969562847,
-      "min_time_ms": 0.393519,
-      "max_time_ms": 0.46304799999999996,
-      "median_time_ms": 0.410183,
+      "runs": 2,
+      "mean_time_ms": 0.2388685,
+      "std_dev_time_ms": 0.0024868945494330823,
+      "min_time_ms": 0.23711000000000002,
+      "max_time_ms": 0.240627,
+      "median_time_ms": 0.240627,
       "mean_memory_mb": null,
       "parallel": true,
       "speedup_vs_sequential": null,
       "efficiency": null,
       "individual_runs_ms": [
-        0.41173000000000004,
-        0.409238,
-        0.393519,
-        0.410183,
-        0.46304799999999996
+        0.23711000000000002,
+        0.240627
+      ]
+    },
+    {
+      "algorithm_name": "KdTree Nearest Neighbor",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 0.0003255,
+      "std_dev_time_ms": 0.00003747665940288701,
+      "min_time_ms": 0.000299,
+      "max_time_ms": 0.000352,
+      "median_time_ms": 0.000352,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000352,
+        0.000299
+      ]
+    },
+    {
+      "algorithm_name": "Brute Force Nearest Neighbor",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 0.000024999999999999998,
+      "std_dev_time_ms": 7.071067811865472e-6,
+      "min_time_ms": 0.00002,
+      "max_time_ms": 0.000029999999999999997,
+      "median_time_ms": 0.000029999999999999997,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000029999999999999997,
+        0.00002
+      ]
+    },
+    {
+      "algorithm_name": "Closest Pair Brute Force",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 0.000025500000000000003,
+      "std_dev_time_ms": 7.778174593052022e-6,
+      "min_time_ms": 0.00002,
+      "max_time_ms": 0.000031,
+      "median_time_ms": 0.000031,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000031,
+        0.00002
+      ]
+    },
+    {
+      "algorithm_name": "Closest Pair Divide & Conquer",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 0.215892,
+      "std_dev_time_ms": 0.019083397810662515,
+      "min_time_ms": 0.20239800000000002,
+      "max_time_ms": 0.22938599999999998,
+      "median_time_ms": 0.22938599999999998,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.22938599999999998,
+        0.20239800000000002
+      ]
+    },
+    {
+      "algorithm_name": "Convex Hull Graham Scan",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 0.29832000000000003,
+      "std_dev_time_ms": 0.005465935418571983,
+      "min_time_ms": 0.294455,
+      "max_time_ms": 0.302185,
+      "median_time_ms": 0.302185,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.302185,
+        0.294455
+      ]
+    },
+    {
+      "algorithm_name": "Line Segment Intersection",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 7.125242500000001,
+      "std_dev_time_ms": 0.1833237969836426,
+      "min_time_ms": 6.9956130000000005,
+      "max_time_ms": 7.254872,
+      "median_time_ms": 7.254872,
+      "mean_memory_mb": 1.73046875,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        6.9956130000000005,
+        7.254872
+      ]
+    },
+    {
+      "algorithm_name": "KdTree Nearest Neighbor",
+      "data_size": 5000,
+      "runs": 2,
+      "mean_time_ms": 0.000534,
+      "std_dev_time_ms": 0.000055154328932550666,
+      "min_time_ms": 0.000495,
+      "max_time_ms": 0.0005729999999999999,
+      "median_time_ms": 0.0005729999999999999,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0005729999999999999,
+        0.000495
+      ]
+    },
+    {
+      "algorithm_name": "Brute Force Nearest Neighbor",
+      "data_size": 5000,
+      "runs": 2,
+      "mean_time_ms": 0.000027,
+      "std_dev_time_ms": 9.899494936611665e-6,
+      "min_time_ms": 0.00002,
+      "max_time_ms": 0.000034,
+      "median_time_ms": 0.000034,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000034,
+        0.00002
+      ]
+    },
+    {
+      "algorithm_name": "Closest Pair Brute Force",
+      "data_size": 5000,
+      "runs": 2,
+      "mean_time_ms": 0.000023500000000000002,
+      "std_dev_time_ms": 0.000012020815280171314,
+      "min_time_ms": 0.000014999999999999999,
+      "max_time_ms": 0.000032000000000000005,
+      "median_time_ms": 0.000032000000000000005,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000032000000000000005,
+        0.000014999999999999999
+      ]
+    },
+    {
+      "algorithm_name": "Closest Pair Divide & Conquer",
+      "data_size": 5000,
+      "runs": 2,
+      "mean_time_ms": 1.3020170000000002,
+      "std_dev_time_ms": 0.08563487384237799,
+      "min_time_ms": 1.2414640000000001,
+      "max_time_ms": 1.36257,
+      "median_time_ms": 1.36257,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.36257,
+        1.2414640000000001
+      ]
+    },
+    {
+      "algorithm_name": "Convex Hull Graham Scan",
+      "data_size": 5000,
+      "runs": 2,
+      "mean_time_ms": 1.670231,
+      "std_dev_time_ms": 0.011528668960465695,
+      "min_time_ms": 1.6620789999999999,
+      "max_time_ms": 1.6783830000000002,
+      "median_time_ms": 1.6783830000000002,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.6783830000000002,
+        1.6620789999999999
+      ]
+    },
+    {
+      "algorithm_name": "Line Segment Intersection",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 7.219063500000001,
+      "std_dev_time_ms": 0.9557333036263314,
+      "min_time_ms": 6.543258,
+      "max_time_ms": 7.894869000000001,
+      "median_time_ms": 7.894869000000001,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        6.543258,
+        7.894869000000001
+      ]
+    },
+    {
+      "algorithm_name": "KdTree Nearest Neighbor",
+      "data_size": 10000,
+      "runs": 2,
+      "mean_time_ms": 0.00036700000000000003,
+      "std_dev_time_ms": 0.00012869343417595168,
+      "min_time_ms": 0.000276,
+      "max_time_ms": 0.000458,
+      "median_time_ms": 0.000458,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000458,
+        0.000276
+      ]
+    },
+    {
+      "algorithm_name": "Brute Force Nearest Neighbor",
+      "data_size": 10000,
+      "runs": 2,
+      "mean_time_ms": 0.0000225,
+      "std_dev_time_ms": 0.000012020815280171309,
+      "min_time_ms": 0.000014,
+      "max_time_ms": 0.000031,
+      "median_time_ms": 0.000031,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000031,
+        0.000014
+      ]
+    },
+    {
+      "algorithm_name": "Closest Pair Brute Force",
+      "data_size": 10000,
+      "runs": 2,
+      "mean_time_ms": 0.000027,
+      "std_dev_time_ms": 0.00001414213562373095,
+      "min_time_ms": 0.000017,
+      "max_time_ms": 0.000037,
+      "median_time_ms": 0.000037,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000037,
+        0.000017
+      ]
+    },
+    {
+      "algorithm_name": "Closest Pair Divide & Conquer",
+      "data_size": 10000,
+      "runs": 2,
+      "mean_time_ms": 3.2662055,
+      "std_dev_time_ms": 0.6158002038522722,
+      "min_time_ms": 2.830769,
+      "max_time_ms": 3.701642,
+      "median_time_ms": 3.701642,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        2.830769,
+        3.701642
+      ]
+    },
+    {
+      "algorithm_name": "Convex Hull Graham Scan",
+      "data_size": 10000,
+      "runs": 2,
+      "mean_time_ms": 3.813976,
+      "std_dev_time_ms": 0.35462960711424,
+      "min_time_ms": 3.5632149999999996,
+      "max_time_ms": 4.064737,
+      "median_time_ms": 4.064737,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        4.064737,
+        3.5632149999999996
+      ]
+    },
+    {
+      "algorithm_name": "Line Segment Intersection",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 6.709505999999999,
+      "std_dev_time_ms": 0.08174861497297628,
+      "min_time_ms": 6.651701,
+      "max_time_ms": 6.767310999999999,
+      "median_time_ms": 6.767310999999999,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        6.651701,
+        6.767310999999999
+      ]
+    },
+    {
+      "algorithm_name": "KdTree Nearest Neighbor",
+      "data_size": 25000,
+      "runs": 2,
+      "mean_time_ms": 0.00042500000000000003,
+      "std_dev_time_ms": 0.0001117228714274745,
+      "min_time_ms": 0.000346,
+      "max_time_ms": 0.000504,
+      "median_time_ms": 0.000504,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000504,
+        0.000346
+      ]
+    },
+    {
+      "algorithm_name": "Brute Force Nearest Neighbor",
+      "data_size": 25000,
+      "runs": 2,
+      "mean_time_ms": 0.000024999999999999998,
+      "std_dev_time_ms": 7.071067811865472e-6,
+      "min_time_ms": 0.00002,
+      "max_time_ms": 0.000029999999999999997,
+      "median_time_ms": 0.000029999999999999997,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000029999999999999997,
+        0.00002
+      ]
+    },
+    {
+      "algorithm_name": "Closest Pair Divide & Conquer",
+      "data_size": 25000,
+      "runs": 2,
+      "mean_time_ms": 6.421821,
+      "std_dev_time_ms": 0.0967916046359389,
+      "min_time_ms": 6.353379,
+      "max_time_ms": 6.490263,
+      "median_time_ms": 6.490263,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        6.490263,
+        6.353379
+      ]
+    },
+    {
+      "algorithm_name": "Convex Hull Graham Scan",
+      "data_size": 25000,
+      "runs": 2,
+      "mean_time_ms": 9.4128145,
+      "std_dev_time_ms": 0.09413641867258284,
+      "min_time_ms": 9.346250000000001,
+      "max_time_ms": 9.479379,
+      "median_time_ms": 9.479379,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        9.346250000000001,
+        9.479379
+      ]
+    },
+    {
+      "algorithm_name": "Line Segment Intersection",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 6.594813,
+      "std_dev_time_ms": 0.3330048675319931,
+      "min_time_ms": 6.359343,
+      "max_time_ms": 6.8302830000000005,
+      "median_time_ms": 6.8302830000000005,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        6.8302830000000005,
+        6.359343
+      ]
+    },
+    {
+      "algorithm_name": "KdTree Nearest Neighbor",
+      "data_size": 50000,
+      "runs": 2,
+      "mean_time_ms": 0.0007185000000000002,
+      "std_dev_time_ms": 0.00037688791437242994,
+      "min_time_ms": 0.00045200000000000004,
+      "max_time_ms": 0.0009850000000000002,
+      "median_time_ms": 0.0009850000000000002,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0009850000000000002,
+        0.00045200000000000004
+      ]
+    },
+    {
+      "algorithm_name": "Brute Force Nearest Neighbor",
+      "data_size": 50000,
+      "runs": 2,
+      "mean_time_ms": 0.000023,
+      "std_dev_time_ms": 0.000011313708498984763,
+      "min_time_ms": 0.000014999999999999999,
+      "max_time_ms": 0.000031,
+      "median_time_ms": 0.000031,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000031,
+        0.000014999999999999999
+      ]
+    },
+    {
+      "algorithm_name": "Closest Pair Divide & Conquer",
+      "data_size": 50000,
+      "runs": 2,
+      "mean_time_ms": 13.1286605,
+      "std_dev_time_ms": 0.09003802776882676,
+      "min_time_ms": 13.064994,
+      "max_time_ms": 13.192327,
+      "median_time_ms": 13.192327,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        13.192327,
+        13.064994
+      ]
+    },
+    {
+      "algorithm_name": "Convex Hull Graham Scan",
+      "data_size": 50000,
+      "runs": 2,
+      "mean_time_ms": 22.514733999999997,
+      "std_dev_time_ms": 3.25115394331582,
+      "min_time_ms": 20.215821,
+      "max_time_ms": 24.813647,
+      "median_time_ms": 24.813647,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        20.215821,
+        24.813647
+      ]
+    },
+    {
+      "algorithm_name": "Line Segment Intersection",
+      "data_size": 1000,
+      "runs": 2,
+      "mean_time_ms": 6.440495,
+      "std_dev_time_ms": 0.030685605876371095,
+      "min_time_ms": 6.4187970000000005,
+      "max_time_ms": 6.462193,
+      "median_time_ms": 6.462193,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        6.4187970000000005,
+        6.462193
+      ]
+    },
+    {
+      "algorithm_name": "Standard Matrix Multiply",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.475869,
+      "std_dev_time_ms": 0.012466292552318818,
+      "min_time_ms": 0.467054,
+      "max_time_ms": 0.484684,
+      "median_time_ms": 0.484684,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.467054,
+        0.484684
+      ]
+    },
+    {
+      "algorithm_name": "Cache-Optimized Multiply",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.211293,
+      "std_dev_time_ms": 0.0034733085091883213,
+      "min_time_ms": 0.208837,
+      "max_time_ms": 0.213749,
+      "median_time_ms": 0.213749,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.208837,
+        0.213749
+      ]
+    },
+    {
+      "algorithm_name": "Parallel Matrix Multiply",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.1596855,
+      "std_dev_time_ms": 0.12243766048279428,
+      "min_time_ms": 0.073109,
+      "max_time_ms": 0.246262,
+      "median_time_ms": 0.246262,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.246262,
+        0.073109
+      ]
+    },
+    {
+      "algorithm_name": "Strassen Matrix Multiply",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.475944,
+      "std_dev_time_ms": 0.013056019607828439,
+      "min_time_ms": 0.46671199999999996,
+      "max_time_ms": 0.485176,
+      "median_time_ms": 0.485176,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.485176,
+        0.46671199999999996
+      ]
+    },
+    {
+      "algorithm_name": "SIMD Matrix Multiply",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.24931199999999998,
+      "std_dev_time_ms": 0.0012883485553218828,
+      "min_time_ms": 0.24840099999999998,
+      "max_time_ms": 0.250223,
+      "median_time_ms": 0.250223,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.24840099999999998,
+        0.250223
+      ]
+    },
+    {
+      "algorithm_name": "Winograd Matrix Multiply",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.211057,
+      "std_dev_time_ms": 0.0006547808793787503,
+      "min_time_ms": 0.210594,
+      "max_time_ms": 0.21152,
+      "median_time_ms": 0.21152,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.210594,
+        0.21152
+      ]
+    },
+    {
+      "algorithm_name": "Parallel Winograd Matrix Multiply",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.19760450000000002,
+      "std_dev_time_ms": 0.15177552083422413,
+      "min_time_ms": 0.090283,
+      "max_time_ms": 0.30492600000000003,
+      "median_time_ms": 0.30492600000000003,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.30492600000000003,
+        0.090283
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Addition",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.0091355,
+      "std_dev_time_ms": 0.0017034202358783917,
+      "min_time_ms": 0.007931,
+      "max_time_ms": 0.010339999999999998,
+      "median_time_ms": 0.010339999999999998,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.010339999999999998,
+        0.007931
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Subtraction",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.007737,
+      "std_dev_time_ms": 0.00008768124086713127,
+      "min_time_ms": 0.007675,
+      "max_time_ms": 0.0077989999999999995,
+      "median_time_ms": 0.0077989999999999995,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0077989999999999995,
+        0.007675
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Determinant",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.08152999999999999,
+      "std_dev_time_ms": 0.0024381041815312106,
+      "min_time_ms": 0.079806,
+      "max_time_ms": 0.083254,
+      "median_time_ms": 0.083254,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.079806,
+        0.083254
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Inversion",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.37911550000000005,
+      "std_dev_time_ms": 0.0010995510447451015,
+      "min_time_ms": 0.378338,
+      "max_time_ms": 0.37989300000000004,
+      "median_time_ms": 0.37989300000000004,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.378338,
+        0.37989300000000004
+      ]
+    },
+    {
+      "algorithm_name": "Linear System Solving",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.3919025,
+      "std_dev_time_ms": 0.005855551255005788,
+      "min_time_ms": 0.387762,
+      "max_time_ms": 0.396043,
+      "median_time_ms": 0.396043,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.387762,
+        0.396043
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Frobenius Norm",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.0018934999999999998,
+      "std_dev_time_ms": 0.00004030508652763319,
+      "min_time_ms": 0.001865,
+      "max_time_ms": 0.0019219999999999999,
+      "median_time_ms": 0.0019219999999999999,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0019219999999999999,
+        0.001865
+      ]
+    },
+    {
+      "algorithm_name": "Matrix 1-Norm",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.002407,
+      "std_dev_time_ms": 0.000012727922061357704,
+      "min_time_ms": 0.002398,
+      "max_time_ms": 0.0024159999999999997,
+      "median_time_ms": 0.0024159999999999997,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0024159999999999997,
+        0.002398
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Infinity-Norm",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.001679,
+      "std_dev_time_ms": 0.00002262741699796961,
+      "min_time_ms": 0.001663,
+      "max_time_ms": 0.0016950000000000001,
+      "median_time_ms": 0.0016950000000000001,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0016950000000000001,
+        0.001663
+      ]
+    },
+    {
+      "algorithm_name": "Matrix 2-Norm Approx",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.6200809999999999,
+      "std_dev_time_ms": 0.0002941564209736624,
+      "min_time_ms": 0.6198729999999999,
+      "max_time_ms": 0.620289,
+      "median_time_ms": 0.620289,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.6198729999999999,
+        0.620289
+      ]
+    },
+    {
+      "algorithm_name": "LU Decomposition",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.087755,
+      "std_dev_time_ms": 0.0023985062017847637,
+      "min_time_ms": 0.086059,
+      "max_time_ms": 0.08945099999999999,
+      "median_time_ms": 0.08945099999999999,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.086059,
+        0.08945099999999999
+      ]
+    },
+    {
+      "algorithm_name": "QR Decomposition",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.22884349999999998,
+      "std_dev_time_ms": 0.002427497579813412,
+      "min_time_ms": 0.227127,
+      "max_time_ms": 0.23056,
+      "median_time_ms": 0.23056,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.23056,
+        0.227127
+      ]
+    },
+    {
+      "algorithm_name": "Cholesky Decomposition",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.040402999999999994,
+      "std_dev_time_ms": 0.0015655344135470169,
+      "min_time_ms": 0.039296,
+      "max_time_ms": 0.04151,
+      "median_time_ms": 0.04151,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.04151,
+        0.039296
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Rank",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.2341155,
+      "std_dev_time_ms": 0.00795141575444273,
+      "min_time_ms": 0.228493,
+      "max_time_ms": 0.239738,
+      "median_time_ms": 0.239738,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.239738,
+        0.228493
+      ]
+    },
+    {
+      "algorithm_name": "Condition Number",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 1.512687,
+      "std_dev_time_ms": 0.01610506404830474,
+      "min_time_ms": 1.501299,
+      "max_time_ms": 1.5240749999999998,
+      "median_time_ms": 1.5240749999999998,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.5240749999999998,
+        1.501299
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Trace",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.00028199999999999997,
+      "std_dev_time_ms": 0.00013293607486307093,
+      "min_time_ms": 0.000188,
+      "max_time_ms": 0.000376,
+      "median_time_ms": 0.000376,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000376,
+        0.000188
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Transpose",
+      "data_size": 4096,
+      "runs": 2,
+      "mean_time_ms": 0.005911,
+      "std_dev_time_ms": 0.0003959797974644664,
+      "min_time_ms": 0.005631,
+      "max_time_ms": 0.0061909999999999995,
+      "median_time_ms": 0.0061909999999999995,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0061909999999999995,
+        0.005631
+      ]
+    },
+    {
+      "algorithm_name": "Standard Matrix Multiply",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 4.1553284999999995,
+      "std_dev_time_ms": 0.016381542799748704,
+      "min_time_ms": 4.143745,
+      "max_time_ms": 4.166912,
+      "median_time_ms": 4.166912,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        4.143745,
+        4.166912
+      ]
+    },
+    {
+      "algorithm_name": "Cache-Optimized Multiply",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 1.589971,
+      "std_dev_time_ms": 0.003988082245892192,
+      "min_time_ms": 1.587151,
+      "max_time_ms": 1.592791,
+      "median_time_ms": 1.592791,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.592791,
+        1.587151
+      ]
+    },
+    {
+      "algorithm_name": "Parallel Matrix Multiply",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.446036,
+      "std_dev_time_ms": 0.13961257709103428,
+      "min_time_ms": 0.347315,
+      "max_time_ms": 0.5447569999999999,
+      "median_time_ms": 0.5447569999999999,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.5447569999999999,
+        0.347315
+      ]
+    },
+    {
+      "algorithm_name": "Strassen Matrix Multiply",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 4.1533635,
+      "std_dev_time_ms": 0.574331219562806,
+      "min_time_ms": 3.74725,
+      "max_time_ms": 4.559477,
+      "median_time_ms": 4.559477,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        4.559477,
+        3.74725
+      ]
+    },
+    {
+      "algorithm_name": "SIMD Matrix Multiply",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 2.0380279999999997,
+      "std_dev_time_ms": 0.02694076836320748,
+      "min_time_ms": 2.0189779999999997,
+      "max_time_ms": 2.0570779999999997,
+      "median_time_ms": 2.0570779999999997,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        2.0189779999999997,
+        2.0570779999999997
+      ]
+    },
+    {
+      "algorithm_name": "Winograd Matrix Multiply",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 1.4704505,
+      "std_dev_time_ms": 0.0024557818510607646,
+      "min_time_ms": 1.468714,
+      "max_time_ms": 1.472187,
+      "median_time_ms": 1.472187,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.472187,
+        1.468714
+      ]
+    },
+    {
+      "algorithm_name": "Parallel Winograd Matrix Multiply",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.435744,
+      "std_dev_time_ms": 0.09992125924947107,
+      "min_time_ms": 0.365089,
+      "max_time_ms": 0.506399,
+      "median_time_ms": 0.506399,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.506399,
+        0.365089
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Addition",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.0342075,
+      "std_dev_time_ms": 0.005943232495872931,
+      "min_time_ms": 0.030005,
+      "max_time_ms": 0.03841,
+      "median_time_ms": 0.03841,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.03841,
+        0.030005
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Subtraction",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.0297025,
+      "std_dev_time_ms": 0.00015202795795510765,
+      "min_time_ms": 0.029595,
+      "max_time_ms": 0.02981,
+      "median_time_ms": 0.02981,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.029595,
+        0.02981
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Determinant",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.5797185,
+      "std_dev_time_ms": 0.0214302852174206,
+      "min_time_ms": 0.5645650000000001,
+      "max_time_ms": 0.594872,
+      "median_time_ms": 0.594872,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.5645650000000001,
+        0.594872
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Inversion",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 2.849729,
+      "std_dev_time_ms": 0.0028171134162475104,
+      "min_time_ms": 2.847737,
+      "max_time_ms": 2.8517210000000004,
+      "median_time_ms": 2.8517210000000004,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        2.8517210000000004,
+        2.847737
+      ]
+    },
+    {
+      "algorithm_name": "Linear System Solving",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 3.3322395,
+      "std_dev_time_ms": 0.17514964259312657,
+      "min_time_ms": 3.20839,
+      "max_time_ms": 3.456089,
+      "median_time_ms": 3.456089,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        3.456089,
+        3.20839
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Frobenius Norm",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.0056285,
+      "std_dev_time_ms": 0.0001619274528917194,
+      "min_time_ms": 0.005514,
+      "max_time_ms": 0.005743,
+      "median_time_ms": 0.005743,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.005743,
+        0.005514
+      ]
+    },
+    {
+      "algorithm_name": "Matrix 1-Norm",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.0079875,
+      "std_dev_time_ms": 0.00007990306627407882,
+      "min_time_ms": 0.007931,
+      "max_time_ms": 0.008043999999999999,
+      "median_time_ms": 0.008043999999999999,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.008043999999999999,
+        0.007931
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Infinity-Norm",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.0054845,
+      "std_dev_time_ms": 0.00004030508652763365,
+      "min_time_ms": 0.005456,
+      "max_time_ms": 0.0055130000000000005,
+      "median_time_ms": 0.0055130000000000005,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0055130000000000005,
+        0.005456
+      ]
+    },
+    {
+      "algorithm_name": "Matrix 2-Norm Approx",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 4.809749500000001,
+      "std_dev_time_ms": 0.0009736860376943198,
+      "min_time_ms": 4.809061,
+      "max_time_ms": 4.810438,
+      "median_time_ms": 4.810438,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        4.810438,
+        4.809061
+      ]
+    },
+    {
+      "algorithm_name": "LU Decomposition",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.6182639999999999,
+      "std_dev_time_ms": 0.07854117861351459,
+      "min_time_ms": 0.562727,
+      "max_time_ms": 0.673801,
+      "median_time_ms": 0.673801,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.562727,
+        0.673801
+      ]
+    },
+    {
+      "algorithm_name": "QR Decomposition",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 1.8144995,
+      "std_dev_time_ms": 0.007818479679579722,
+      "min_time_ms": 1.8089709999999999,
+      "max_time_ms": 1.820028,
+      "median_time_ms": 1.820028,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.820028,
+        1.8089709999999999
+      ]
+    },
+    {
+      "algorithm_name": "Cholesky Decomposition",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.2769255,
+      "std_dev_time_ms": 0.00653578797850726,
+      "min_time_ms": 0.272304,
+      "max_time_ms": 0.281547,
+      "median_time_ms": 0.281547,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.281547,
+        0.272304
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Rank",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 1.784039,
+      "std_dev_time_ms": 0.017976068591324293,
+      "min_time_ms": 1.771328,
+      "max_time_ms": 1.7967499999999998,
+      "median_time_ms": 1.7967499999999998,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        1.771328,
+        1.7967499999999998
+      ]
+    },
+    {
+      "algorithm_name": "Condition Number",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 11.851305,
+      "std_dev_time_ms": 0.012833988078536073,
+      "min_time_ms": 11.84223,
+      "max_time_ms": 11.860380000000001,
+      "median_time_ms": 11.860380000000001,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        11.860380000000001,
+        11.84223
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Trace",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.00028649999999999997,
+      "std_dev_time_ms": 0.00011384419177103414,
+      "min_time_ms": 0.000206,
+      "max_time_ms": 0.000367,
+      "median_time_ms": 0.000367,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.000367,
+        0.000206
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Transpose",
+      "data_size": 16384,
+      "runs": 2,
+      "mean_time_ms": 0.018949,
+      "std_dev_time_ms": 0.0005543717164502557,
+      "min_time_ms": 0.018556999999999997,
+      "max_time_ms": 0.019341,
+      "median_time_ms": 0.019341,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.019341,
+        0.018556999999999997
+      ]
+    },
+    {
+      "algorithm_name": "Standard Matrix Multiply",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 35.164874,
+      "std_dev_time_ms": 0.020691358631082724,
+      "min_time_ms": 35.150242999999996,
+      "max_time_ms": 35.179505,
+      "median_time_ms": 35.179505,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        35.179505,
+        35.150242999999996
+      ]
+    },
+    {
+      "algorithm_name": "Cache-Optimized Multiply",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 12.798861500000001,
+      "std_dev_time_ms": 0.12707486675381516,
+      "min_time_ms": 12.709006,
+      "max_time_ms": 12.888717,
+      "median_time_ms": 12.888717,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        12.709006,
+        12.888717
+      ]
+    },
+    {
+      "algorithm_name": "Parallel Matrix Multiply",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 2.2051054999999997,
+      "std_dev_time_ms": 0.3027810023837359,
+      "min_time_ms": 1.991007,
+      "max_time_ms": 2.4192039999999997,
+      "median_time_ms": 2.4192039999999997,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        2.4192039999999997,
+        1.991007
+      ]
+    },
+    {
+      "algorithm_name": "Strassen Matrix Multiply",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 27.574807500000002,
+      "std_dev_time_ms": 0.1103461345245043,
+      "min_time_ms": 27.496781000000002,
+      "max_time_ms": 27.652834000000002,
+      "median_time_ms": 27.652834000000002,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        27.496781000000002,
+        27.652834000000002
+      ]
+    },
+    {
+      "algorithm_name": "SIMD Matrix Multiply",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 16.611539,
+      "std_dev_time_ms": 0.040913198359454755,
+      "min_time_ms": 16.582609,
+      "max_time_ms": 16.640469000000003,
+      "median_time_ms": 16.640469000000003,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        16.582609,
+        16.640469000000003
+      ]
+    },
+    {
+      "algorithm_name": "Winograd Matrix Multiply",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 12.112303,
+      "std_dev_time_ms": 0.01758150300742169,
+      "min_time_ms": 12.099871,
+      "max_time_ms": 12.124735,
+      "median_time_ms": 12.124735,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        12.099871,
+        12.124735
+      ]
+    },
+    {
+      "algorithm_name": "Parallel Winograd Matrix Multiply",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 2.3907,
+      "std_dev_time_ms": 0.3012359740668435,
+      "min_time_ms": 2.177694,
+      "max_time_ms": 2.603706,
+      "median_time_ms": 2.603706,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        2.603706,
+        2.177694
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Addition",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 0.129832,
+      "std_dev_time_ms": 0.005468763845696772,
+      "min_time_ms": 0.125965,
+      "max_time_ms": 0.133699,
+      "median_time_ms": 0.133699,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.133699,
+        0.125965
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Subtraction",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 0.118062,
+      "std_dev_time_ms": 0.00025597265478953106,
+      "min_time_ms": 0.117881,
+      "max_time_ms": 0.118243,
+      "median_time_ms": 0.118243,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.117881,
+        0.118243
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Determinant",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 4.4743565,
+      "std_dev_time_ms": 0.415536249711743,
+      "min_time_ms": 4.180528,
+      "max_time_ms": 4.768185,
+      "median_time_ms": 4.768185,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        4.768185,
+        4.180528
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Inversion",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 22.200873,
+      "std_dev_time_ms": 0.03876500795820995,
+      "min_time_ms": 22.173462,
+      "max_time_ms": 22.228284000000002,
+      "median_time_ms": 22.228284000000002,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        22.228284000000002,
+        22.173462
+      ]
+    },
+    {
+      "algorithm_name": "Linear System Solving",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 26.909366499999997,
+      "std_dev_time_ms": 0.22111865443806528,
+      "min_time_ms": 26.753012,
+      "max_time_ms": 27.065721,
+      "median_time_ms": 27.065721,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        26.753012,
+        27.065721
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Frobenius Norm",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 0.020284,
+      "std_dev_time_ms": 0.0001513208511739204,
+      "min_time_ms": 0.020177,
+      "max_time_ms": 0.020391,
+      "median_time_ms": 0.020391,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.020391,
+        0.020177
+      ]
+    },
+    {
+      "algorithm_name": "Matrix 1-Norm",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 0.0290655,
+      "std_dev_time_ms": 0.00003323401871576662,
+      "min_time_ms": 0.029042000000000002,
+      "max_time_ms": 0.029089,
+      "median_time_ms": 0.029089,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.029042000000000002,
+        0.029089
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Infinity-Norm",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 0.019503,
+      "std_dev_time_ms": 0.000026870057685091145,
+      "min_time_ms": 0.019483999999999998,
+      "max_time_ms": 0.019522,
+      "median_time_ms": 0.019522,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.019522,
+        0.019483999999999998
+      ]
+    },
+    {
+      "algorithm_name": "Matrix 2-Norm Approx",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 37.5547865,
+      "std_dev_time_ms": 0.0780101414208392,
+      "min_time_ms": 37.499625,
+      "max_time_ms": 37.609947999999996,
+      "median_time_ms": 37.609947999999996,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        37.609947999999996,
+        37.499625
+      ]
+    },
+    {
+      "algorithm_name": "LU Decomposition",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 4.189435,
+      "std_dev_time_ms": 0.02199384932202639,
+      "min_time_ms": 4.173883,
+      "max_time_ms": 4.204987,
+      "median_time_ms": 4.204987,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        4.173883,
+        4.204987
+      ]
+    },
+    {
+      "algorithm_name": "QR Decomposition",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 20.2827665,
+      "std_dev_time_ms": 0.013148650596164735,
+      "min_time_ms": 20.273469,
+      "max_time_ms": 20.292064,
+      "median_time_ms": 20.292064,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        20.273469,
+        20.292064
+      ]
+    },
+    {
+      "algorithm_name": "Cholesky Decomposition",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 1.982018,
+      "std_dev_time_ms": 0.037977291003967156,
+      "min_time_ms": 1.9551640000000001,
+      "max_time_ms": 2.008872,
+      "median_time_ms": 2.008872,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        2.008872,
+        1.9551640000000001
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Rank",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 20.321468499999998,
+      "std_dev_time_ms": 0.02355584820166725,
+      "min_time_ms": 20.304812,
+      "max_time_ms": 20.338124999999998,
+      "median_time_ms": 20.338124999999998,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        20.304812,
+        20.338124999999998
+      ]
+    },
+    {
+      "algorithm_name": "Condition Number",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 94.93757400000001,
+      "std_dev_time_ms": 0.04673975823642486,
+      "min_time_ms": 94.90452400000001,
+      "max_time_ms": 94.970624,
+      "median_time_ms": 94.970624,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        94.90452400000001,
+        94.970624
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Trace",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 0.0033415,
+      "std_dev_time_ms": 0.000013435028842544653,
+      "min_time_ms": 0.003332,
+      "max_time_ms": 0.0033510000000000002,
+      "median_time_ms": 0.0033510000000000002,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.0033510000000000002,
+        0.003332
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Transpose",
+      "data_size": 65536,
+      "runs": 2,
+      "mean_time_ms": 0.112172,
+      "std_dev_time_ms": 0.001616446101792445,
+      "min_time_ms": 0.111029,
+      "max_time_ms": 0.113315,
+      "median_time_ms": 0.113315,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.111029,
+        0.113315
+      ]
+    },
+    {
+      "algorithm_name": "Standard Matrix Multiply",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 305.8803835,
+      "std_dev_time_ms": 1.5723219315395707,
+      "min_time_ms": 304.76858400000003,
+      "max_time_ms": 306.99218299999995,
+      "median_time_ms": 306.99218299999995,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        304.76858400000003,
+        306.99218299999995
+      ]
+    },
+    {
+      "algorithm_name": "Cache-Optimized Multiply",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 101.85992250000001,
+      "std_dev_time_ms": 0.056918560351610505,
+      "min_time_ms": 101.819675,
+      "max_time_ms": 101.90017,
+      "median_time_ms": 101.90017,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        101.90017,
+        101.819675
+      ]
+    },
+    {
+      "algorithm_name": "Parallel Matrix Multiply",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 17.1296835,
+      "std_dev_time_ms": 0.3715839064067495,
+      "min_time_ms": 16.866934,
+      "max_time_ms": 17.392433,
+      "median_time_ms": 17.392433,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        17.392433,
+        16.866934
+      ]
+    },
+    {
+      "algorithm_name": "Strassen Matrix Multiply",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 198.788735,
+      "std_dev_time_ms": 3.235116761518521,
+      "min_time_ms": 196.501162,
+      "max_time_ms": 201.076308,
+      "median_time_ms": 201.076308,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        201.076308,
+        196.501162
+      ]
+    },
+    {
+      "algorithm_name": "SIMD Matrix Multiply",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 165.220746,
+      "std_dev_time_ms": 2.056283490253237,
+      "min_time_ms": 163.76673399999999,
+      "max_time_ms": 166.674758,
+      "median_time_ms": 166.674758,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        166.674758,
+        163.76673399999999
+      ]
+    },
+    {
+      "algorithm_name": "Winograd Matrix Multiply",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 130.282717,
+      "std_dev_time_ms": 0.07457855221174294,
+      "min_time_ms": 130.229982,
+      "max_time_ms": 130.335452,
+      "median_time_ms": 130.335452,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        130.335452,
+        130.229982
+      ]
+    },
+    {
+      "algorithm_name": "Parallel Winograd Matrix Multiply",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 18.3636185,
+      "std_dev_time_ms": 0.5672064116355693,
+      "min_time_ms": 17.962543,
+      "max_time_ms": 18.764694,
+      "median_time_ms": 18.764694,
+      "mean_memory_mb": null,
+      "parallel": true,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        18.764694,
+        17.962543
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Addition",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 0.5237735,
+      "std_dev_time_ms": 0.024008396541626776,
+      "min_time_ms": 0.506797,
+      "max_time_ms": 0.54075,
+      "median_time_ms": 0.54075,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.54075,
+        0.506797
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Subtraction",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 0.459371,
+      "std_dev_time_ms": 0.005475834913508644,
+      "min_time_ms": 0.455499,
+      "max_time_ms": 0.463243,
+      "median_time_ms": 0.463243,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.463243,
+        0.455499
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Determinant",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 34.3407385,
+      "std_dev_time_ms": 2.2626533114493026,
+      "min_time_ms": 32.740801,
+      "max_time_ms": 35.940675999999996,
+      "median_time_ms": 35.940675999999996,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        32.740801,
+        35.940675999999996
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Inversion",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 174.9093705,
+      "std_dev_time_ms": 0.010403662071577873,
+      "min_time_ms": 174.902014,
+      "max_time_ms": 174.91672699999998,
+      "median_time_ms": 174.91672699999998,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        174.91672699999998,
+        174.902014
+      ]
+    },
+    {
+      "algorithm_name": "Linear System Solving",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 219.82088399999998,
+      "std_dev_time_ms": 1.0656707304312998,
+      "min_time_ms": 219.067341,
+      "max_time_ms": 220.574427,
+      "median_time_ms": 220.574427,
+      "mean_memory_mb": 0.0,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        219.067341,
+        220.574427
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Frobenius Norm",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 0.074729,
+      "std_dev_time_ms": 0.0005798275605729601,
+      "min_time_ms": 0.07431900000000001,
+      "max_time_ms": 0.075139,
+      "median_time_ms": 0.075139,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.075139,
+        0.07431900000000001
+      ]
+    },
+    {
+      "algorithm_name": "Matrix 1-Norm",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 0.109567,
+      "std_dev_time_ms": 0.00008909545442950577,
+      "min_time_ms": 0.109504,
+      "max_time_ms": 0.10963,
+      "median_time_ms": 0.10963,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.10963,
+        0.109504
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Infinity-Norm",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 0.075022,
+      "std_dev_time_ms": 0.002018082753506403,
+      "min_time_ms": 0.07359500000000001,
+      "max_time_ms": 0.076449,
+      "median_time_ms": 0.076449,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.07359500000000001,
+        0.076449
+      ]
+    },
+    {
+      "algorithm_name": "Matrix 2-Norm Approx",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 312.758531,
+      "std_dev_time_ms": 0.4896021495071389,
+      "min_time_ms": 312.41233,
+      "max_time_ms": 313.104732,
+      "median_time_ms": 313.104732,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        312.41233,
+        313.104732
+      ]
+    },
+    {
+      "algorithm_name": "LU Decomposition",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 32.745301,
+      "std_dev_time_ms": 0.41928603697237377,
+      "min_time_ms": 32.448821,
+      "max_time_ms": 33.041781,
+      "median_time_ms": 33.041781,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        32.448821,
+        33.041781
+      ]
+    },
+    {
+      "algorithm_name": "QR Decomposition",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 196.313339,
+      "std_dev_time_ms": 0.12227997567059533,
+      "min_time_ms": 196.226874,
+      "max_time_ms": 196.39980400000002,
+      "median_time_ms": 196.39980400000002,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        196.226874,
+        196.39980400000002
+      ]
+    },
+    {
+      "algorithm_name": "Cholesky Decomposition",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 14.958589,
+      "std_dev_time_ms": 0.03810032758389339,
+      "min_time_ms": 14.931648000000001,
+      "max_time_ms": 14.98553,
+      "median_time_ms": 14.98553,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        14.98553,
+        14.931648000000001
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Rank",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 195.49203599999998,
+      "std_dev_time_ms": 0.49725728752025045,
+      "min_time_ms": 195.140422,
+      "max_time_ms": 195.84365,
+      "median_time_ms": 195.84365,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        195.84365,
+        195.140422
+      ]
+    },
+    {
+      "algorithm_name": "Condition Number",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 782.356762,
+      "std_dev_time_ms": 0.15429777072271592,
+      "min_time_ms": 782.247657,
+      "max_time_ms": 782.465867,
+      "median_time_ms": 782.465867,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        782.247657,
+        782.465867
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Trace",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 0.004982,
+      "std_dev_time_ms": 0.00023475945135393366,
+      "min_time_ms": 0.004816,
+      "max_time_ms": 0.005148,
+      "median_time_ms": 0.005148,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.004816,
+        0.005148
+      ]
+    },
+    {
+      "algorithm_name": "Matrix Transpose",
+      "data_size": 262144,
+      "runs": 2,
+      "mean_time_ms": 0.5601325,
+      "std_dev_time_ms": 0.000707813887967755,
+      "min_time_ms": 0.559632,
+      "max_time_ms": 0.560633,
+      "median_time_ms": 0.560633,
+      "mean_memory_mb": null,
+      "parallel": false,
+      "speedup_vs_sequential": null,
+      "efficiency": null,
+      "individual_runs_ms": [
+        0.559632,
+        0.560633
       ]
     }
   ],
@@ -969,17 +2994,17 @@
         50000
       ],
       "execution_times_ms": [
-        0.171694,
-        0.431685,
-        0.906419,
-        2.841589,
-        5.121758
+        0.078826,
+        0.439586,
+        0.923407,
+        2.465592,
+        5.194557
       ],
       "memory_usage_mb": [
         0.03125,
         0.04296875,
-        0.0390625,
-        0.109375,
+        0.04296875,
+        0.10546875,
         0.19140625
       ],
       "parallel": false
@@ -994,18 +3019,18 @@
         50000
       ],
       "execution_times_ms": [
-        0.074595,
-        0.178907,
-        0.268642,
-        0.613297,
-        0.459861
+        0.08949700000000001,
+        0.21846800000000002,
+        0.306717,
+        0.6877730000000001,
+        0.669413
       ],
       "memory_usage_mb": [
         0.03125,
         0.04296875,
-        0.0390625,
-        0.109375,
-        0.140625
+        0.04296875,
+        0.10546875,
+        0.15234375
       ],
       "parallel": true
     },
@@ -1019,18 +3044,18 @@
         50000
       ],
       "execution_times_ms": [
-        0.03885,
-        0.215052,
-        0.45449500000000004,
-        1.382968,
-        2.7328349999999997
+        0.035487,
+        0.20746,
+        0.447652,
+        1.209947,
+        2.798456
       ],
       "memory_usage_mb": [
         0.03125,
         0.04296875,
-        0.0390625,
-        0.109375,
-        0.140625
+        0.04296875,
+        0.10546875,
+        0.15234375
       ],
       "parallel": false
     },
@@ -1044,18 +3069,18 @@
         50000
       ],
       "execution_times_ms": [
-        0.043191,
-        0.24956799999999998,
-        0.16265100000000002,
-        0.46646,
-        0.566181
+        0.035112,
+        0.264029,
+        0.362585,
+        0.6619590000000001,
+        0.572854
       ],
       "memory_usage_mb": [
         0.03125,
         0.04296875,
-        0.0390625,
-        0.109375,
-        0.140625
+        0.04296875,
+        0.10546875,
+        0.15234375
       ],
       "parallel": true
     }
@@ -1073,28 +3098,28 @@
         20
       ],
       "execution_times_ms": [
-        1.6864,
-        0.862989,
-        0.640845,
-        0.416074,
-        0.413378,
-        0.44126000000000004
+        1.478905,
+        0.869469,
+        0.48985200000000007,
+        0.308987,
+        0.244659,
+        0.251135
       ],
       "speedups": [
-        4.524147888994308,
-        8.8408114124282,
-        11.90541082477042,
-        18.336937660127766,
-        18.456528891232722,
-        17.290311834292705
+        3.5505830327167733,
+        6.039289497382884,
+        10.719513240733933,
+        16.994161566667852,
+        21.462423209446616,
+        20.90897326139327
       ],
       "efficiencies": [
-        4.524147888994308,
-        4.4204057062141,
-        2.976352706192605,
-        2.292117207515971,
-        1.3183234922309086,
-        0.8645155917146352
+        3.5505830327167733,
+        3.019644748691442,
+        2.6798783101834833,
+        2.1242701958334815,
+        1.5330302292461868,
+        1.0454486630696636
       ]
     },
     {
@@ -1109,61 +3134,85 @@
         20
       ],
       "execution_times_ms": [
-        2.30388,
-        1.34736,
-        0.51168,
-        0.283269,
-        0.23577299999999998,
-        0.34812899999999997
+        1.476434,
+        0.794885,
+        0.43766999999999995,
+        0.362987,
+        0.23044499999999998,
+        0.221836
       ],
       "speedups": [
-        1.6848021598347138,
-        2.880879646122789,
-        7.585956066291432,
-        13.702812520960643,
-        16.463216738133717,
-        11.149838134714432
+        1.8627551248481138,
+        3.4599155852733414,
+        6.283809719651793,
+        7.576676299702193,
+        11.9344529063334,
+        12.397604536684758
       ],
       "efficiencies": [
-        1.6848021598347138,
-        1.4404398230613944,
-        1.896489016572858,
-        1.7128515651200804,
-        1.175944052723837,
-        0.5574919067357216
+        1.8627551248481138,
+        1.7299577926366707,
+        1.5709524299129483,
+        0.9470845374627741,
+        0.8524609218809571,
+        0.6198802268342379
       ]
     }
   ],
   "comparative_analysis": {
-    "rayon::par_sort_unstable_vs_std_size_1000": 0.6198162706782646,
-    "rayon::par_sort_vs_std_size_5000": 0.09919769262385635,
-    "rayon::par_sort_unstable_vs_std_size_50000": 2.0942737476996416,
-    "rayon::par_sort_vs_std_size_25000": 0.7214643372255749,
-    "Quick Sort_vs_std_size_1000": 0.22426222477310137,
-    "Quick Sort_vs_std_size_50000": 0.30705649723306977,
-    "rayon::par_sort_vs_std_size_1000": 0.27580028389038413,
-    "Merge Sort_vs_std_size_10000": 0.09069523434270826,
-    "Quick Sort_vs_std_size_10000": 0.19122747318675967,
-    "Quick Sort (Parallel)_vs_std_size_5000": 0.228958632874576,
-    "rayon::par_sort_vs_std_size_10000": 0.28052101312118033,
-    "Quick Sort_vs_std_size_25000": 0.20072862512105694,
-    "Merge Sort (Parallel)_vs_std_size_10000": 0.2221189458250681,
-    "Merge Sort (Parallel)_vs_std_size_50000": 1.4070250639995237,
-    "Quick Sort (Parallel)_vs_std_size_10000": 0.2205444319988491,
-    "Merge Sort_vs_std_size_25000": 0.10557234008536132,
-    "Merge Sort (Parallel)_vs_std_size_25000": 0.6975944979697356,
-    "Quick Sort_vs_std_size_5000": 0.19052760212132355,
-    "Quick Sort (Parallel)_vs_std_size_25000": 0.552212076847722,
-    "rayon::par_sort_vs_std_size_50000": 1.7659639436232883,
-    "rayon::par_sort_unstable_vs_std_size_5000": 0.5122173833036865,
-    "Merge Sort_vs_std_size_5000": 0.09782171704250574,
-    "Quick Sort (Parallel)_vs_std_size_50000": 1.7012849561337462,
-    "Merge Sort_vs_std_size_1000": 0.09591827375701711,
-    "Merge Sort_vs_std_size_50000": 0.16634223184878313,
-    "Merge Sort (Parallel)_vs_std_size_5000": 0.11451448167972345,
-    "Quick Sort (Parallel)_vs_std_size_1000": 0.2885487758364644,
-    "rayon::par_sort_unstable_vs_std_size_10000": 0.8636984713148763,
-    "Merge Sort (Parallel)_vs_std_size_1000": 0.10791690061763054,
-    "rayon::par_sort_unstable_vs_std_size_25000": 1.4478327950836465
+    "Quick Sort_vs_std_size_10000": 0.31603608643961123,
+    "KdTree Nearest Neighbor_vs_std_size_5000": 87.6985018726592,
+    "Merge Sort (Parallel)_vs_std_size_1000": 0.11320067944673622,
+    "rayon::par_sort_vs_std_size_25000": 0.8301757413728013,
+    "Closest Pair Divide & Conquer_vs_std_size_25000": 0.050336656845464865,
+    "rayon::par_sort_vs_std_size_50000": 1.2881051252110267,
+    "Brute Force Nearest Neighbor_vs_std_size_50000": 24316.456521739132,
+    "Closest Pair Brute Force_vs_std_size_1000": 347.5882352941176,
+    "rayon::par_sort_vs_std_size_10000": 0.42220788966880757,
+    "Quick Sort (Parallel)_vs_std_size_10000": 0.45744541898237345,
+    "Brute Force Nearest Neighbor_vs_std_size_25000": 12930.12,
+    "Convex Hull Graham Scan_vs_std_size_50000": 0.02484055552244144,
+    "Quick Sort_vs_std_size_5000": 0.21941369115945225,
+    "rayon::par_sort_unstable_vs_std_size_50000": 2.3413656467889234,
+    "rayon::par_sort_vs_std_size_5000": 0.17614313816202717,
+    "Merge Sort_vs_std_size_10000": 0.14690887735920785,
+    "Closest Pair Divide & Conquer_vs_std_size_1000": 0.04105524984714579,
+    "Merge Sort_vs_std_size_50000": 0.10772529667489131,
+    "Closest Pair Divide & Conquer_vs_std_size_5000": 0.035968040355847886,
+    "Merge Sort_vs_std_size_25000": 0.12660474678208578,
+    "Merge Sort (Parallel)_vs_std_size_5000": 0.0694665298033678,
+    "Line Segment Intersection_vs_std_size_1000": 0.0013762140953451558,
+    "Closest Pair Brute Force_vs_std_size_10000": 5188.481481481483,
+    "rayon::par_sort_unstable_vs_std_size_1000": 0.47785535218481273,
+    "Quick Sort (Parallel)_vs_std_size_25000": 0.9594767672240436,
+    "rayon::par_sort_vs_std_size_1000": 0.27725730015483996,
+    "rayon::par_sort_unstable_vs_std_size_10000": 1.4162850181472608,
+    "Quick Sort_vs_std_size_50000": 0.18499492261536582,
+    "Quick Sort (Parallel)_vs_std_size_50000": 1.459696930942954,
+    "Closest Pair Divide & Conquer_vs_std_size_10000": 0.04289044274770832,
+    "KdTree Nearest Neighbor_vs_std_size_25000": 760.5952941176471,
+    "Merge Sort_vs_std_size_5000": 0.10440693534399155,
+    "rayon::par_sort_unstable_vs_std_size_5000": 0.31313144821038136,
+    "KdTree Nearest Neighbor_vs_std_size_50000": 778.3973556019483,
+    "Closest Pair Divide & Conquer_vs_std_size_50000": 0.04259981435272852,
+    "Convex Hull Graham Scan_vs_std_size_1000": 0.029711383748994364,
+    "Quick Sort (Parallel)_vs_std_size_5000": 0.1565926854754441,
+    "Merge Sort (Parallel)_vs_std_size_25000": 0.9195275108983977,
+    "Convex Hull Graham Scan_vs_std_size_10000": 0.03673043563986769,
+    "Merge Sort (Parallel)_vs_std_size_10000": 0.5076497702532288,
+    "Convex Hull Graham Scan_vs_std_size_5000": 0.028038636571827494,
+    "Brute Force Nearest Neighbor_vs_std_size_10000": 6226.177777777778,
+    "Merge Sort_vs_std_size_1000": 0.07965257870000089,
+    "Quick Sort (Parallel)_vs_std_size_1000": 0.26306260851499547,
+    "Quick Sort_vs_std_size_25000": 0.252429686392702,
+    "Merge Sort (Parallel)_vs_std_size_50000": 1.6479612583093677,
+    "KdTree Nearest Neighbor_vs_std_size_1000": 27.23041474654378,
+    "Brute Force Nearest Neighbor_vs_std_size_1000": 354.54,
+    "Closest Pair Brute Force_vs_std_size_5000": 1992.808510638298,
+    "KdTree Nearest Neighbor_vs_std_size_10000": 381.7138964577657,
+    "Quick Sort_vs_std_size_1000": 0.2402065068632366,
+    "rayon::par_sort_unstable_vs_std_size_25000": 1.3357368798385147,
+    "Brute Force Nearest Neighbor_vs_std_size_5000": 1734.4814814814818,
+    "Convex Hull Graham Scan_vs_std_size_25000": 0.034341800744081385
   }
 }
