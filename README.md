@@ -211,24 +211,24 @@ The framework generates comprehensive benchmark data in multiple formats:
 ## Documentation
 
 ### Research Documentation
-- **[METHODOLOGY.md](./METHODOLOGY.md)** - Detailed experimental methodology
-- **[REPRODUCIBILITY_GUIDE.md](./REPRODUCIBILITY_GUIDE.md)** - Complete reproduction instructions
-- **[REPORT_FOR_PROJECT.md](./REPORT_FOR_PROJECT.md)** - Comprehensive project analysis
+- **[METHODOLOGY.md](./Documentation/Research/METHODOLOGY.md)** - Detailed experimental methodology
+- **[REPRODUCIBILITY_GUIDE.md](./Documentation/Research/REPRODUCIBILITY_GUIDE.md)** - Complete reproduction instructions
+- **[REPORT_FOR_PROJECT.md](./Documentation/Research/REPORT_FOR_PROJECT.md)** - Comprehensive project analysis
 
 ### Implementation Documentation
 
 #### Core Implementations
-- **[benchmark.md](./benchmark.md)** - Benchmarking framework
-- **[sorting.md](./sorting.md)** - Divide-and-conquer sorting algorithms
-- **[matrix.md](./matrix.md)** - Matrix operations and API
-- **[geometry.md](./geometry.md)** - Computational geometry algorithms
-- **[visualization.md](./visualization.md)** - Performance visualization tools
-- **[rayon.md](./rayon.md)** - Parallel processing with Rayon
+- **[benchmark.md](./Documentation/Core/benchmark.md)** - Benchmarking framework
+- **[sorting.md](./Documentation/Core/sorting.md)** - Divide-and-conquer sorting algorithms
+- **[matrix.md](./Documentation/Core/matrix.md)** - Matrix operations and API
+- **[geometry.md](./Documentation/Core/geometry.md)** - Computational geometry algorithms
+- **[visualization.md](./Documentation/Core/visualization.md)** - Performance visualization tools
+- **[rayon.md](./Documentation/Core/rayon.md)** - Parallel processing with Rayon
 
 #### Advanced Performance Analysis
-- **[advanced_benchmark.md](./advanced_benchmark.md)** - Hardware-aware performance analysis
-- **[Advanced_matrix.md](./Advanced_matrix.md)** - Advanced matrix algorithms (Strassen, SIMD, etc.)
-- **[Cross-Platform_Validation.md](./Cross-Platform_Validation.md)** - Cross-platform validation framework
+- **[advanced_benchmark.md](./Documentation/Advanced/advanced_benchmark.md)** - Hardware-aware performance analysis
+- **[Advanced_matrix.md](./Documentation/Advanced/Advanced_matrix.md)** - Advanced matrix algorithms (Strassen, SIMD, etc.)
+- **[Cross-Platform_Validation.md](./Documentation/Advanced/Cross-Platform_Validation.md)** - Cross-platform validation framework
 
 ## Testing
 

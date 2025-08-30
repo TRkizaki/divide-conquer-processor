@@ -1,7 +1,7 @@
 # Cross-Platform Validation
 
 ## Prerequisites
-This document assumes familiarity with basic and advanced benchmarking concepts. For foundational performance measurement, see [benchmark.md](benchmark.md). For hardware-aware analysis, see [advanced_benchmark.md](advanced_benchmark.md).
+This document assumes familiarity with basic and advanced benchmarking concepts. For foundational performance measurement, see [benchmark.md](../Core/benchmark.md). For hardware-aware analysis, see [advanced_benchmark.md](advanced_benchmark.md).
 
 ---
 
@@ -421,7 +421,7 @@ This cross-platform validation framework ensures the reliability and reproducibi
 
 ### Related Documentation
 
-- [benchmark.md](benchmark.md) - Basic performance measurement foundations
+- [benchmark.md](../Core/benchmark.md) - Basic performance measurement foundations
 - [advanced_benchmark.md](advanced_benchmark.md) - Hardware-aware performance analysis
 
 ### When to Use Each Module

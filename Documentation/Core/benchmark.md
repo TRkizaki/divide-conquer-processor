@@ -173,7 +173,7 @@ This benchmarking framework provides a comprehensive solution for algorithm perf
 
 ## Advanced Analysis
 
-For hardware-level performance analysis, cache behavior, energy consumption, NUMA effects, statistical regression analysis, and publication-quality research data, see [advanced_benchmark.md](advanced_benchmark.md).
+For hardware-level performance analysis, cache behavior, energy consumption, NUMA effects, statistical regression analysis, and publication-quality research data, see [advanced_benchmark.md](../Advanced/advanced_benchmark.md).
 
 ### When to Use Advanced Benchmarking
 
