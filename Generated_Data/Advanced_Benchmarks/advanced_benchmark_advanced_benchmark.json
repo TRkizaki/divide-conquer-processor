@@ -1,0 +1,389 @@
+[
+  {
+    "algorithm_name": "Merge Sort",
+    "data_size": 1000,
+    "execution_time_ms": 0.089169,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.08896599274927158
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 12,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Merge Sort",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 0.000010923796265089779,
+      "constant_confidence_interval": [
+        0.000010377606451835289,
+        0.000011469986078344268
+      ],
+      "goodness_of_fit": 0.9974783055330206,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  },
+  {
+    "algorithm_name": "Merge Sort",
+    "data_size": 5000,
+    "execution_time_ms": 0.491449,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.07953614520118668
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 45,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Merge Sort",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 0.000010923796265089779,
+      "constant_confidence_interval": [
+        0.000010377606451835289,
+        0.000011469986078344268
+      ],
+      "goodness_of_fit": 0.9974783055330206,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  },
+  {
+    "algorithm_name": "Merge Sort",
+    "data_size": 10000,
+    "execution_time_ms": 1.021117,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.07671329556482082
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 26,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Merge Sort",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 0.000010923796265089779,
+      "constant_confidence_interval": [
+        0.000010377606451835289,
+        0.000011469986078344268
+      ],
+      "goodness_of_fit": 0.9974783055330206,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  },
+  {
+    "algorithm_name": "Quick Sort",
+    "data_size": 1000,
+    "execution_time_ms": 0.046523999999999996,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.15671524839366868
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 1,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Quick Sort",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 6.158887417264161e-6,
+      "constant_confidence_interval": [
+        5.850943046400952e-6,
+        6.466831788127369e-6
+      ],
+      "goodness_of_fit": 0.999524226309994,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  },
+  {
+    "algorithm_name": "Quick Sort",
+    "data_size": 5000,
+    "execution_time_ms": 0.26802,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.13829537125392413
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 14,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Quick Sort",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 6.158887417264161e-6,
+      "constant_confidence_interval": [
+        5.850943046400952e-6,
+        6.466831788127369e-6
+      ],
+      "goodness_of_fit": 0.999524226309994,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  },
+  {
+    "algorithm_name": "Quick Sort",
+    "data_size": 10000,
+    "execution_time_ms": 0.571415,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.13314714923631787
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 17,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Quick Sort",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 6.158887417264161e-6,
+      "constant_confidence_interval": [
+        5.850943046400952e-6,
+        6.466831788127369e-6
+      ],
+      "goodness_of_fit": 0.999524226309994,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  },
+  {
+    "algorithm_name": "Matrix Multiplication",
+    "data_size": 32,
+    "execution_time_ms": 0.001813,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.11034482758620691
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 3,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Matrix Multiplication",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 5.011110480404515e-6,
+      "constant_confidence_interval": [
+        4.760554956384289e-6,
+        5.261666004424741e-6
+      ],
+      "goodness_of_fit": -1.1964200706782941,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  },
+  {
+    "algorithm_name": "Matrix Multiplication",
+    "data_size": 71,
+    "execution_time_ms": 0.0022979999999999997,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.1290909090909091
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 4,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Matrix Multiplication",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 5.011110480404515e-6,
+      "constant_confidence_interval": [
+        4.760554956384289e-6,
+        5.261666004424741e-6
+      ],
+      "goodness_of_fit": -1.1964200706782941,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  },
+  {
+    "algorithm_name": "Matrix Multiplication",
+    "data_size": 101,
+    "execution_time_ms": 0.003619,
+    "cache_metrics": {
+      "l1_cache_misses": 0,
+      "l2_cache_misses": 0,
+      "l3_cache_misses": 0,
+      "cache_references": 0,
+      "cache_miss_rate": null,
+      "instructions_per_cache_miss": 1000.0,
+      "memory_bandwidth_gb_per_sec": 0.12472985489348565
+    },
+    "energy_metrics": {
+      "package_energy_joules": 0.0,
+      "core_energy_joules": null,
+      "uncore_energy_joules": null,
+      "dram_energy_joules": null,
+      "power_consumption_watts": 0.0,
+      "energy_efficiency_gflops_per_watt": null
+    },
+    "numa_metrics": {
+      "numa_nodes": 1,
+      "local_memory_accesses": 1,
+      "remote_memory_accesses": 0,
+      "numa_miss_rate": 0.0,
+      "cross_node_bandwidth_gb_per_sec": null
+    },
+    "constant_analysis": {
+      "algorithm_name": "Matrix Multiplication",
+      "theoretical_complexity": "O(n log n)",
+      "empirical_constant": 5.011110480404515e-6,
+      "constant_confidence_interval": [
+        4.760554956384289e-6,
+        5.261666004424741e-6
+      ],
+      "goodness_of_fit": -1.1964200706782941,
+      "hidden_factors": [
+        "Branch prediction effects",
+        "Instruction pipeline optimization"
+      ]
+    }
+  }
+]

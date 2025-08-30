@@ -1,0 +1,1699 @@
+{
+  "system_info": {
+    "cpu_model": "13th Gen Intel(R) Core(TM) i7-13650HX",
+    "cpu_cores": 14,
+    "cpu_threads": 20,
+    "cpu_frequency_mhz": 4900.0,
+    "memory_gb": 24.0,
+    "os_name": "Linux",
+    "os_version": "6.12.10-76061203-generic (Pop!_OS)",
+    "rust_version": "1.89.0",
+    "architecture": "x86_64",
+    "compiler_version": "rustc 1.89.0"
+  },
+  "test_date": "2025-08-17 21:03:47 UTC",
+  "validation_results": [
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "random",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.091556,
+        0.080682
+      ],
+      "mean_time_ms": 0.086119,
+      "std_dev_ms": 0.007689079138622514,
+      "min_time_ms": 0.080682,
+      "max_time_ms": 0.091556,
+      "coefficient_of_variation": 0.08928435233366057,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "random",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.049247,
+        0.045599999999999995
+      ],
+      "mean_time_ms": 0.04742349999999999,
+      "std_dev_ms": 0.002578818430987342,
+      "min_time_ms": 0.045599999999999995,
+      "max_time_ms": 0.049247,
+      "coefficient_of_variation": 0.05437849232948522,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "random",
+      "data_size": 961,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.07483300000000001,
+        0.074214
+      ],
+      "mean_time_ms": 0.0745235,
+      "std_dev_ms": 0.00043769909755447887,
+      "min_time_ms": 0.074214,
+      "max_time_ms": 0.07483300000000001,
+      "coefficient_of_variation": 0.005873303019241968,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "random",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.27640899999999996,
+        0.243417
+      ],
+      "mean_time_ms": 0.25991299999999995,
+      "std_dev_ms": 0.02332886692490655,
+      "min_time_ms": 0.243417,
+      "max_time_ms": 0.27640899999999996,
+      "coefficient_of_variation": 0.08975644513705185,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.046979,
+        0.045803
+      ],
+      "mean_time_ms": 0.046391,
+      "std_dev_ms": 0.0008315575746753774,
+      "min_time_ms": 0.045803,
+      "max_time_ms": 0.046979,
+      "coefficient_of_variation": 0.017924976281506702,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.90528,
+        0.8954259999999999
+      ],
+      "mean_time_ms": 0.900353,
+      "std_dev_ms": 0.00696783022181226,
+      "min_time_ms": 0.8954259999999999,
+      "max_time_ms": 0.90528,
+      "coefficient_of_variation": 0.007738998172730318,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "sorted",
+      "data_size": 961,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.073101,
+        0.074634
+      ],
+      "mean_time_ms": 0.0738675,
+      "std_dev_ms": 0.001083994695558982,
+      "min_time_ms": 0.073101,
+      "max_time_ms": 0.074634,
+      "coefficient_of_variation": 0.014674852886032179,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.254545,
+        0.233327
+      ],
+      "mean_time_ms": 0.24393600000000001,
+      "std_dev_ms": 0.015003391683216176,
+      "min_time_ms": 0.233327,
+      "max_time_ms": 0.254545,
+      "coefficient_of_variation": 0.061505442752263606,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "reverse_sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.04702,
+        0.045888
+      ],
+      "mean_time_ms": 0.046453999999999995,
+      "std_dev_ms": 0.0008004448763031726,
+      "min_time_ms": 0.045888,
+      "max_time_ms": 0.04702,
+      "coefficient_of_variation": 0.017230913942893458,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "reverse_sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.541792,
+        0.539128
+      ],
+      "mean_time_ms": 0.54046,
+      "std_dev_ms": 0.0018837324650809624,
+      "min_time_ms": 0.539128,
+      "max_time_ms": 0.541792,
+      "coefficient_of_variation": 0.0034854243886336864,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "reverse_sorted",
+      "data_size": 961,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.088402,
+        0.071866
+      ],
+      "mean_time_ms": 0.080134,
+      "std_dev_ms": 0.011692717733700746,
+      "min_time_ms": 0.071866,
+      "max_time_ms": 0.088402,
+      "coefficient_of_variation": 0.14591456477526077,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "reverse_sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.239617,
+        0.22878500000000002
+      ],
+      "mean_time_ms": 0.234201,
+      "std_dev_ms": 0.007659380653812669,
+      "min_time_ms": 0.22878500000000002,
+      "max_time_ms": 0.239617,
+      "coefficient_of_variation": 0.03270430379807375,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "partially_sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.055436,
+        0.05023
+      ],
+      "mean_time_ms": 0.052833,
+      "std_dev_ms": 0.003681197902857168,
+      "min_time_ms": 0.05023,
+      "max_time_ms": 0.055436,
+      "coefficient_of_variation": 0.06967610968253116,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "partially_sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.04184499999999999,
+        0.038025
+      ],
+      "mean_time_ms": 0.039935,
+      "std_dev_ms": 0.0027011479041326044,
+      "min_time_ms": 0.038025,
+      "max_time_ms": 0.04184499999999999,
+      "coefficient_of_variation": 0.06763861034512594,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "partially_sorted",
+      "data_size": 961,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.070552,
+        0.07058299999999999
+      ],
+      "mean_time_ms": 0.0705675,
+      "std_dev_ms": 0.00002192031021677546,
+      "min_time_ms": 0.070552,
+      "max_time_ms": 0.07058299999999999,
+      "coefficient_of_variation": 0.00031062897533248954,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "partially_sorted",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.240569,
+        0.232488
+      ],
+      "mean_time_ms": 0.2365285,
+      "std_dev_ms": 0.005714129898768494,
+      "min_time_ms": 0.232488,
+      "max_time_ms": 0.240569,
+      "coefficient_of_variation": 0.024158314531942213,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.08100399999999999,
+        0.074855
+      ],
+      "mean_time_ms": 0.0779295,
+      "std_dev_ms": 0.004347999597516072,
+      "min_time_ms": 0.074855,
+      "max_time_ms": 0.08100399999999999,
+      "coefficient_of_variation": 0.05579401378830959,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.044397,
+        0.042733
+      ],
+      "mean_time_ms": 0.043565,
+      "std_dev_ms": 0.0011766256838944141,
+      "min_time_ms": 0.042733,
+      "max_time_ms": 0.044397,
+      "coefficient_of_variation": 0.027008508754606086,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 961,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.072417,
+        0.071005
+      ],
+      "mean_time_ms": 0.071711,
+      "std_dev_ms": 0.0009984347750354027,
+      "min_time_ms": 0.071005,
+      "max_time_ms": 0.072417,
+      "coefficient_of_variation": 0.01392303516943569,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 1000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.244453,
+        0.23078500000000002
+      ],
+      "mean_time_ms": 0.23761900000000002,
+      "std_dev_ms": 0.009664735485257722,
+      "min_time_ms": 0.23078500000000002,
+      "max_time_ms": 0.244453,
+      "coefficient_of_variation": 0.04067324366005126,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "random",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.464716,
+        0.45361799999999997
+      ],
+      "mean_time_ms": 0.459167,
+      "std_dev_ms": 0.007847471057608342,
+      "min_time_ms": 0.45361799999999997,
+      "max_time_ms": 0.464716,
+      "coefficient_of_variation": 0.01709066866218248,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "random",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.278727,
+        0.273266
+      ],
+      "mean_time_ms": 0.2759965,
+      "std_dev_ms": 0.0038615101320597315,
+      "min_time_ms": 0.273266,
+      "max_time_ms": 0.278727,
+      "coefficient_of_variation": 0.013991156163428636,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "random",
+      "data_size": 4900,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.7464080000000001,
+        0.7443989999999999
+      ],
+      "mean_time_ms": 0.7454035,
+      "std_dev_ms": 0.0014205775234038798,
+      "min_time_ms": 0.7443989999999999,
+      "max_time_ms": 0.7464080000000001,
+      "coefficient_of_variation": 0.001905783274969704,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "random",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.5232729999999999,
+        1.456817
+      ],
+      "mean_time_ms": 1.4900449999999998,
+      "std_dev_ms": 0.0469914882505331,
+      "min_time_ms": 1.456817,
+      "max_time_ms": 1.5232729999999999,
+      "coefficient_of_variation": 0.03153695911904211,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.24151399999999998,
+        0.240594
+      ],
+      "mean_time_ms": 0.241054,
+      "std_dev_ms": 0.000650538238691607,
+      "min_time_ms": 0.240594,
+      "max_time_ms": 0.24151399999999998,
+      "coefficient_of_variation": 0.0026987240978851505,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        21.673695,
+        21.635732
+      ],
+      "mean_time_ms": 21.6547135,
+      "std_dev_ms": 0.02684389473418331,
+      "min_time_ms": 21.635732,
+      "max_time_ms": 21.673695,
+      "coefficient_of_variation": 0.0012396328741169128,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "sorted",
+      "data_size": 4900,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.7437630000000001,
+        0.7404729999999999
+      ],
+      "mean_time_ms": 0.742118,
+      "std_dev_ms": 0.0023263813101038304,
+      "min_time_ms": 0.7404729999999999,
+      "max_time_ms": 0.7437630000000001,
+      "coefficient_of_variation": 0.0031347862605459378,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.521466,
+        1.453391
+      ],
+      "mean_time_ms": 1.4874285,
+      "std_dev_ms": 0.04813629412927414,
+      "min_time_ms": 1.453391,
+      "max_time_ms": 1.521466,
+      "coefficient_of_variation": 0.03236208942431461,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "reverse_sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.24387,
+        0.239148
+      ],
+      "mean_time_ms": 0.241509,
+      "std_dev_ms": 0.00333895822076288,
+      "min_time_ms": 0.239148,
+      "max_time_ms": 0.24387,
+      "coefficient_of_variation": 0.013825398725359634,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "reverse_sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        13.272719,
+        13.568957
+      ],
+      "mean_time_ms": 13.420838,
+      "std_dev_ms": 0.20947189864513968,
+      "min_time_ms": 13.272719,
+      "max_time_ms": 13.568957,
+      "coefficient_of_variation": 0.015607959700067885,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "reverse_sorted",
+      "data_size": 4900,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.756401,
+        0.750241
+      ],
+      "mean_time_ms": 0.753321,
+      "std_dev_ms": 0.004355777772109093,
+      "min_time_ms": 0.750241,
+      "max_time_ms": 0.756401,
+      "coefficient_of_variation": 0.005782100554888411,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "reverse_sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.441029,
+        1.393385
+      ],
+      "mean_time_ms": 1.4172069999999999,
+      "std_dev_ms": 0.03368939548285173,
+      "min_time_ms": 1.393385,
+      "max_time_ms": 1.441029,
+      "coefficient_of_variation": 0.023771682953056067,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "partially_sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.286387,
+        0.279502
+      ],
+      "mean_time_ms": 0.2829445,
+      "std_dev_ms": 0.004868430188469401,
+      "min_time_ms": 0.279502,
+      "max_time_ms": 0.286387,
+      "coefficient_of_variation": 0.017206307910100395,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "partially_sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.228105,
+        0.21622699999999997
+      ],
+      "mean_time_ms": 0.22216599999999997,
+      "std_dev_ms": 0.00839901434693383,
+      "min_time_ms": 0.21622699999999997,
+      "max_time_ms": 0.228105,
+      "coefficient_of_variation": 0.037805129258904745,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "partially_sorted",
+      "data_size": 4900,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.749948,
+        0.739731
+      ],
+      "mean_time_ms": 0.7448395,
+      "std_dev_ms": 0.0072245099833829,
+      "min_time_ms": 0.739731,
+      "max_time_ms": 0.749948,
+      "coefficient_of_variation": 0.009699418443010742,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "partially_sorted",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.418866,
+        1.4088919999999998
+      ],
+      "mean_time_ms": 1.4138789999999999,
+      "std_dev_ms": 0.007052683035554731,
+      "min_time_ms": 1.4088919999999998,
+      "max_time_ms": 1.418866,
+      "coefficient_of_variation": 0.004988180060355046,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.457668,
+        0.442764
+      ],
+      "mean_time_ms": 0.450216,
+      "std_dev_ms": 0.010538719466804325,
+      "min_time_ms": 0.442764,
+      "max_time_ms": 0.457668,
+      "coefficient_of_variation": 0.023408140685369522,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.275483,
+        0.268125
+      ],
+      "mean_time_ms": 0.271804,
+      "std_dev_ms": 0.005202891695970599,
+      "min_time_ms": 0.268125,
+      "max_time_ms": 0.275483,
+      "coefficient_of_variation": 0.019142071845780782,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 4900,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.7442679999999999,
+        0.743901
+      ],
+      "mean_time_ms": 0.7440845,
+      "std_dev_ms": 0.00025950818869538883,
+      "min_time_ms": 0.743901,
+      "max_time_ms": 0.7442679999999999,
+      "coefficient_of_variation": 0.00034876171818575555,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 5000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.432244,
+        1.416462
+      ],
+      "mean_time_ms": 1.424353,
+      "std_dev_ms": 0.011159559220686066,
+      "min_time_ms": 1.416462,
+      "max_time_ms": 1.432244,
+      "coefficient_of_variation": 0.007834826914877187,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.976146,
+        0.963807
+      ],
+      "mean_time_ms": 0.9699765,
+      "std_dev_ms": 0.008724990573060802,
+      "min_time_ms": 0.963807,
+      "max_time_ms": 0.976146,
+      "coefficient_of_variation": 0.008995053563731495,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.585569,
+        0.581887
+      ],
+      "mean_time_ms": 0.583728,
+      "std_dev_ms": 0.002603567168328842,
+      "min_time_ms": 0.581887,
+      "max_time_ms": 0.585569,
+      "coefficient_of_variation": 0.004460240331676469,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        2.1522910000000004,
+        2.164293
+      ],
+      "mean_time_ms": 2.1582920000000003,
+      "std_dev_ms": 0.00848669558780052,
+      "min_time_ms": 2.1522910000000004,
+      "max_time_ms": 2.164293,
+      "coefficient_of_variation": 0.003932135034462676,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        3.129832,
+        3.069053
+      ],
+      "mean_time_ms": 3.0994425,
+      "std_dev_ms": 0.04297724305373727,
+      "min_time_ms": 3.069053,
+      "max_time_ms": 3.129832,
+      "coefficient_of_variation": 0.013866120456739324,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.486672,
+        0.484337
+      ],
+      "mean_time_ms": 0.4855045,
+      "std_dev_ms": 0.0016510943340705714,
+      "min_time_ms": 0.484337,
+      "max_time_ms": 0.486672,
+      "coefficient_of_variation": 0.003400780701457085,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        86.700503,
+        86.326463
+      ],
+      "mean_time_ms": 86.51348300000001,
+      "std_dev_ms": 0.2644862204350118,
+      "min_time_ms": 86.326463,
+      "max_time_ms": 86.700503,
+      "coefficient_of_variation": 0.003057167637500062,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        2.1495580000000003,
+        2.148675
+      ],
+      "mean_time_ms": 2.1491165,
+      "std_dev_ms": 0.0006243752877880122,
+      "min_time_ms": 2.148675,
+      "max_time_ms": 2.1495580000000003,
+      "coefficient_of_variation": 0.0002905264967199369,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        3.040258,
+        2.973824
+      ],
+      "mean_time_ms": 3.007041,
+      "std_dev_ms": 0.04697593190134717,
+      "min_time_ms": 2.973824,
+      "max_time_ms": 3.040258,
+      "coefficient_of_variation": 0.015621979181975627,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "reverse_sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.49526,
+        0.485008
+      ],
+      "mean_time_ms": 0.49013399999999996,
+      "std_dev_ms": 0.007249258720724473,
+      "min_time_ms": 0.485008,
+      "max_time_ms": 0.49526,
+      "coefficient_of_variation": 0.014790360841574902,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "reverse_sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        60.874302,
+        53.147672
+      ],
+      "mean_time_ms": 57.010987,
+      "std_dev_ms": 5.4635524687194135,
+      "min_time_ms": 53.147672,
+      "max_time_ms": 60.874302,
+      "coefficient_of_variation": 0.09583332540303878,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "reverse_sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        2.157464,
+        2.157628
+      ],
+      "mean_time_ms": 2.157546,
+      "std_dev_ms": 0.00011596551211447426,
+      "min_time_ms": 2.157464,
+      "max_time_ms": 2.157628,
+      "coefficient_of_variation": 0.00005374880170085563,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "reverse_sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        3.022616,
+        2.9716650000000002
+      ],
+      "mean_time_ms": 2.9971405000000004,
+      "std_dev_ms": 0.03602779760823576,
+      "min_time_ms": 2.9716650000000002,
+      "max_time_ms": 3.022616,
+      "coefficient_of_variation": 0.012020723622478077,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "partially_sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.589337,
+        0.584346
+      ],
+      "mean_time_ms": 0.5868415,
+      "std_dev_ms": 0.003529169944902036,
+      "min_time_ms": 0.584346,
+      "max_time_ms": 0.589337,
+      "coefficient_of_variation": 0.0060138383957202,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "partially_sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.480681,
+        0.470387
+      ],
+      "mean_time_ms": 0.475534,
+      "std_dev_ms": 0.007278957205534338,
+      "min_time_ms": 0.470387,
+      "max_time_ms": 0.480681,
+      "coefficient_of_variation": 0.015306912240837326,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "partially_sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        2.155897,
+        2.1495830000000002
+      ],
+      "mean_time_ms": 2.15274,
+      "std_dev_ms": 0.004464672216411655,
+      "min_time_ms": 2.1495830000000002,
+      "max_time_ms": 2.155897,
+      "coefficient_of_variation": 0.00207394864981914,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "partially_sorted",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        3.014326,
+        2.9621589999999998
+      ],
+      "mean_time_ms": 2.9882425,
+      "std_dev_ms": 0.036887639454158835,
+      "min_time_ms": 2.9621589999999998,
+      "max_time_ms": 3.014326,
+      "coefficient_of_variation": 0.012344259026554515,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.946574,
+        0.93391
+      ],
+      "mean_time_ms": 0.940242,
+      "std_dev_ms": 0.008954800276946444,
+      "min_time_ms": 0.93391,
+      "max_time_ms": 0.946574,
+      "coefficient_of_variation": 0.009523931367612214,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.588877,
+        0.580468
+      ],
+      "mean_time_ms": 0.5846724999999999,
+      "std_dev_ms": 0.005946060922997678,
+      "min_time_ms": 0.580468,
+      "max_time_ms": 0.588877,
+      "coefficient_of_variation": 0.010169900111596969,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        2.149541,
+        2.158006
+      ],
+      "mean_time_ms": 2.1537735,
+      "std_dev_ms": 0.005985658902743929,
+      "min_time_ms": 2.149541,
+      "max_time_ms": 2.158006,
+      "coefficient_of_variation": 0.0027791496658046582,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Closest Pair",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        2.979889,
+        2.9459210000000002
+      ],
+      "mean_time_ms": 2.962905,
+      "std_dev_ms": 0.024019003143344486,
+      "min_time_ms": 2.9459210000000002,
+      "max_time_ms": 2.979889,
+      "coefficient_of_variation": 0.008106572145696364,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "random",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        2.5614980000000003,
+        2.5486839999999997
+      ],
+      "mean_time_ms": 2.555091,
+      "std_dev_ms": 0.009060866294124807,
+      "min_time_ms": 2.5486839999999997,
+      "max_time_ms": 2.5614980000000003,
+      "coefficient_of_variation": 0.0035462010136330983,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "random",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.602308,
+        1.590316
+      ],
+      "mean_time_ms": 1.5963120000000002,
+      "std_dev_ms": 0.00847962451998908,
+      "min_time_ms": 1.590316,
+      "max_time_ms": 1.602308,
+      "coefficient_of_variation": 0.0053120095069065934,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "sorted",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.220865,
+        1.209861
+      ],
+      "mean_time_ms": 1.215363,
+      "std_dev_ms": 0.0077810030201767785,
+      "min_time_ms": 1.209861,
+      "max_time_ms": 1.220865,
+      "coefficient_of_variation": 0.006402204954550022,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "sorted",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        539.0310929999999,
+        537.664157
+      ],
+      "mean_time_ms": 538.347625,
+      "std_dev_ms": 0.966569715047941,
+      "min_time_ms": 537.664157,
+      "max_time_ms": 539.0310929999999,
+      "coefficient_of_variation": 0.0017954378735263131,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "reverse_sorted",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.3011590000000002,
+        1.259399
+      ],
+      "mean_time_ms": 1.2802790000000002,
+      "std_dev_ms": 0.029528779182350393,
+      "min_time_ms": 1.259399,
+      "max_time_ms": 1.3011590000000002,
+      "coefficient_of_variation": 0.023064331432719267,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "reverse_sorted",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        330.76274,
+        331.341815
+      ],
+      "mean_time_ms": 331.0522775,
+      "std_dev_ms": 0.40946785931559215,
+      "min_time_ms": 330.76274,
+      "max_time_ms": 331.341815,
+      "coefficient_of_variation": 0.0012368676705919721,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "partially_sorted",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.517006,
+        1.478731
+      ],
+      "mean_time_ms": 1.4978685,
+      "std_dev_ms": 0.027064512049915147,
+      "min_time_ms": 1.478731,
+      "max_time_ms": 1.517006,
+      "coefficient_of_variation": 0.01806868363271886,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "partially_sorted",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.296474,
+        1.2843360000000001
+      ],
+      "mean_time_ms": 1.290405,
+      "std_dev_ms": 0.008582862110042144,
+      "min_time_ms": 1.2843360000000001,
+      "max_time_ms": 1.296474,
+      "coefficient_of_variation": 0.006651293283924151,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        2.5040750000000003,
+        2.4803949999999997
+      ],
+      "mean_time_ms": 2.492235,
+      "std_dev_ms": 0.016744288578497864,
+      "min_time_ms": 2.4803949999999997,
+      "max_time_ms": 2.5040750000000003,
+      "coefficient_of_variation": 0.006718583351288247,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "duplicate_heavy",
+      "data_size": 25000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        1.588991,
+        1.577175
+      ],
+      "mean_time_ms": 1.583083,
+      "std_dev_ms": 0.00835517372650028,
+      "min_time_ms": 1.577175,
+      "max_time_ms": 1.588991,
+      "coefficient_of_variation": 0.005277786273050927,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O0",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.976614,
+        0.9610219999999999
+      ],
+      "mean_time_ms": 0.968818,
+      "std_dev_ms": 0.011025208932260683,
+      "min_time_ms": 0.9610219999999999,
+      "max_time_ms": 0.976614,
+      "coefficient_of_variation": 0.011380062026366855,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O0",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.5919989999999999,
+        0.583094
+      ],
+      "mean_time_ms": 0.5875465,
+      "std_dev_ms": 0.0062967858864661636,
+      "min_time_ms": 0.583094,
+      "max_time_ms": 0.5919989999999999,
+      "coefficient_of_variation": 0.01071708517788152,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "random",
+      "data_size": 4096,
+      "optimization_level": "O0",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.6486550000000001,
+        0.5743929999999999
+      ],
+      "mean_time_ms": 0.611524,
+      "std_dev_ms": 0.052511163784475505,
+      "min_time_ms": 0.5743929999999999,
+      "max_time_ms": 0.6486550000000001,
+      "coefficient_of_variation": 0.08586934246975672,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O1",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.8207804,
+        0.82791785
+      ],
+      "mean_time_ms": 0.8243491249999999,
+      "std_dev_ms": 0.005046939295379916,
+      "min_time_ms": 0.8207804,
+      "max_time_ms": 0.82791785,
+      "coefficient_of_variation": 0.006122332325372356,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O1",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.5068983499999999,
+        0.5060755499999999
+      ],
+      "mean_time_ms": 0.50648695,
+      "std_dev_ms": 0.0005818074595603001,
+      "min_time_ms": 0.5060755499999999,
+      "max_time_ms": 0.5068983499999999,
+      "coefficient_of_variation": 0.0011487116490569008,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "random",
+      "data_size": 4096,
+      "optimization_level": "O1",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.48542395,
+        0.48576054999999996
+      ],
+      "mean_time_ms": 0.48559224999999995,
+      "std_dev_ms": 0.00023801214254736693,
+      "min_time_ms": 0.48542395,
+      "max_time_ms": 0.48576054999999996,
+      "coefficient_of_variation": 0.0004901481490846837,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.6763931999999999,
+        0.6703150999999999
+      ],
+      "mean_time_ms": 0.67335415,
+      "std_dev_ms": 0.004297865726729936,
+      "min_time_ms": 0.6703150999999999,
+      "max_time_ms": 0.6763931999999999,
+      "coefficient_of_variation": 0.006382771572329266,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.41535479999999997,
+        0.41150269999999994
+      ],
+      "mean_time_ms": 0.41342874999999996,
+      "std_dev_ms": 0.0027238460318087174,
+      "min_time_ms": 0.41150269999999994,
+      "max_time_ms": 0.41535479999999997,
+      "coefficient_of_variation": 0.006588429159338139,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "random",
+      "data_size": 4096,
+      "optimization_level": "O2",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.4017692,
+        0.401905
+      ],
+      "mean_time_ms": 0.4018371,
+      "std_dev_ms": 0.00009602510088514676,
+      "min_time_ms": 0.4017692,
+      "max_time_ms": 0.401905,
+      "coefficient_of_variation": 0.00023896524458579546,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Merge Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O3",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.581094,
+        0.5812776
+      ],
+      "mean_time_ms": 0.5811858,
+      "std_dev_ms": 0.0001298248050258151,
+      "min_time_ms": 0.581094,
+      "max_time_ms": 0.5812776,
+      "coefficient_of_variation": 0.0002233791758604823,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_distribution": "random",
+      "data_size": 10000,
+      "optimization_level": "O3",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.3503646,
+        0.35104680000000005
+      ],
+      "mean_time_ms": 0.3507057,
+      "std_dev_ms": 0.000482388246125478,
+      "min_time_ms": 0.3503646,
+      "max_time_ms": 0.35104680000000005,
+      "coefficient_of_variation": 0.001375478773585596,
+      "statistical_significance": null
+    },
+    {
+      "algorithm_name": "Matrix Multiplication",
+      "data_distribution": "random",
+      "data_size": 4096,
+      "optimization_level": "O3",
+      "thread_count": 1,
+      "execution_times_ms": [
+        0.34315619999999997,
+        0.34468259999999995
+      ],
+      "mean_time_ms": 0.3439194,
+      "std_dev_ms": 0.0010793277908031343,
+      "min_time_ms": 0.34315619999999997,
+      "max_time_ms": 0.34468259999999995,
+      "coefficient_of_variation": 0.003138316101979517,
+      "statistical_significance": null
+    }
+  ],
+  "distribution_analysis": {
+    "reverse_sorted": {
+      "distribution_name": "reverse_sorted",
+      "algorithm_performance": {
+        "Merge Sort": 1.2802790000000002,
+        "Closest Pair": 2.9971405000000004,
+        "Matrix Multiplication": 2.157546,
+        "Quick Sort": 331.0522775
+      },
+      "performance_variance": 88.1154162824322,
+      "relative_performance": {
+        "Merge Sort": 27.560145520299656,
+        "Closest Pair": 64.51845912085075,
+        "Matrix Multiplication": 46.4447840874844,
+        "Quick Sort": 7126.453642312827
+      }
+    },
+    "random": {
+      "distribution_name": "random",
+      "algorithm_performance": {
+        "Matrix Multiplication": 0.3439194,
+        "Quick Sort": 0.3507057,
+        "Merge Sort": 0.5811858,
+        "Closest Pair": 3.0994425
+      },
+      "performance_variance": 0.7683284612497506,
+      "relative_performance": {
+        "Matrix Multiplication": 7.252088099781754,
+        "Merge Sort": 12.255227893344019,
+        "Quick Sort": 7.395188039684967,
+        "Closest Pair": 65.35667970520944
+      }
+    },
+    "sorted": {
+      "distribution_name": "sorted",
+      "algorithm_performance": {
+        "Matrix Multiplication": 2.1491165,
+        "Merge Sort": 1.215363,
+        "Quick Sort": 538.347625,
+        "Closest Pair": 3.007041
+      },
+      "performance_variance": 143.2986497444388,
+      "relative_performance": {
+        "Quick Sort": 11604.570390808562,
+        "Merge Sort": 26.19824966049449,
+        "Matrix Multiplication": 46.326151624237454,
+        "Closest Pair": 64.81949084951823
+      }
+    },
+    "partially_sorted": {
+      "distribution_name": "partially_sorted",
+      "algorithm_performance": {
+        "Matrix Multiplication": 2.15274,
+        "Closest Pair": 2.9882425,
+        "Merge Sort": 1.4978685,
+        "Quick Sort": 1.290405
+      },
+      "performance_variance": 0.8948977222700922,
+      "relative_performance": {
+        "Merge Sort": 37.50766245148366,
+        "Closest Pair": 74.82765744334544,
+        "Matrix Multiplication": 53.906097408288474,
+        "Quick Sort": 32.31263302867159
+      }
+    },
+    "duplicate_heavy": {
+      "distribution_name": "duplicate_heavy",
+      "algorithm_performance": {
+        "Matrix Multiplication": 2.1537735,
+        "Closest Pair": 2.962905,
+        "Merge Sort": 2.492235,
+        "Quick Sort": 1.583083
+      },
+      "performance_variance": 0.9692555196853974,
+      "relative_performance": {
+        "Merge Sort": 57.20727648341558,
+        "Quick Sort": 36.338413864340644,
+        "Matrix Multiplication": 49.438161368070695,
+        "Closest Pair": 68.01113279008379
+      }
+    }
+  },
+  "optimization_impact": {
+    "O2": {
+      "optimization_level": "O2",
+      "performance_improvement": -30.714134096728852,
+      "algorithm_ranking": [
+        "Quick Sort",
+        "Quick Sort",
+        "Merge Sort",
+        "Merge Sort",
+        "Quick Sort",
+        "Merge Sort",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Merge Sort",
+        "Matrix Multiplication",
+        "Merge Sort",
+        "Quick Sort",
+        "Closest Pair",
+        "Closest Pair",
+        "Closest Pair",
+        "Merge Sort",
+        "Merge Sort",
+        "Closest Pair",
+        "Closest Pair",
+        "Quick Sort",
+        "Quick Sort",
+        "Merge Sort",
+        "Matrix Multiplication",
+        "Quick Sort",
+        "Merge Sort",
+        "Merge Sort",
+        "Quick Sort",
+        "Merge Sort",
+        "Merge Sort",
+        "Quick Sort",
+        "Quick Sort",
+        "Quick Sort",
+        "Merge Sort",
+        "Merge Sort",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Quick Sort",
+        "Merge Sort",
+        "Merge Sort",
+        "Merge Sort",
+        "Merge Sort",
+        "Quick Sort",
+        "Closest Pair",
+        "Closest Pair",
+        "Closest Pair",
+        "Closest Pair",
+        "Closest Pair",
+        "Merge Sort",
+        "Quick Sort",
+        "Quick Sort",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Matrix Multiplication",
+        "Merge Sort",
+        "Merge Sort",
+        "Closest Pair",
+        "Closest Pair",
+        "Closest Pair",
+        "Closest Pair",
+        "Closest Pair",
+        "Quick Sort",
+        "Quick Sort",
+        "Quick Sort",
+        "Quick Sort",
+        "Quick Sort",
+        "Quick Sort"
+      ],
+      "consistency_score": 0.20569901870787263
+    },
+    "O3": {
+      "optimization_level": "O3",
+      "performance_improvement": 0.4136041756851944,
+      "algorithm_ranking": [
+        "Matrix Multiplication",
+        "Quick Sort",
+        "Merge Sort"
+      ],
+      "consistency_score": 3.148531532436474
+    },
+    "O1": {
+      "optimization_level": "O1",
+      "performance_improvement": 0.16433749284353424,
+      "algorithm_ranking": [
+        "Matrix Multiplication",
+        "Quick Sort",
+        "Merge Sort"
+      ],
+      "consistency_score": 3.1894477676076805
+    }
+  },
+  "thread_scaling_analysis": [
+    {
+      "algorithm_name": "Merge Sort",
+      "data_size": 50000,
+      "thread_counts": [
+        1,
+        2,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24
+      ],
+      "execution_times": [
+        2.3715425,
+        1.305605,
+        0.7820275,
+        0.532907,
+        0.3863605,
+        0.42818100000000003,
+        0.540987,
+        0.779936
+      ],
+      "speedups": [
+        2.2810769783801046,
+        4.143420866188472,
+        6.917494589384644,
+        10.151247778693092,
+        14.001615071934111,
+        12.634075309273413,
+        9.99963215382255,
+        6.93604475238994
+      ],
+      "efficiencies": [
+        2.2810769783801046,
+        2.071710433094236,
+        1.729373647346161,
+        1.2689059723366365,
+        1.1668012559945093,
+        0.7896297068295883,
+        0.4999816076911275,
+        0.28900186468291417
+      ],
+      "optimal_thread_count": 1,
+      "scalability_coefficient": 1.2620601832944096
+    },
+    {
+      "algorithm_name": "Quick Sort",
+      "data_size": 50000,
+      "thread_counts": [
+        1,
+        2,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24
+      ],
+      "execution_times": [
+        1.999607,
+        1.4092660000000001,
+        0.995276,
+        0.6984245,
+        0.6325265,
+        0.72119,
+        0.7504035,
+        0.880382
+      ],
+      "speedups": [
+        1.9969353978056688,
+        2.833450888618614,
+        4.012038871629578,
+        5.717276527384134,
+        6.31291495297035,
+        5.536801675009359,
+        5.3212518331804155,
+        4.535628852021055
+      ],
+      "efficiencies": [
+        1.9969353978056688,
+        1.416725444309307,
+        1.0030097179073945,
+        0.7146595659230167,
+        0.5260762460808625,
+        0.34605010468808495,
+        0.2660625916590208,
+        0.18898453550087727
+      ],
+      "optimal_thread_count": 1,
+      "scalability_coefficient": 0.807312950484279
+    }
+  ],
+  "anova_results": {
+    "f_statistic": 3.710732031312785,
+    "p_value": 0.05,
+    "degrees_of_freedom": [
+      19,
+      144
+    ],
+    "significant_differences": [],
+    "effect_size": 0.32868356132418325
+  }
+}

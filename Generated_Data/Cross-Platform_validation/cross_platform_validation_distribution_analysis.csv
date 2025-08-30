@@ -1,0 +1,21 @@
+Distribution,Algorithm,MeanTime(ms),RelativePerformance,Variance
+reverse_sorted,Merge Sort,1.280,27.560,88.115
+reverse_sorted,Closest Pair,2.997,64.518,88.115
+reverse_sorted,Matrix Multiplication,2.158,46.445,88.115
+reverse_sorted,Quick Sort,331.052,7126.454,88.115
+random,Matrix Multiplication,0.344,7.252,0.768
+random,Quick Sort,0.351,7.395,0.768
+random,Merge Sort,0.581,12.255,0.768
+random,Closest Pair,3.099,65.357,0.768
+sorted,Matrix Multiplication,2.149,46.326,143.299
+sorted,Merge Sort,1.215,26.198,143.299
+sorted,Quick Sort,538.348,11604.570,143.299
+sorted,Closest Pair,3.007,64.819,143.299
+partially_sorted,Matrix Multiplication,2.153,53.906,0.895
+partially_sorted,Closest Pair,2.988,74.828,0.895
+partially_sorted,Merge Sort,1.498,37.508,0.895
+partially_sorted,Quick Sort,1.290,32.313,0.895
+duplicate_heavy,Matrix Multiplication,2.154,49.438,0.969
+duplicate_heavy,Closest Pair,2.963,68.011,0.969
+duplicate_heavy,Merge Sort,2.492,57.207,0.969
+duplicate_heavy,Quick Sort,1.583,36.338,0.969
