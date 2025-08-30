@@ -35,5 +35,8 @@ libc = "0.2"
 sysinfo = "0.32"
 perf-event = "0.4"
 
+# Cross-platform validation dependencies
+# (rayon already included above)
+
 [dev-dependencies]
 criterion = { version = "0.6.0", features = ["html_reports"] }
