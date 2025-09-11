@@ -174,9 +174,11 @@ cargo run --release -- publication [--runs <RUNS>] [--extended]
 
 ### Key Findings
 
-**Parallel Speedup (50K elements, 14 cores):**
-- **Merge Sort**: 18.46x speedup (131.83% efficiency)
-- **Quick Sort**: 16.46x speedup (117.59% efficiency)
+**Parallel Speedup (50K elements, optimal 8 threads):**
+- **Merge Sort**: 14.8x speedup (185% efficiency)
+- **Quick Sort**: 10.2x speedup (127% efficiency)
+
+**Note**: System has 20 threads total (14 cores + hyperthreading), but optimal performance achieved at 8 threads.
 
 **Memory Scaling:**
 - Linear memory usage with input size

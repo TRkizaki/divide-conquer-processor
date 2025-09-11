@@ -1,166 +1,166 @@
 Algorithm,DataSize,Runs,MeanTime(ms),StdDev(ms),MinTime(ms),MaxTime(ms),MedianTime(ms),MeanMemory(MB),Parallel,SpeedupVsSequential,Efficiency
-Merge Sort,1000,2,0.111,0.005,0.108,0.115,0.115,0.12,false,N/A,N/A
-Merge Sort (Parallel),1000,2,0.078,0.005,0.075,0.082,0.082,N/A,true,1.421,0.071
-Quick Sort,1000,2,0.037,0.002,0.035,0.038,0.038,N/A,false,N/A,N/A
-Quick Sort (Parallel),1000,2,0.034,0.000,0.033,0.034,0.034,N/A,true,1.095,0.055
-std::slice::sort,1000,2,0.017,0.008,0.011,0.023,0.023,N/A,false,N/A,N/A
-std::slice::sort_unstable,1000,2,0.009,0.002,0.008,0.010,0.010,N/A,false,N/A,N/A
-std::slice::sort_by,1000,2,0.013,0.003,0.011,0.016,0.016,N/A,false,N/A,N/A
-rayon::par_sort,1000,2,0.032,0.005,0.028,0.036,0.036,N/A,true,N/A,N/A
-rayon::par_sort_unstable,1000,2,0.019,0.006,0.014,0.023,0.023,N/A,true,N/A,N/A
-Merge Sort,5000,2,0.449,0.008,0.443,0.454,0.454,0.04,false,N/A,N/A
-Merge Sort (Parallel),5000,2,0.674,0.485,0.331,1.017,1.017,0.25,true,0.665,0.033
-Quick Sort,5000,2,0.213,0.005,0.210,0.217,0.217,N/A,false,N/A,N/A
-Quick Sort (Parallel),5000,2,0.299,0.096,0.231,0.367,0.367,0.02,true,0.714,0.036
-std::slice::sort,5000,2,0.068,0.008,0.063,0.074,0.074,N/A,false,N/A,N/A
-std::slice::sort_unstable,5000,2,0.047,0.003,0.045,0.049,0.049,N/A,false,N/A,N/A
-std::slice::sort_by,5000,2,0.073,0.006,0.068,0.077,0.077,N/A,false,N/A,N/A
-rayon::par_sort,5000,2,0.266,0.178,0.140,0.392,0.392,N/A,true,N/A,N/A
-rayon::par_sort_unstable,5000,2,0.150,0.062,0.105,0.194,0.194,N/A,true,N/A,N/A
-Merge Sort,10000,2,0.954,0.008,0.948,0.959,0.959,0.06,false,N/A,N/A
-Merge Sort (Parallel),10000,2,0.276,0.046,0.243,0.308,0.308,N/A,true,3.456,0.173
-Quick Sort,10000,2,0.443,0.015,0.432,0.454,0.454,N/A,false,N/A,N/A
-Quick Sort (Parallel),10000,2,0.306,0.032,0.283,0.329,0.329,N/A,true,1.447,0.072
-std::slice::sort,10000,2,0.213,0.009,0.207,0.220,0.220,N/A,false,N/A,N/A
-std::slice::sort_unstable,10000,2,0.140,0.001,0.140,0.141,0.141,N/A,false,N/A,N/A
-std::slice::sort_by,10000,2,0.215,0.005,0.212,0.218,0.218,N/A,false,N/A,N/A
-rayon::par_sort,10000,2,0.332,0.160,0.219,0.445,0.445,N/A,true,N/A,N/A
-rayon::par_sort_unstable,10000,2,0.099,0.020,0.085,0.113,0.113,N/A,true,N/A,N/A
-Merge Sort,25000,2,2.553,0.122,2.467,2.640,2.640,0.11,false,N/A,N/A
-Merge Sort (Parallel),25000,2,0.352,0.001,0.351,0.352,0.352,0.01,true,7.263,0.363
-Quick Sort,25000,2,1.281,0.041,1.252,1.309,1.309,N/A,false,N/A,N/A
-Quick Sort (Parallel),25000,2,0.337,0.035,0.312,0.362,0.362,0.00,true,3.801,0.190
-std::slice::sort,25000,2,0.506,0.103,0.433,0.579,0.579,N/A,false,N/A,N/A
-std::slice::sort_unstable,25000,2,0.323,0.006,0.319,0.327,0.327,N/A,false,N/A,N/A
-std::slice::sort_by,25000,2,0.592,0.022,0.576,0.607,0.607,N/A,false,N/A,N/A
-rayon::par_sort,25000,2,0.389,0.095,0.322,0.457,0.457,N/A,true,N/A,N/A
-rayon::par_sort_unstable,25000,2,0.242,0.095,0.175,0.309,0.309,N/A,true,N/A,N/A
-Merge Sort,50000,2,5.192,0.014,5.182,5.202,5.202,0.19,false,N/A,N/A
-Merge Sort (Parallel),50000,2,0.339,0.058,0.298,0.380,0.380,N/A,true,15.298,0.765
-Quick Sort,50000,2,3.023,0.303,2.809,3.237,3.237,N/A,false,N/A,N/A
-Quick Sort (Parallel),50000,2,0.383,0.007,0.378,0.388,0.388,0.01,true,7.890,0.395
-std::slice::sort,50000,2,0.741,0.018,0.728,0.754,0.754,N/A,false,N/A,N/A
-std::slice::sort_unstable,50000,2,0.559,0.012,0.551,0.568,0.568,N/A,false,N/A,N/A
-std::slice::sort_by,50000,2,0.767,0.016,0.756,0.779,0.779,N/A,false,N/A,N/A
-rayon::par_sort,50000,2,0.434,0.183,0.305,0.563,0.563,N/A,true,N/A,N/A
-rayon::par_sort_unstable,50000,2,0.239,0.002,0.237,0.241,0.241,N/A,true,N/A,N/A
-KdTree Nearest Neighbor,1000,2,0.000,0.000,0.000,0.000,0.000,0.00,false,N/A,N/A
-Brute Force Nearest Neighbor,1000,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Closest Pair Brute Force,1000,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Closest Pair Divide & Conquer,1000,2,0.216,0.019,0.202,0.229,0.229,0.00,false,N/A,N/A
-Convex Hull Graham Scan,1000,2,0.298,0.005,0.294,0.302,0.302,0.00,false,N/A,N/A
-Line Segment Intersection,1000,2,7.125,0.183,6.996,7.255,7.255,1.73,false,N/A,N/A
-KdTree Nearest Neighbor,5000,2,0.001,0.000,0.000,0.001,0.001,0.00,false,N/A,N/A
-Brute Force Nearest Neighbor,5000,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Closest Pair Brute Force,5000,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Closest Pair Divide & Conquer,5000,2,1.302,0.086,1.241,1.363,1.363,0.00,false,N/A,N/A
-Convex Hull Graham Scan,5000,2,1.670,0.012,1.662,1.678,1.678,0.00,false,N/A,N/A
-Line Segment Intersection,1000,2,7.219,0.956,6.543,7.895,7.895,0.00,false,N/A,N/A
-KdTree Nearest Neighbor,10000,2,0.000,0.000,0.000,0.000,0.000,0.00,false,N/A,N/A
-Brute Force Nearest Neighbor,10000,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Closest Pair Brute Force,10000,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Closest Pair Divide & Conquer,10000,2,3.266,0.616,2.831,3.702,3.702,0.00,false,N/A,N/A
-Convex Hull Graham Scan,10000,2,3.814,0.355,3.563,4.065,4.065,0.00,false,N/A,N/A
-Line Segment Intersection,1000,2,6.710,0.082,6.652,6.767,6.767,0.00,false,N/A,N/A
-KdTree Nearest Neighbor,25000,2,0.000,0.000,0.000,0.001,0.001,0.00,false,N/A,N/A
-Brute Force Nearest Neighbor,25000,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Closest Pair Divide & Conquer,25000,2,6.422,0.097,6.353,6.490,6.490,0.00,false,N/A,N/A
-Convex Hull Graham Scan,25000,2,9.413,0.094,9.346,9.479,9.479,0.00,false,N/A,N/A
-Line Segment Intersection,1000,2,6.595,0.333,6.359,6.830,6.830,0.00,false,N/A,N/A
-KdTree Nearest Neighbor,50000,2,0.001,0.000,0.000,0.001,0.001,0.00,false,N/A,N/A
-Brute Force Nearest Neighbor,50000,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Closest Pair Divide & Conquer,50000,2,13.129,0.090,13.065,13.192,13.192,0.00,false,N/A,N/A
-Convex Hull Graham Scan,50000,2,22.515,3.251,20.216,24.814,24.814,0.00,false,N/A,N/A
-Line Segment Intersection,1000,2,6.440,0.031,6.419,6.462,6.462,0.00,false,N/A,N/A
-Standard Matrix Multiply,4096,2,0.476,0.012,0.467,0.485,0.485,0.00,false,N/A,N/A
-Cache-Optimized Multiply,4096,2,0.211,0.003,0.209,0.214,0.214,N/A,false,N/A,N/A
-Parallel Matrix Multiply,4096,2,0.160,0.122,0.073,0.246,0.246,N/A,true,N/A,N/A
-Strassen Matrix Multiply,4096,2,0.476,0.013,0.467,0.485,0.485,N/A,false,N/A,N/A
-SIMD Matrix Multiply,4096,2,0.249,0.001,0.248,0.250,0.250,N/A,false,N/A,N/A
-Winograd Matrix Multiply,4096,2,0.211,0.001,0.211,0.212,0.212,N/A,false,N/A,N/A
-Parallel Winograd Matrix Multiply,4096,2,0.198,0.152,0.090,0.305,0.305,N/A,true,N/A,N/A
-Matrix Addition,4096,2,0.009,0.002,0.008,0.010,0.010,N/A,false,N/A,N/A
-Matrix Subtraction,4096,2,0.008,0.000,0.008,0.008,0.008,N/A,false,N/A,N/A
-Matrix Determinant,4096,2,0.082,0.002,0.080,0.083,0.083,N/A,false,N/A,N/A
-Matrix Inversion,4096,2,0.379,0.001,0.378,0.380,0.380,N/A,false,N/A,N/A
-Linear System Solving,4096,2,0.392,0.006,0.388,0.396,0.396,0.00,false,N/A,N/A
-Matrix Frobenius Norm,4096,2,0.002,0.000,0.002,0.002,0.002,N/A,false,N/A,N/A
-Matrix 1-Norm,4096,2,0.002,0.000,0.002,0.002,0.002,N/A,false,N/A,N/A
-Matrix Infinity-Norm,4096,2,0.002,0.000,0.002,0.002,0.002,N/A,false,N/A,N/A
-Matrix 2-Norm Approx,4096,2,0.620,0.000,0.620,0.620,0.620,N/A,false,N/A,N/A
-LU Decomposition,4096,2,0.088,0.002,0.086,0.089,0.089,N/A,false,N/A,N/A
-QR Decomposition,4096,2,0.229,0.002,0.227,0.231,0.231,N/A,false,N/A,N/A
-Cholesky Decomposition,4096,2,0.040,0.002,0.039,0.042,0.042,N/A,false,N/A,N/A
-Matrix Rank,4096,2,0.234,0.008,0.228,0.240,0.240,N/A,false,N/A,N/A
-Condition Number,4096,2,1.513,0.016,1.501,1.524,1.524,N/A,false,N/A,N/A
-Matrix Trace,4096,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Matrix Transpose,4096,2,0.006,0.000,0.006,0.006,0.006,N/A,false,N/A,N/A
-Standard Matrix Multiply,16384,2,4.155,0.016,4.144,4.167,4.167,0.00,false,N/A,N/A
-Cache-Optimized Multiply,16384,2,1.590,0.004,1.587,1.593,1.593,N/A,false,N/A,N/A
-Parallel Matrix Multiply,16384,2,0.446,0.140,0.347,0.545,0.545,N/A,true,N/A,N/A
-Strassen Matrix Multiply,16384,2,4.153,0.574,3.747,4.559,4.559,N/A,false,N/A,N/A
-SIMD Matrix Multiply,16384,2,2.038,0.027,2.019,2.057,2.057,N/A,false,N/A,N/A
-Winograd Matrix Multiply,16384,2,1.470,0.002,1.469,1.472,1.472,N/A,false,N/A,N/A
-Parallel Winograd Matrix Multiply,16384,2,0.436,0.100,0.365,0.506,0.506,N/A,true,N/A,N/A
-Matrix Addition,16384,2,0.034,0.006,0.030,0.038,0.038,N/A,false,N/A,N/A
-Matrix Subtraction,16384,2,0.030,0.000,0.030,0.030,0.030,N/A,false,N/A,N/A
-Matrix Determinant,16384,2,0.580,0.021,0.565,0.595,0.595,N/A,false,N/A,N/A
-Matrix Inversion,16384,2,2.850,0.003,2.848,2.852,2.852,N/A,false,N/A,N/A
-Linear System Solving,16384,2,3.332,0.175,3.208,3.456,3.456,0.00,false,N/A,N/A
-Matrix Frobenius Norm,16384,2,0.006,0.000,0.006,0.006,0.006,N/A,false,N/A,N/A
-Matrix 1-Norm,16384,2,0.008,0.000,0.008,0.008,0.008,N/A,false,N/A,N/A
-Matrix Infinity-Norm,16384,2,0.005,0.000,0.005,0.006,0.006,N/A,false,N/A,N/A
-Matrix 2-Norm Approx,16384,2,4.810,0.001,4.809,4.810,4.810,N/A,false,N/A,N/A
-LU Decomposition,16384,2,0.618,0.079,0.563,0.674,0.674,N/A,false,N/A,N/A
-QR Decomposition,16384,2,1.814,0.008,1.809,1.820,1.820,N/A,false,N/A,N/A
-Cholesky Decomposition,16384,2,0.277,0.007,0.272,0.282,0.282,N/A,false,N/A,N/A
-Matrix Rank,16384,2,1.784,0.018,1.771,1.797,1.797,N/A,false,N/A,N/A
-Condition Number,16384,2,11.851,0.013,11.842,11.860,11.860,N/A,false,N/A,N/A
-Matrix Trace,16384,2,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
-Matrix Transpose,16384,2,0.019,0.001,0.019,0.019,0.019,N/A,false,N/A,N/A
-Standard Matrix Multiply,65536,2,35.165,0.021,35.150,35.180,35.180,0.00,false,N/A,N/A
-Cache-Optimized Multiply,65536,2,12.799,0.127,12.709,12.889,12.889,N/A,false,N/A,N/A
-Parallel Matrix Multiply,65536,2,2.205,0.303,1.991,2.419,2.419,N/A,true,N/A,N/A
-Strassen Matrix Multiply,65536,2,27.575,0.110,27.497,27.653,27.653,N/A,false,N/A,N/A
-SIMD Matrix Multiply,65536,2,16.612,0.041,16.583,16.640,16.640,N/A,false,N/A,N/A
-Winograd Matrix Multiply,65536,2,12.112,0.018,12.100,12.125,12.125,N/A,false,N/A,N/A
-Parallel Winograd Matrix Multiply,65536,2,2.391,0.301,2.178,2.604,2.604,N/A,true,N/A,N/A
-Matrix Addition,65536,2,0.130,0.005,0.126,0.134,0.134,N/A,false,N/A,N/A
-Matrix Subtraction,65536,2,0.118,0.000,0.118,0.118,0.118,N/A,false,N/A,N/A
-Matrix Determinant,65536,2,4.474,0.416,4.181,4.768,4.768,N/A,false,N/A,N/A
-Matrix Inversion,65536,2,22.201,0.039,22.173,22.228,22.228,N/A,false,N/A,N/A
-Linear System Solving,65536,2,26.909,0.221,26.753,27.066,27.066,0.00,false,N/A,N/A
-Matrix Frobenius Norm,65536,2,0.020,0.000,0.020,0.020,0.020,N/A,false,N/A,N/A
-Matrix 1-Norm,65536,2,0.029,0.000,0.029,0.029,0.029,N/A,false,N/A,N/A
-Matrix Infinity-Norm,65536,2,0.020,0.000,0.019,0.020,0.020,N/A,false,N/A,N/A
-Matrix 2-Norm Approx,65536,2,37.555,0.078,37.500,37.610,37.610,N/A,false,N/A,N/A
-LU Decomposition,65536,2,4.189,0.022,4.174,4.205,4.205,N/A,false,N/A,N/A
-QR Decomposition,65536,2,20.283,0.013,20.273,20.292,20.292,N/A,false,N/A,N/A
-Cholesky Decomposition,65536,2,1.982,0.038,1.955,2.009,2.009,N/A,false,N/A,N/A
-Matrix Rank,65536,2,20.321,0.024,20.305,20.338,20.338,N/A,false,N/A,N/A
-Condition Number,65536,2,94.938,0.047,94.905,94.971,94.971,N/A,false,N/A,N/A
-Matrix Trace,65536,2,0.003,0.000,0.003,0.003,0.003,N/A,false,N/A,N/A
-Matrix Transpose,65536,2,0.112,0.002,0.111,0.113,0.113,N/A,false,N/A,N/A
-Standard Matrix Multiply,262144,2,305.880,1.572,304.769,306.992,306.992,0.00,false,N/A,N/A
-Cache-Optimized Multiply,262144,2,101.860,0.057,101.820,101.900,101.900,N/A,false,N/A,N/A
-Parallel Matrix Multiply,262144,2,17.130,0.372,16.867,17.392,17.392,N/A,true,N/A,N/A
-Strassen Matrix Multiply,262144,2,198.789,3.235,196.501,201.076,201.076,N/A,false,N/A,N/A
-SIMD Matrix Multiply,262144,2,165.221,2.056,163.767,166.675,166.675,N/A,false,N/A,N/A
-Winograd Matrix Multiply,262144,2,130.283,0.075,130.230,130.335,130.335,N/A,false,N/A,N/A
-Parallel Winograd Matrix Multiply,262144,2,18.364,0.567,17.963,18.765,18.765,N/A,true,N/A,N/A
-Matrix Addition,262144,2,0.524,0.024,0.507,0.541,0.541,N/A,false,N/A,N/A
-Matrix Subtraction,262144,2,0.459,0.005,0.455,0.463,0.463,N/A,false,N/A,N/A
-Matrix Determinant,262144,2,34.341,2.263,32.741,35.941,35.941,N/A,false,N/A,N/A
-Matrix Inversion,262144,2,174.909,0.010,174.902,174.917,174.917,N/A,false,N/A,N/A
-Linear System Solving,262144,2,219.821,1.066,219.067,220.574,220.574,0.00,false,N/A,N/A
-Matrix Frobenius Norm,262144,2,0.075,0.001,0.074,0.075,0.075,N/A,false,N/A,N/A
-Matrix 1-Norm,262144,2,0.110,0.000,0.110,0.110,0.110,N/A,false,N/A,N/A
-Matrix Infinity-Norm,262144,2,0.075,0.002,0.074,0.076,0.076,N/A,false,N/A,N/A
-Matrix 2-Norm Approx,262144,2,312.759,0.490,312.412,313.105,313.105,N/A,false,N/A,N/A
-LU Decomposition,262144,2,32.745,0.419,32.449,33.042,33.042,N/A,false,N/A,N/A
-QR Decomposition,262144,2,196.313,0.122,196.227,196.400,196.400,N/A,false,N/A,N/A
-Cholesky Decomposition,262144,2,14.959,0.038,14.932,14.986,14.986,N/A,false,N/A,N/A
-Matrix Rank,262144,2,195.492,0.497,195.140,195.844,195.844,N/A,false,N/A,N/A
-Condition Number,262144,2,782.357,0.154,782.248,782.466,782.466,N/A,false,N/A,N/A
-Matrix Trace,262144,2,0.005,0.000,0.005,0.005,0.005,N/A,false,N/A,N/A
-Matrix Transpose,262144,2,0.560,0.001,0.560,0.561,0.561,N/A,false,N/A,N/A
+Merge Sort,1000,3,0.077,0.004,0.073,0.080,0.076,0.11,false,N/A,N/A
+Merge Sort (Parallel),1000,3,0.072,0.001,0.071,0.072,0.072,N/A,true,1.068,0.053
+Quick Sort,1000,3,0.031,0.004,0.027,0.035,0.031,N/A,false,N/A,N/A
+Quick Sort (Parallel),1000,3,0.024,0.002,0.023,0.026,0.025,N/A,true,1.272,0.064
+std::slice::sort,1000,3,0.012,0.006,0.008,0.018,0.011,N/A,false,N/A,N/A
+std::slice::sort_unstable,1000,3,0.007,0.002,0.006,0.009,0.007,N/A,false,N/A,N/A
+std::slice::sort_by,1000,3,0.012,0.005,0.008,0.017,0.010,N/A,false,N/A,N/A
+rayon::par_sort,1000,3,0.028,0.006,0.023,0.034,0.026,N/A,true,N/A,N/A
+rayon::par_sort_unstable,1000,3,0.014,0.006,0.008,0.020,0.012,N/A,true,N/A,N/A
+Merge Sort,5000,3,0.435,0.010,0.427,0.446,0.431,0.04,false,N/A,N/A
+Merge Sort (Parallel),5000,3,0.611,0.564,0.246,1.261,0.327,0.48,true,0.711,0.036
+Quick Sort,5000,3,0.209,0.006,0.202,0.215,0.210,N/A,false,N/A,N/A
+Quick Sort (Parallel),5000,3,0.262,0.049,0.226,0.317,0.242,0.02,true,0.799,0.040
+std::slice::sort,5000,3,0.068,0.007,0.062,0.075,0.066,N/A,false,N/A,N/A
+std::slice::sort_unstable,5000,3,0.044,0.005,0.039,0.050,0.043,N/A,false,N/A,N/A
+std::slice::sort_by,5000,3,0.066,0.008,0.059,0.074,0.066,N/A,false,N/A,N/A
+rayon::par_sort,5000,3,0.195,0.119,0.122,0.333,0.130,N/A,true,N/A,N/A
+rayon::par_sort_unstable,5000,3,0.063,0.011,0.054,0.075,0.060,N/A,true,N/A,N/A
+Merge Sort,10000,3,0.923,0.009,0.914,0.932,0.922,0.06,false,N/A,N/A
+Merge Sort (Parallel),10000,3,0.293,0.130,0.144,0.377,0.359,N/A,true,3.148,0.157
+Quick Sort,10000,3,0.437,0.003,0.434,0.440,0.436,N/A,false,N/A,N/A
+Quick Sort (Parallel),10000,3,0.257,0.147,0.169,0.427,0.176,N/A,true,1.698,0.085
+std::slice::sort,10000,3,0.146,0.007,0.140,0.154,0.144,N/A,false,N/A,N/A
+std::slice::sort_unstable,10000,3,0.094,0.006,0.088,0.101,0.093,N/A,false,N/A,N/A
+std::slice::sort_by,10000,3,0.140,0.009,0.132,0.149,0.139,N/A,false,N/A,N/A
+rayon::par_sort,10000,3,0.303,0.140,0.198,0.462,0.250,N/A,true,N/A,N/A
+rayon::par_sort_unstable,10000,3,0.126,0.015,0.113,0.142,0.123,N/A,true,N/A,N/A
+Merge Sort,25000,3,2.481,0.023,2.455,2.497,2.491,0.11,false,N/A,N/A
+Merge Sort (Parallel),25000,3,0.267,0.057,0.230,0.333,0.239,0.01,true,9.276,0.464
+Quick Sort,25000,3,1.208,0.008,1.199,1.215,1.209,N/A,false,N/A,N/A
+Quick Sort (Parallel),25000,3,0.293,0.042,0.246,0.321,0.314,0.00,true,4.117,0.206
+std::slice::sort,25000,3,0.548,0.016,0.538,0.566,0.540,N/A,false,N/A,N/A
+std::slice::sort_unstable,25000,3,0.361,0.004,0.356,0.364,0.363,N/A,false,N/A,N/A
+std::slice::sort_by,25000,3,0.554,0.013,0.545,0.569,0.548,N/A,false,N/A,N/A
+rayon::par_sort,25000,3,0.486,0.202,0.311,0.707,0.438,N/A,true,N/A,N/A
+rayon::par_sort_unstable,25000,3,0.202,0.008,0.193,0.208,0.206,N/A,true,N/A,N/A
+Merge Sort,50000,3,5.187,0.021,5.164,5.205,5.190,0.19,false,N/A,N/A
+Merge Sort (Parallel),50000,3,0.421,0.017,0.405,0.439,0.420,0.01,true,12.311,0.616
+Quick Sort,50000,3,2.628,0.100,2.549,2.741,2.593,N/A,false,N/A,N/A
+Quick Sort (Parallel),50000,3,0.401,0.014,0.386,0.414,0.403,0.00,true,6.549,0.327
+std::slice::sort,50000,3,0.801,0.097,0.738,0.913,0.754,N/A,false,N/A,N/A
+std::slice::sort_unstable,50000,3,0.561,0.009,0.553,0.570,0.559,N/A,false,N/A,N/A
+std::slice::sort_by,50000,3,0.750,0.023,0.731,0.776,0.743,N/A,false,N/A,N/A
+rayon::par_sort,50000,3,0.535,0.048,0.499,0.588,0.517,N/A,true,N/A,N/A
+rayon::par_sort_unstable,50000,3,0.222,0.014,0.208,0.236,0.221,N/A,true,N/A,N/A
+KdTree Nearest Neighbor,1000,3,0.001,0.000,0.000,0.001,0.000,0.00,false,N/A,N/A
+Brute Force Nearest Neighbor,1000,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Closest Pair Brute Force,1000,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Closest Pair Divide & Conquer,1000,3,0.309,0.067,0.249,0.381,0.296,0.00,false,N/A,N/A
+Convex Hull Graham Scan,1000,3,0.309,0.025,0.291,0.337,0.297,0.00,false,N/A,N/A
+Line Segment Intersection,1000,3,6.787,0.231,6.531,6.980,6.849,0.00,false,N/A,N/A
+KdTree Nearest Neighbor,5000,3,0.000,0.000,0.000,0.000,0.000,0.00,false,N/A,N/A
+Brute Force Nearest Neighbor,5000,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Closest Pair Brute Force,5000,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Closest Pair Divide & Conquer,5000,3,1.276,0.004,1.272,1.279,1.277,0.00,false,N/A,N/A
+Convex Hull Graham Scan,5000,3,1.626,0.009,1.618,1.636,1.625,0.00,false,N/A,N/A
+Line Segment Intersection,1000,3,6.459,0.077,6.370,6.505,6.502,0.00,false,N/A,N/A
+KdTree Nearest Neighbor,10000,3,0.000,0.000,0.000,0.001,0.000,0.00,false,N/A,N/A
+Brute Force Nearest Neighbor,10000,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Closest Pair Brute Force,10000,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Closest Pair Divide & Conquer,10000,3,2.594,0.009,2.585,2.603,2.592,0.00,false,N/A,N/A
+Convex Hull Graham Scan,10000,3,3.538,0.013,3.529,3.553,3.532,0.00,false,N/A,N/A
+Line Segment Intersection,1000,3,6.533,0.118,6.429,6.660,6.510,0.00,false,N/A,N/A
+KdTree Nearest Neighbor,25000,3,0.001,0.000,0.000,0.001,0.000,0.00,false,N/A,N/A
+Brute Force Nearest Neighbor,25000,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Closest Pair Divide & Conquer,25000,3,6.311,0.014,6.302,6.327,6.304,0.00,false,N/A,N/A
+Convex Hull Graham Scan,25000,3,9.349,0.004,9.344,9.352,9.349,0.00,false,N/A,N/A
+Line Segment Intersection,1000,3,6.559,0.219,6.364,6.796,6.517,0.00,false,N/A,N/A
+KdTree Nearest Neighbor,50000,3,0.001,0.000,0.000,0.001,0.000,0.00,false,N/A,N/A
+Brute Force Nearest Neighbor,50000,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Closest Pair Divide & Conquer,50000,3,13.713,0.093,13.619,13.806,13.715,0.00,false,N/A,N/A
+Convex Hull Graham Scan,50000,3,20.072,0.012,20.062,20.085,20.068,0.00,false,N/A,N/A
+Line Segment Intersection,1000,3,6.423,0.073,6.342,6.483,6.444,0.00,false,N/A,N/A
+Standard Matrix Multiply,4096,3,0.460,0.002,0.459,0.462,0.459,0.00,false,N/A,N/A
+Cache-Optimized Multiply,4096,3,0.200,0.002,0.199,0.202,0.200,N/A,false,N/A,N/A
+Parallel Matrix Multiply,4096,3,0.147,0.101,0.077,0.262,0.103,N/A,true,N/A,N/A
+Strassen Matrix Multiply,4096,3,0.527,0.120,0.454,0.666,0.462,N/A,false,N/A,N/A
+SIMD Matrix Multiply,4096,3,0.244,0.003,0.241,0.247,0.242,N/A,false,N/A,N/A
+Winograd Matrix Multiply,4096,3,0.209,0.001,0.208,0.210,0.208,N/A,false,N/A,N/A
+Parallel Winograd Matrix Multiply,4096,3,0.130,0.096,0.073,0.241,0.077,N/A,true,N/A,N/A
+Matrix Addition,4096,3,0.017,0.011,0.011,0.029,0.011,N/A,false,N/A,N/A
+Matrix Subtraction,4096,3,0.010,0.000,0.010,0.010,0.010,N/A,false,N/A,N/A
+Matrix Determinant,4096,3,0.122,0.001,0.121,0.123,0.122,N/A,false,N/A,N/A
+Matrix Inversion,4096,3,0.444,0.116,0.373,0.577,0.381,N/A,false,N/A,N/A
+Linear System Solving,4096,3,0.415,0.011,0.405,0.426,0.413,0.00,false,N/A,N/A
+Matrix Frobenius Norm,4096,3,0.002,0.000,0.002,0.002,0.002,N/A,false,N/A,N/A
+Matrix 1-Norm,4096,3,0.002,0.000,0.002,0.002,0.002,N/A,false,N/A,N/A
+Matrix Infinity-Norm,4096,3,0.002,0.000,0.002,0.002,0.002,N/A,false,N/A,N/A
+Matrix 2-Norm Approx,4096,3,0.610,0.004,0.606,0.613,0.611,N/A,false,N/A,N/A
+LU Decomposition,4096,3,0.096,0.007,0.092,0.104,0.093,N/A,false,N/A,N/A
+QR Decomposition,4096,3,0.237,0.000,0.237,0.238,0.237,N/A,false,N/A,N/A
+Cholesky Decomposition,4096,3,0.041,0.002,0.039,0.044,0.040,N/A,false,N/A,N/A
+Matrix Rank,4096,3,0.239,0.001,0.238,0.240,0.239,N/A,false,N/A,N/A
+Condition Number,4096,3,1.448,0.006,1.441,1.452,1.450,N/A,false,N/A,N/A
+Matrix Trace,4096,3,0.000,0.000,0.000,0.000,0.000,N/A,false,N/A,N/A
+Matrix Transpose,4096,3,0.006,0.000,0.005,0.006,0.005,N/A,false,N/A,N/A
+Standard Matrix Multiply,16384,3,4.280,0.373,4.064,4.711,4.066,0.00,false,N/A,N/A
+Cache-Optimized Multiply,16384,3,1.687,0.095,1.584,1.772,1.706,N/A,false,N/A,N/A
+Parallel Matrix Multiply,16384,3,0.305,0.082,0.247,0.399,0.268,N/A,true,N/A,N/A
+Strassen Matrix Multiply,16384,3,3.586,0.042,3.548,3.630,3.580,N/A,false,N/A,N/A
+SIMD Matrix Multiply,16384,3,2.049,0.042,2.015,2.096,2.037,N/A,false,N/A,N/A
+Winograd Matrix Multiply,16384,3,1.465,0.001,1.464,1.466,1.465,N/A,false,N/A,N/A
+Parallel Winograd Matrix Multiply,16384,3,0.341,0.140,0.242,0.500,0.279,N/A,true,N/A,N/A
+Matrix Addition,16384,3,0.032,0.003,0.030,0.035,0.030,N/A,false,N/A,N/A
+Matrix Subtraction,16384,3,0.029,0.000,0.029,0.030,0.029,N/A,false,N/A,N/A
+Matrix Determinant,16384,3,0.522,0.008,0.512,0.529,0.524,N/A,false,N/A,N/A
+Matrix Inversion,16384,3,2.828,0.009,2.822,2.838,2.824,N/A,false,N/A,N/A
+Linear System Solving,16384,3,3.320,0.034,3.289,3.357,3.313,0.00,false,N/A,N/A
+Matrix Frobenius Norm,16384,3,0.006,0.000,0.006,0.006,0.006,N/A,false,N/A,N/A
+Matrix 1-Norm,16384,3,0.008,0.000,0.008,0.008,0.008,N/A,false,N/A,N/A
+Matrix Infinity-Norm,16384,3,0.005,0.000,0.005,0.006,0.005,N/A,false,N/A,N/A
+Matrix 2-Norm Approx,16384,3,4.711,0.002,4.710,4.713,4.711,N/A,false,N/A,N/A
+LU Decomposition,16384,3,0.669,0.019,0.650,0.687,0.670,N/A,false,N/A,N/A
+QR Decomposition,16384,3,1.827,0.043,1.791,1.875,1.814,N/A,false,N/A,N/A
+Cholesky Decomposition,16384,3,0.273,0.004,0.271,0.278,0.271,N/A,false,N/A,N/A
+Matrix Rank,16384,3,1.803,0.021,1.785,1.826,1.798,N/A,false,N/A,N/A
+Condition Number,16384,3,11.632,0.059,11.591,11.699,11.605,N/A,false,N/A,N/A
+Matrix Trace,16384,3,0.001,0.000,0.000,0.001,0.001,N/A,false,N/A,N/A
+Matrix Transpose,16384,3,0.023,0.001,0.022,0.024,0.023,N/A,false,N/A,N/A
+Standard Matrix Multiply,65536,3,34.125,0.134,34.044,34.280,34.052,0.00,false,N/A,N/A
+Cache-Optimized Multiply,65536,3,12.621,0.047,12.593,12.675,12.594,N/A,false,N/A,N/A
+Parallel Matrix Multiply,65536,3,1.893,0.275,1.728,2.211,1.742,N/A,true,N/A,N/A
+Strassen Matrix Multiply,65536,3,26.105,0.225,25.856,26.294,26.164,N/A,false,N/A,N/A
+SIMD Matrix Multiply,65536,3,16.163,0.066,16.099,16.230,16.162,N/A,false,N/A,N/A
+Winograd Matrix Multiply,65536,3,11.916,0.016,11.901,11.933,11.913,N/A,false,N/A,N/A
+Parallel Winograd Matrix Multiply,65536,3,2.306,0.147,2.154,2.447,2.317,N/A,true,N/A,N/A
+Matrix Addition,65536,3,0.125,0.011,0.115,0.136,0.123,N/A,false,N/A,N/A
+Matrix Subtraction,65536,3,0.114,0.001,0.113,0.114,0.114,N/A,false,N/A,N/A
+Matrix Determinant,65536,3,3.912,0.026,3.882,3.927,3.927,N/A,false,N/A,N/A
+Matrix Inversion,65536,3,22.577,0.520,22.248,23.177,22.308,N/A,false,N/A,N/A
+Linear System Solving,65536,3,26.577,0.150,26.441,26.738,26.553,0.00,false,N/A,N/A
+Matrix Frobenius Norm,65536,3,0.020,0.000,0.020,0.020,0.020,N/A,false,N/A,N/A
+Matrix 1-Norm,65536,3,0.029,0.000,0.029,0.029,0.029,N/A,false,N/A,N/A
+Matrix Infinity-Norm,65536,3,0.020,0.000,0.019,0.020,0.020,N/A,false,N/A,N/A
+Matrix 2-Norm Approx,65536,3,37.681,0.142,37.555,37.835,37.653,N/A,false,N/A,N/A
+LU Decomposition,65536,3,5.026,0.068,4.949,5.076,5.054,N/A,false,N/A,N/A
+QR Decomposition,65536,3,20.761,0.049,20.726,20.817,20.741,N/A,false,N/A,N/A
+Cholesky Decomposition,65536,3,1.918,0.029,1.895,1.951,1.909,N/A,false,N/A,N/A
+Matrix Rank,65536,3,20.797,0.048,20.752,20.847,20.791,N/A,false,N/A,N/A
+Condition Number,65536,3,95.160,1.155,94.483,96.493,94.503,N/A,false,N/A,N/A
+Matrix Trace,65536,3,0.003,0.000,0.003,0.003,0.003,N/A,false,N/A,N/A
+Matrix Transpose,65536,3,0.116,0.011,0.106,0.128,0.114,N/A,false,N/A,N/A
+Standard Matrix Multiply,262144,3,294.296,1.875,292.138,295.530,295.219,0.00,false,N/A,N/A
+Cache-Optimized Multiply,262144,3,101.392,0.218,101.162,101.594,101.418,N/A,false,N/A,N/A
+Parallel Matrix Multiply,262144,3,16.871,0.221,16.710,17.122,16.780,N/A,true,N/A,N/A
+Strassen Matrix Multiply,262144,3,185.438,2.957,183.731,188.853,183.732,N/A,false,N/A,N/A
+SIMD Matrix Multiply,262144,3,159.934,2.354,157.330,161.910,160.562,N/A,false,N/A,N/A
+Winograd Matrix Multiply,262144,3,130.020,1.230,128.600,130.730,130.729,N/A,false,N/A,N/A
+Parallel Winograd Matrix Multiply,262144,3,19.034,0.629,18.658,19.760,18.684,N/A,true,N/A,N/A
+Matrix Addition,262144,3,0.528,0.029,0.494,0.544,0.544,N/A,false,N/A,N/A
+Matrix Subtraction,262144,3,0.450,0.004,0.447,0.454,0.450,N/A,false,N/A,N/A
+Matrix Determinant,262144,3,30.465,0.012,30.458,30.479,30.458,N/A,false,N/A,N/A
+Matrix Inversion,262144,3,175.414,0.428,174.928,175.733,175.582,N/A,false,N/A,N/A
+Linear System Solving,262144,3,219.117,2.724,217.198,222.235,217.918,0.00,false,N/A,N/A
+Matrix Frobenius Norm,262144,3,0.075,0.000,0.075,0.075,0.075,N/A,false,N/A,N/A
+Matrix 1-Norm,262144,3,0.111,0.002,0.110,0.112,0.110,N/A,false,N/A,N/A
+Matrix Infinity-Norm,262144,3,0.074,0.001,0.074,0.075,0.074,N/A,false,N/A,N/A
+Matrix 2-Norm Approx,262144,3,308.315,1.168,307.571,309.661,307.712,N/A,false,N/A,N/A
+LU Decomposition,262144,3,37.322,0.618,36.611,37.717,37.639,N/A,false,N/A,N/A
+QR Decomposition,262144,3,196.714,0.639,195.985,197.174,196.984,N/A,false,N/A,N/A
+Cholesky Decomposition,262144,3,14.523,0.052,14.474,14.577,14.517,N/A,false,N/A,N/A
+Matrix Rank,262144,3,196.721,0.749,196.116,197.559,196.488,N/A,false,N/A,N/A
+Condition Number,262144,3,782.484,7.471,777.060,791.006,779.388,N/A,false,N/A,N/A
+Matrix Trace,262144,3,0.006,0.002,0.005,0.008,0.005,N/A,false,N/A,N/A
+Matrix Transpose,262144,3,0.587,0.083,0.537,0.682,0.542,N/A,false,N/A,N/A
