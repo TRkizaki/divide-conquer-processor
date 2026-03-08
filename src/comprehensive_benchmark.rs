@@ -416,9 +416,14 @@ impl ComprehensiveBenchmarkRunner {
         for &thread_count in thread_counts {
             println!("{}", format!("Testing with {} threads", thread_count).bright_yellow());
             
-            // Set thread pool size
+            // Build thread pool with per-thread core affinity
             let pool = rayon::ThreadPoolBuilder::new()
                 .num_threads(thread_count)
+                .start_handler(move |thread_index| {
+                    // Pin each worker thread to a specific core
+                    let core_id = core_affinity::CoreId { id: thread_index };
+                    let _ = core_affinity::set_for_current(core_id);
+                })
                 .build()
                 .unwrap();
             

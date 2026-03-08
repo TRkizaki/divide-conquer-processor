@@ -286,22 +286,23 @@ impl AffinityBenchmarkRunner {
             start.elapsed().as_secs_f64() * 1000.0
         };
 
-        // Build thread pool with specific thread count
-        let pool = rayon::ThreadPoolBuilder::new()
-            .num_threads(thread_count)
-            .build()
-            .unwrap();
-
-        // Set CPU affinity for threads if possible
+        // Build thread pool with per-thread CPU affinity binding
         let affinity_cores: Vec<core_affinity::CoreId> = core_ids
             .iter()
             .map(|&id| core_affinity::CoreId { id })
             .collect();
 
-        // Attempt to set affinity on main thread as a signal
-        if let Some(first_core) = affinity_cores.first() {
-            let _ = core_affinity::set_for_current(*first_core);
-        }
+        let cores_for_handler = affinity_cores.clone();
+        let pool = rayon::ThreadPoolBuilder::new()
+            .num_threads(thread_count)
+            .start_handler(move |thread_index| {
+                // Pin each Rayon worker thread to a specific core
+                if thread_index < cores_for_handler.len() {
+                    let _ = core_affinity::set_for_current(cores_for_handler[thread_index]);
+                }
+            })
+            .build()
+            .unwrap();
 
         let mut times = Vec::new();
 
