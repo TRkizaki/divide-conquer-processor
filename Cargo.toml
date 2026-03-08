@@ -35,6 +35,10 @@ libc = "0.2"
 sysinfo = "0.32"
 perf-event = "0.4"
 
+# Thread affinity for P-core/E-core experiments
+core_affinity = "0.8"
+num_cpus = "1.16"
+
 # Cross-platform validation dependencies
 # (rayon already included above)
 

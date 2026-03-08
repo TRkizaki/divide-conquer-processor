@@ -10,6 +10,7 @@ mod data_generator;
 mod geometry;
 mod matrix;
 mod sorting;
+mod thread_affinity;
 mod visualization;
 
 use benchmark::BenchmarkRunner;
@@ -17,6 +18,7 @@ use comprehensive_benchmark::ComprehensiveBenchmarkRunner;
 use advanced_benchmark::AdvancedBenchmarkRunner;
 use cross_platform_validation::CrossPlatformValidator;
 use data_generator::DataGenerator;
+use thread_affinity::{AffinityBenchmarkRunner, CoreTopology};
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -90,6 +92,27 @@ enum Commands {
         #[arg(short, long)]
         threading: bool,
     },
+    /// Thread affinity benchmark with P-core/E-core analysis
+    Affinity {
+        /// Data size for sorting benchmarks
+        #[arg(short, long, default_value_t = 500000)]
+        size: usize,
+        /// Number of runs per test
+        #[arg(short, long, default_value_t = 10)]
+        runs: usize,
+        /// Include thread scaling with affinity
+        #[arg(short, long)]
+        scaling: bool,
+    },
+    /// Threshold optimization experiment
+    Threshold {
+        /// Data size for threshold testing
+        #[arg(short, long, default_value_t = 1000000)]
+        size: usize,
+        /// Number of runs per threshold value
+        #[arg(short, long, default_value_t = 5)]
+        runs: usize,
+    },
     /// Generate visualization of results
     Visualize {
         /// Input results file path
@@ -126,6 +149,14 @@ fn main() {
         Commands::Publication { runs, extended } => {
             println!("{}", "Running publication-quality benchmark...".green());
             run_publication_benchmark(*runs, *extended);
+        }
+        Commands::Affinity { size, runs, scaling } => {
+            println!("{}", "Running thread affinity benchmark...".green());
+            run_affinity_benchmark(*size, *runs, *scaling);
+        }
+        Commands::Threshold { size, runs } => {
+            println!("{}", "Running threshold optimization...".green());
+            run_threshold_optimization(*size, *runs);
         }
         Commands::Visualize { input, output } => {
             println!("{}", "Generating visualization...".green());
@@ -220,8 +251,9 @@ fn run_publication_benchmark(runs: usize, extended: bool) {
     let mut runner = ComprehensiveBenchmarkRunner::new();
     
     // Standard data sizes for comprehensive analysis
-    let standard_sizes = vec![1000, 5000, 10000, 25000, 50000];
-    let extended_sizes = vec![100000, 250000, 500000, 1000000];
+    // Reviewer feedback: sizes must exceed cache capacity to validate cache optimizations
+    let standard_sizes = vec![10000, 50000, 100000, 500000, 1000000];
+    let extended_sizes = vec![2000000, 5000000, 10000000];
     
     // 1. Comprehensive sorting benchmarks with std library comparisons
     let benchmark_sizes = if extended {
@@ -242,11 +274,12 @@ fn run_publication_benchmark(runs: usize, extended: bool) {
     runner.analyze_scalability("Quick Sort", &standard_sizes, false);
     runner.analyze_scalability("Quick Sort", &standard_sizes, true);
     
-    // 4. Parallel efficiency analysis
+    // 4. Parallel efficiency analysis (using larger data to show real scalability)
     println!("\n{}", "=== Parallel Efficiency Analysis ===".bright_green().bold());
-    let thread_counts = vec![1, 2, 4, 8, 14, 20]; // Based on system specs
-    runner.analyze_parallel_efficiency("Merge Sort", 50000, &thread_counts);
-    runner.analyze_parallel_efficiency("Quick Sort", 50000, &thread_counts);
+    let thread_counts = vec![1, 2, 4, 6, 8, 10, 12, 14]; // Physical cores only (no HT)
+    let parallel_data_size = 1_000_000; // 1M elements to exceed cache
+    runner.analyze_parallel_efficiency("Merge Sort", parallel_data_size, &thread_counts);
+    runner.analyze_parallel_efficiency("Quick Sort", parallel_data_size, &thread_counts);
     
     // 5. Geometry algorithms comprehensive benchmarks
     match runner.run_geometry_benchmarks(runs) {
@@ -354,6 +387,46 @@ fn run_advanced_benchmark(_runs: usize, sizes: &[usize]) {
         }
         Err(e) => println!("{}", format!("Error saving advanced results: {}", e).red()),
     }
+}
+
+fn run_affinity_benchmark(size: usize, runs: usize, include_scaling: bool) {
+    println!("{}", "=== Thread Affinity & Core Topology Analysis ===".bright_magenta().bold());
+    println!("{}", "P-core/E-core separation | Hyperthreading impact | Thread placement".cyan());
+
+    let mut runner = AffinityBenchmarkRunner::new();
+
+    // Run comprehensive affinity benchmarks
+    runner.run_comprehensive_affinity_benchmark(size, runs);
+
+    // Optional: thread scaling with affinity control
+    if include_scaling {
+        let topology = &runner.topology;
+        let max_cores = topology.total_physical_cores;
+        let thread_counts: Vec<usize> = (1..=max_cores)
+            .filter(|&n| n == 1 || n == 2 || n == 4 || n == 6 || n == 8 || n == max_cores)
+            .collect();
+
+        runner.run_scaling_with_affinity("Merge Sort", size, &thread_counts, runs);
+        runner.run_scaling_with_affinity("Quick Sort", size, &thread_counts, runs);
+    }
+
+    // Save results
+    match runner.save_results("affinity_benchmark") {
+        Ok(_) => {
+            println!("\n{}", "Thread affinity benchmark completed!".bright_green().bold());
+            println!("Generated files in Generated_Data/Affinity_Benchmarks/");
+        }
+        Err(e) => println!("{}", format!("Error saving results: {}", e).red()),
+    }
+}
+
+fn run_threshold_optimization(size: usize, runs: usize) {
+    println!("{}", "=== Parallel Threshold Optimization ===".bright_magenta().bold());
+    println!("{}", "Finding optimal sequential/parallel crossover point".cyan());
+
+    thread_affinity::optimize_threshold("Merge Sort", size, runs);
+    println!();
+    thread_affinity::optimize_threshold("Quick Sort", size, runs);
 }
 
 fn run_cross_platform_validation(runs: usize, include_optimization: bool, include_threading: bool) {
