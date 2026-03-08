@@ -1,5 +1,3 @@
-use rayon::prelude::*;
-
 /// Default threshold for switching from parallel to sequential execution.
 /// Based on hardware-aware analysis: below this size, thread overhead
 /// exceeds parallelization benefit.
@@ -318,7 +316,8 @@ mod tests {
     fn test_merge_sort_empty() {
         let mut arr: Vec<i32> = vec![];
         merge_sort(&mut arr);
-        assert_eq!(arr, vec![]);
+        let expected: Vec<i32> = vec![];
+        assert_eq!(arr, expected);
     }
 
     #[test]

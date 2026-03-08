@@ -18,7 +18,7 @@ use comprehensive_benchmark::ComprehensiveBenchmarkRunner;
 use advanced_benchmark::AdvancedBenchmarkRunner;
 use cross_platform_validation::CrossPlatformValidator;
 use data_generator::DataGenerator;
-use thread_affinity::{AffinityBenchmarkRunner, CoreTopology};
+use thread_affinity::AffinityBenchmarkRunner;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
