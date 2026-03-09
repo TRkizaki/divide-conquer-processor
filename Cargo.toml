@@ -39,6 +39,9 @@ perf-event = "0.4"
 core_affinity = "0.8"
 num_cpus = "1.16"
 
+# Library comparisons for benchmarking
+ndarray = "0.16"
+
 # Cross-platform validation dependencies
 # (rayon already included above)
 

@@ -9,6 +9,7 @@ mod cross_platform_validation;
 mod data_generator;
 mod geometry;
 mod matrix;
+mod library_comparison;
 mod sorting;
 mod thread_affinity;
 mod visualization;
@@ -18,6 +19,7 @@ use comprehensive_benchmark::ComprehensiveBenchmarkRunner;
 use advanced_benchmark::AdvancedBenchmarkRunner;
 use cross_platform_validation::CrossPlatformValidator;
 use data_generator::DataGenerator;
+use library_comparison::LibraryComparisonRunner;
 use thread_affinity::AffinityBenchmarkRunner;
 
 #[derive(Parser)]
@@ -92,6 +94,12 @@ enum Commands {
         #[arg(short, long)]
         threading: bool,
     },
+    /// Compare against standard libraries (std, Rayon, ndarray)
+    Compare {
+        /// Number of runs per test
+        #[arg(short, long, default_value_t = 10)]
+        runs: usize,
+    },
     /// Thread affinity benchmark with P-core/E-core analysis
     Affinity {
         /// Data size for sorting benchmarks
@@ -149,6 +157,10 @@ fn main() {
         Commands::Publication { runs, extended } => {
             println!("{}", "Running publication-quality benchmark...".green());
             run_publication_benchmark(*runs, *extended);
+        }
+        Commands::Compare { runs } => {
+            println!("{}", "Running library comparison benchmarks...".green());
+            run_library_comparison(*runs);
         }
         Commands::Affinity { size, runs, scaling } => {
             println!("{}", "Running thread affinity benchmark...".green());
@@ -386,6 +398,33 @@ fn run_advanced_benchmark(_runs: usize, sizes: &[usize]) {
             println!("  Algorithmic constants (empirical analysis, hidden factors)");
         }
         Err(e) => println!("{}", format!("Error saving advanced results: {}", e).red()),
+    }
+}
+
+fn run_library_comparison(runs: usize) {
+    println!("{}", "=== Library Comparison Benchmarks ===".bright_magenta().bold());
+    println!("{}", "Custom D&C implementations vs established libraries".cyan());
+
+    let mut runner = LibraryComparisonRunner::new();
+
+    // Sorting: test at sizes that exceed cache
+    let sort_sizes = vec![10_000, 100_000, 1_000_000];
+    runner.compare_sorting(&sort_sizes, runs);
+
+    // Matrix: test at sizes showing cache effects
+    let matrix_sizes = vec![64, 128, 256, 512];
+    runner.compare_matrix_multiply(&matrix_sizes, runs);
+
+    // Calculate relative speedups
+    runner.calculate_speedups();
+
+    // Save results
+    match runner.save_results("library") {
+        Ok(_) => {
+            println!("\n{}", "Library comparison completed!".bright_green().bold());
+            println!("Generated files in Generated_Data/Library_Comparisons/");
+        }
+        Err(e) => println!("{}", format!("Error saving results: {}", e).red()),
     }
 }
 
