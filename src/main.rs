@@ -10,6 +10,7 @@ mod data_generator;
 mod geometry;
 mod matrix;
 mod library_comparison;
+mod publication_figures;
 mod sorting;
 mod thread_affinity;
 mod visualization;
@@ -121,6 +122,8 @@ enum Commands {
         #[arg(short, long, default_value_t = 5)]
         runs: usize,
     },
+    /// Generate publication-quality SVG figures
+    Figures,
     /// Generate visualization of results
     Visualize {
         /// Input results file path
@@ -169,6 +172,13 @@ fn main() {
         Commands::Threshold { size, runs } => {
             println!("{}", "Running threshold optimization...".green());
             run_threshold_optimization(*size, *runs);
+        }
+        Commands::Figures => {
+            println!("{}", "Generating publication-quality SVG figures...".green());
+            match publication_figures::generate_all_figures() {
+                Ok(_) => println!("{}", "All figures generated in Generated_Data/Figures/".bright_green().bold()),
+                Err(e) => println!("{}", format!("Error generating figures: {}", e).red()),
+            }
         }
         Commands::Visualize { input, output } => {
             println!("{}", "Generating visualization...".green());
