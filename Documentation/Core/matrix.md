@@ -253,15 +253,23 @@ let corner = large_matrix.submatrix(0, 2, 0, 2);
 println!("Top-left 2x2 corner: {:?}", corner);
 ```
 
+## Advanced Algorithms
+
+The following advanced algorithms are implemented in the matrix module. For detailed documentation, see [Advanced_matrix.md](../Advanced/Advanced_matrix.md):
+
+- **Winograd's Algorithm**: `winograd_multiply()` and `parallel_winograd_multiply()`
+- **Cache-Optimized Blocking**: `cache_optimized_multiply()` with configurable block size
+- **SIMD Vectorization**: `simd_multiply()` using AVX2 instructions
+- **Parallel Multiplication**: `parallel_multiply()` using Rayon
+- **Linear Algebra**: `determinant()`, `inverse()`, `solve_linear_system()`, `lu_decomposition()`, `qr_decomposition()`, `cholesky_decomposition()`, `matrix_rank()`, `condition_number_approx()`
+
 ## Future Enhancements
 
-- Full Strassen algorithm implementation with recursive decomposition
-- Additional algorithms (Winograd, Coppersmith-Winograd)
-- SIMD optimizations for standard multiplication
 - Sparse matrix support
-- Parallel computation support
-- More comprehensive error types
+- GPU acceleration (CUDA/OpenCL)
 
-## License
+## Related Documentation
 
-This library is provided as-is for educational and research purposes.
+- **[Advanced_matrix.md](../Advanced/Advanced_matrix.md)** - Advanced matrix algorithms (Strassen, Winograd, SIMD, Parallel, etc.)
+- **[library_comparison.md](library_comparison.md)** - Benchmarks against ndarray
+- **[benchmark.md](benchmark.md)** - Basic performance measurement
