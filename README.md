@@ -92,14 +92,7 @@ divide-conquer-processor/
 │   │   ├── cross_platform_validation_distribution_analysis.csv
 │   │   ├── cross_platform_validation_optimization_impact.csv
 │   │   └── cross_platform_validation_thread_scaling.csv
-│   └── Figures/                           # Publication-quality SVG charts
-│       ├── fig2_sorting_speedup.svg
-│       ├── fig3_matrix_comparison.svg
-│       ├── fig4_thread_scaling.svg
-│       ├── fig5_parallel_efficiency.svg
-│       ├── fig6_sorting_library_comparison.svg
-│       ├── fig7_compiler_optimization.svg
-│       └── fig8_distribution_sensitivity.svg
+│   └── Figures/                           # Publication-quality SVG charts---have not implement yet
 └── ALGORITHM.md                           # Algorithm documentation
 ```
 
@@ -276,16 +269,6 @@ All benchmark data is exported to `Generated_Data/` in JSON and CSV formats:
 - **`cross_platform_validation_distribution_analysis.csv`** - Data distribution performance
 - **`cross_platform_validation_optimization_impact.csv`** - Compiler optimization analysis
 - **`cross_platform_validation_thread_scaling.csv`** - Extended threading analysis
-
-### Publication Figures (`Generated_Data/Figures/`)
-Generated via `cargo run --release -- figures`:
-- **`fig2_sorting_speedup.svg`** - Parallel speedup vs data size
-- **`fig3_matrix_comparison.svg`** - Matrix algorithm comparison bar chart
-- **`fig4_thread_scaling.svg`** - Thread scaling with core affinity
-- **`fig5_parallel_efficiency.svg`** - Efficiency percentage vs thread count
-- **`fig6_sorting_library_comparison.svg`** - Custom vs std vs Rayon
-- **`fig7_compiler_optimization.svg`** - Optimization level (O0-O3) impact
-- **`fig8_distribution_sensitivity.svg`** - Data distribution sensitivity
 
 ## Documentation
 
