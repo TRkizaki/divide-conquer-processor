@@ -120,7 +120,7 @@ Benchmarks decomposition and solving operations at matrix sizes 64, 128, 256, 51
 
 ## Output Files
 
-Results are saved to `Generated_Data/Publication_Benchmarks/`:
+Results are saved to the project root:
 
 - **`publication_benchmark_full_report.json`** - Complete structured report including system specs, methodology, and all results
 - **`publication_benchmark_detailed_results.csv`** - Per-algorithm performance metrics

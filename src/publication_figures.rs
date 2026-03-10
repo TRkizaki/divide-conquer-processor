@@ -27,9 +27,9 @@ pub fn generate_all_figures() -> Result<(), Box<dyn std::error::Error>> {
     fs::create_dir_all(output_dir)?;
 
     // Read benchmark data files
-    let pub_report_path = "Generated_Data/Publication_Benchmarks/publication_benchmark_full_report.json";
-    let pub_scalability_path = "Generated_Data/Publication_Benchmarks/publication_benchmark_scalability.csv";
-    let pub_efficiency_path = "Generated_Data/Publication_Benchmarks/publication_benchmark_parallel_efficiency.csv";
+    let pub_report_path = "publication_benchmark_full_report.json";
+    let pub_scalability_path = "publication_benchmark_scalability.csv";
+    let pub_efficiency_path = "publication_benchmark_parallel_efficiency.csv";
     let lib_comparison_path = "Generated_Data/Library_Comparisons/library_comparison.csv";
     let affinity_path = "Generated_Data/Affinity_Benchmarks/affinity_benchmark_affinity_results.csv";
 

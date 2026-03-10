@@ -71,12 +71,11 @@ divide-conquer-processor/
 │       ├── METHODOLOGY.md                # Detailed experimental methodology
 │       ├── REPRODUCIBILITY_GUIDE.md      # Complete reproduction instructions
 │       └── REPORT_FOR_PROJECT.md         # Comprehensive project analysis
+├── publication_benchmark_full_report.json   # Publication benchmark results
+├── publication_benchmark_detailed_results.csv
+├── publication_benchmark_scalability.csv
+├── publication_benchmark_parallel_efficiency.csv
 ├── Generated_Data/                        # Benchmark results and validation data
-│   ├── Publication_Benchmarks/
-│   │   ├── publication_benchmark_full_report.json
-│   │   ├── publication_benchmark_detailed_results.csv
-│   │   ├── publication_benchmark_scalability.csv
-│   │   └── publication_benchmark_parallel_efficiency.csv
 │   ├── Library_Comparisons/
 │   │   ├── library_comparison.json
 │   │   └── library_comparison.csv
@@ -245,7 +244,7 @@ cargo run --release -- figures
 
 All benchmark data is exported to `Generated_Data/` in JSON and CSV formats:
 
-### Publication Benchmarks (`Generated_Data/Publication_Benchmarks/`)
+### Publication Benchmarks (project root)
 - **`publication_benchmark_full_report.json`** - Complete structured dataset
 - **`publication_benchmark_detailed_results.csv`** - Statistical performance metrics
 - **`publication_benchmark_scalability.csv`** - Performance vs data size analysis
