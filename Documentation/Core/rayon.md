@@ -62,28 +62,64 @@ vec.iter().map(|x| heavy_computation(x)).collect();
 vec.par_iter().map(|x| heavy_computation(x)).collect();
 ```
 
-##  **Application in Our Project**
+## **Application in Our Project**
 
-### **Current Implementation:**
+### **True Parallel D&C via `rayon::join()`:**
+
+Our parallel sorting implementations use `rayon::join()` to parallelize the recursive divide-and-conquer structure, rather than delegating to `par_sort_unstable()`:
 
 ```rust
 pub fn parallel_merge_sort(arr: &mut [i32]) {
-    // Use regular processing for small data
-    if arr.len() <= 1000 {
-        merge_sort(arr);
+    parallel_merge_sort_with_threshold(arr, PARALLEL_THRESHOLD);
+}
+
+fn parallel_merge_sort_inner(arr: &mut [i32], buffer: &mut [i32], threshold: usize) {
+    if arr.len() <= threshold {
+        merge_sort_recursive(arr, 0, arr.len() - 1);
         return;
     }
-    
-    // Use parallel sorting for large data
-    arr.par_sort_unstable();  // ← Rayon's parallel sort
+
+    let mid = arr.len() / 2;
+    let (left_arr, right_arr) = arr.split_at_mut(mid);
+    let (left_buf, right_buf) = buffer.split_at_mut(mid);
+
+    // Parallel recursive calls using rayon::join (work-stealing)
+    rayon::join(
+        || parallel_merge_sort_inner(left_arr, left_buf, threshold),
+        || parallel_merge_sort_inner(right_arr, right_buf, threshold),
+    );
+
+    merge_with_buffer(arr, mid);
 }
+```
+
+### **Thread Affinity with `start_handler`:**
+
+For reproducible benchmarks on hybrid architectures (Intel P-core/E-core), we bind Rayon worker threads to specific cores using `ThreadPoolBuilder::start_handler`:
+
+```rust
+let pool = rayon::ThreadPoolBuilder::new()
+    .num_threads(thread_count)
+    .start_handler(move |thread_index| {
+        // Pin each Rayon worker thread to a specific core
+        if thread_index < cores.len() {
+            let _ = core_affinity::set_for_current(cores[thread_index]);
+        }
+    })
+    .build()
+    .unwrap();
+
+pool.install(|| {
+    parallel_merge_sort(&mut data);
+});
 ```
 
 ### **Expected Performance:**
 
-- **1000 elements**: Actually slower due to parallelization overhead
-- **10000 elements**: 2-3x speedup
-- **100000 elements**: 4-8x speedup (depending on CPU cores)
+- **< 8192 elements**: Sequential (below threshold)
+- **10,000 elements**: 2-3x speedup
+- **100,000 elements**: 4-8x speedup (depending on CPU cores)
+- **1,000,000 elements**: 8-15x speedup
 
 ##  **Real-World Applications**
 
@@ -132,4 +168,10 @@ let results: Vec<f64> = (0..1000000)
 .sort()     →  .par_sort()     // Parallel sorting!
 ```
 
-Rayon is called the library that **“democratized parallel processing”**. It made parallel programming, which traditionally required specialized knowledge, accessible to everyone
+Rayon is called the library that **”democratized parallel processing”**. It made parallel programming, which traditionally required specialized knowledge, accessible to everyone.
+
+## Related Documentation
+
+- **[sorting.md](sorting.md)** - True parallel D&C sort implementations using `rayon::join()`
+- **[thread_affinity.md](thread_affinity.md)** - Core binding with `ThreadPoolBuilder::start_handler`
+- **[library_comparison.md](library_comparison.md)** - Benchmarks comparing custom sorts vs Rayon `par_sort`
