@@ -39,12 +39,15 @@ cargo run --release -- publication --runs 20 --extended
 **Core Requirements:**
 ```toml
 # Rust toolchain
-rustc = "1.89.0+" 
+rustc = "1.89.0+"
 cargo = "1.89.0+"
 
 # Key dependencies (automatically installed)
 rayon = "1.8"           # Parallel processing
 criterion = "0.6.0"     # Benchmarking framework
+plotters = "0.3"        # SVG figure generation
+ndarray = "0.16"        # Library comparison benchmarks
+core_affinity = "0.8"   # CPU core binding
 memory-stats = "1.1"    # Memory monitoring
 statistical = "1.0"     # Statistical analysis
 serde = "1.0"          # Data serialization
@@ -130,13 +133,59 @@ cargo run --release -- matrix --size 512 --strassen
 # Computational geometry
 cargo run --release -- geometry --points 10000
 
+# Library comparison (vs std, Rayon, ndarray)
+cargo run --release -- compare --runs 10
+
+# Thread affinity analysis (P-core/E-core)
+cargo run --release -- affinity --size 500000 --runs 10 --scaling
+
+# Parallel threshold optimization
+cargo run --release -- threshold --size 1000000 --runs 5
+
+# Advanced hardware-aware benchmarking
+cargo run --release -- advanced --runs 5 --sizes 1000 5000 10000
+
+# Cross-platform validation
+cargo run --release -- validate --runs 3 --optimization --threading
+
+# Generate publication-quality SVG figures
+cargo run --release -- figures
+
 # Comprehensive suite
 cargo run --release -- all --small
 ```
 
 ### Expected Results Structure
 
+All benchmark data is output to `Generated_Data/` with the following structure:
+
 #### Generated Files
+
+```
+Generated_Data/
+├── Publication_Benchmarks/            # from: publication command
+│   ├── publication_benchmark_full_report.json
+│   ├── publication_benchmark_detailed_results.csv
+│   ├── publication_benchmark_scalability.csv
+│   └── publication_benchmark_parallel_efficiency.csv
+├── Library_Comparisons/               # from: compare command
+│   ├── library_comparison.json
+│   └── library_comparison.csv
+├── Affinity_Benchmarks/               # from: affinity command
+│   ├── affinity_benchmark_affinity_report.json
+│   └── affinity_benchmark_affinity_results.csv
+├── Advanced_Benchmarks/               # from: advanced command
+│   ├── advanced_benchmark_advanced_benchmark.json
+│   └── advanced_benchmark_advanced_metrics.csv
+├── Cross-Platform_validation/         # from: validate command
+│   ├── cross_platform_validation_validation_report.json
+│   ├── cross_platform_validation_validation_results.csv
+│   ├── cross_platform_validation_distribution_analysis.csv
+│   ├── cross_platform_validation_optimization_impact.csv
+│   └── cross_platform_validation_thread_scaling.csv
+└── Figures/                           # from: figures command
+    └── fig*.svg                       # Publication-quality SVG charts
+```
 
 **Full Report (JSON)**:
 ```
