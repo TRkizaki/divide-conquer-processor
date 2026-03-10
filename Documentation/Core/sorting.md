@@ -75,40 +75,58 @@ pub fn quick_sort(arr: &mut [i32])
 **Key Implementation Features:**
 
 - **In-place Sorting**: No additional memory allocation required
-- **Lomuto Partition Scheme**: Uses the last element as pivot
+- **Median-of-Three Pivot**: Selects median of first, middle, and last elements to mitigate worst-case O(n^2) on sorted data
+- **Insertion Sort Base Case**: Subarrays smaller than 16 elements use insertion sort for efficiency
 - **Recursive Divide**: Sorts subarrays independently
 - **Index Safety**: Prevents underflow with careful boundary checks
 
 **Partition Process:**
 
 ```rust
-fn partition(arr: &mut [i32], low: usize, high: usize) -> usize
+fn partition_median_of_three(arr: &mut [i32], low: usize, high: usize) -> usize
 ```
 
+- Median-of-three pivot selection reduces worst-case probability
 - Maintains invariant: elements ≤ pivot on left, elements > pivot on right
 - Returns pivot’s final position for recursive calls
 - Uses efficient swapping for element rearrangement
 
 ### Parallel Implementations
 
-Both parallel functions use **intelligent thresholds**:
+Both parallel functions use **true divide-and-conquer parallelism** via `rayon::join()`:
 
 ```rust
 pub fn parallel_merge_sort(arr: &mut [i32])
 pub fn parallel_quick_sort(arr: &mut [i32])
 ```
 
-**Smart Threshold Logic:**
+**True Parallel D&C Design:**
 
-- **Small arrays (≤ 1000 elements)**: Use sequential algorithms to avoid parallelization overhead
-- **Large arrays (> 1000 elements)**: Leverage Rayon’s `par_sort_unstable()` for maximum performance
+Unlike a simple wrapper around `par_sort_unstable()`, these implementations preserve the actual algorithm structure while parallelizing the recursive subproblem decomposition through Rayon’s work-stealing thread pool.
 
-**Why Rayon’s Built-in Sort?**
+```rust
+// Parallel recursive calls using rayon::join (work-stealing)
+rayon::join(
+    || parallel_merge_sort_inner(left_arr, left_buf, threshold),
+    || parallel_merge_sort_inner(right_arr, right_buf, threshold),
+);
+```
 
-- Highly optimized parallel implementation
-- Automatic work-stealing for load balancing
-- Cache-friendly memory access patterns
-- Production-ready parallel sorting algorithm
+**Configurable Thresholds:**
+
+- **`PARALLEL_THRESHOLD = 8192`**: Merge sort crossover point
+- **`QUICKSORT_PARALLEL_THRESHOLD = 4096`**: Quick sort crossover point
+- Below threshold: sequential execution to avoid thread overhead
+- Threshold-tuning functions available for experimentation
+
+**Threshold Experimentation:**
+
+```rust
+pub fn parallel_merge_sort_with_threshold(arr: &mut [i32], threshold: usize)
+pub fn parallel_quick_sort_with_threshold(arr: &mut [i32], threshold: usize)
+pub fn benchmark_merge_sort_threshold(data: &[i32], threshold: usize) -> f64
+pub fn benchmark_quick_sort_threshold(data: &[i32], threshold: usize) -> f64
+```
 
 ## Performance Characteristics
 
@@ -222,23 +240,19 @@ cargo test test_merge_sort
 cargo test -- --nocapture
 ```
 
-##  Dependencies
-
-Add to your `Cargo.toml`:
+## Dependencies
 
 ```toml
 [dependencies]
-rayon = "1.7"
-
-[dev-dependencies]
-# Add any testing dependencies here
+rayon = "1.8"
+rand = "0.9.1"  # for test data generation
 ```
 
 **Rayon Features Used:**
 
-- `par_sort_unstable()`: High-performance parallel sorting
+- `rayon::join()`: Fork-join parallelism for recursive D&C
 - Automatic work-stealing thread pool
-- SIMD optimizations where available
+- Configurable thread pool via `ThreadPoolBuilder` (used with core affinity)
 
 ##  Technical Implementation Notes
 
@@ -260,29 +274,21 @@ rayon = "1.7"
 - **In-place partitioning**: Quick sort minimizes memory allocation
 - **Cache-friendly merging**: Sequential memory access patterns in merge sort
 
-##  Future Enhancements
+## Future Enhancements
 
 Potential improvements for the implementation:
 
 1. **Generic Types**: Support for `T: Ord` instead of just `i32`
 2. **Custom Comparators**: Allow custom comparison functions
-3. **Hybrid Algorithms**: Combine algorithms for optimal performance
-4. **Memory Pool**: Reuse allocated memory for merge operations
-5. **SIMD Optimizations**: Vectorized operations for primitive types
+3. **Memory Pool**: Reuse allocated memory for merge operations
 
-##  Performance Benchmarks
+## Related Documentation
 
-Expected performance characteristics on modern hardware:
-
-|Dataset Size|Sequential (ms)|Parallel (ms)|Speedup|
-|------------|---------------|-------------|-------|
-|1,000       |0.1            |0.1          |1x     |
-|10,000      |1.2            |0.8          |1.5x   |
-|100,000     |15.3           |4.2          |3.6x   |
-|1,000,000   |180.5          |28.7         |6.3x   |
-
-*Results may vary based on system specifications and data patterns*
+- **[library_comparison.md](library_comparison.md)** - Benchmarks against std library and Rayon sorts
+- **[thread_affinity.md](thread_affinity.md)** - P-core/E-core affinity experiments for parallel sorts
+- **[comprehensive_benchmark.md](comprehensive_benchmark.md)** - Publication-quality benchmarking suite
+- **[rayon.md](rayon.md)** - Parallel processing with Rayon
 
 -----
 
-**Note**: This implementation prioritizes clarity and educational value while maintaining production-ready performance characteristics. The parallel implementations leverage Rayon’s highly optimized sorting algorithms for maximum real-world performance.
+**Note**: The parallel implementations use true divide-and-conquer parallelism via `rayon::join()`, preserving the algorithm structure while leveraging Rayon’s work-stealing thread pool for load balancing.
