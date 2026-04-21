@@ -28,5 +28,22 @@ serde_json = "1.0"
 
 colored = "3.0"
 
+chrono = { version = "0.4", features = ["serde"] }
+
+# Advanced benchmarking dependencies
+libc = "0.2"
+sysinfo = "0.32"
+perf-event = "0.4"
+
+# Thread affinity for P-core/E-core experiments
+core_affinity = "0.8"
+num_cpus = "1.16"
+
+# Library comparisons for benchmarking
+ndarray = "0.16"
+
+# Cross-platform validation dependencies
+# (rayon already included above)
+
 [dev-dependencies]
 criterion = { version = "0.6.0", features = ["html_reports"] }

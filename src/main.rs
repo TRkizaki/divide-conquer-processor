@@ -3,14 +3,25 @@ use colored::*;
 
 // Module declarations
 mod benchmark;
+mod comprehensive_benchmark;
+mod advanced_benchmark;
+mod cross_platform_validation;
 mod data_generator;
 mod geometry;
 mod matrix;
+mod library_comparison;
+mod publication_figures;
 mod sorting;
+mod thread_affinity;
 mod visualization;
 
 use benchmark::BenchmarkRunner;
+use comprehensive_benchmark::ComprehensiveBenchmarkRunner;
+use advanced_benchmark::AdvancedBenchmarkRunner;
+use cross_platform_validation::CrossPlatformValidator;
 use data_generator::DataGenerator;
+use library_comparison::LibraryComparisonRunner;
+use thread_affinity::AffinityBenchmarkRunner;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -54,6 +65,65 @@ enum Commands {
         #[arg(short, long)]
         small: bool,
     },
+    /// Comprehensive benchmark with detailed analysis and publication-ready data
+    Publication {
+        /// Number of runs per test
+        #[arg(short, long, default_value_t = 10)]
+        runs: usize,
+        /// Include extended scalability analysis
+        #[arg(short, long)]
+        extended: bool,
+    },
+    /// Advanced benchmarking with cache, energy, and NUMA analysis
+    Advanced {
+        /// Number of runs per test
+        #[arg(short, long, default_value_t = 5)]
+        runs: usize,
+        /// Data sizes to test
+        #[arg(short, long, default_values_t = vec![1000, 5000, 10000])]
+        sizes: Vec<usize>,
+    },
+    /// Cross-platform validation with statistical analysis
+    Validate {
+        /// Number of runs per test
+        #[arg(short, long, default_value_t = 5)]
+        runs: usize,
+        /// Include compiler optimization analysis
+        #[arg(short, long)]
+        optimization: bool,
+        /// Include extended thread scaling analysis
+        #[arg(short, long)]
+        threading: bool,
+    },
+    /// Compare against standard libraries (std, Rayon, ndarray)
+    Compare {
+        /// Number of runs per test
+        #[arg(short, long, default_value_t = 10)]
+        runs: usize,
+    },
+    /// Thread affinity benchmark with P-core/E-core analysis
+    Affinity {
+        /// Data size for sorting benchmarks
+        #[arg(short, long, default_value_t = 500000)]
+        size: usize,
+        /// Number of runs per test
+        #[arg(short, long, default_value_t = 10)]
+        runs: usize,
+        /// Include thread scaling with affinity
+        #[arg(short, long)]
+        scaling: bool,
+    },
+    /// Threshold optimization experiment
+    Threshold {
+        /// Data size for threshold testing
+        #[arg(short, long, default_value_t = 1000000)]
+        size: usize,
+        /// Number of runs per threshold value
+        #[arg(short, long, default_value_t = 5)]
+        runs: usize,
+    },
+    /// Generate publication-quality SVG figures
+    Figures,
     /// Generate visualization of results
     Visualize {
         /// Input results file path
@@ -87,9 +157,40 @@ fn main() {
             println!("{}", "Running comprehensive benchmark...".green());
             run_comprehensive_benchmark(*small);
         }
+        Commands::Publication { runs, extended } => {
+            println!("{}", "Running publication-quality benchmark...".green());
+            run_publication_benchmark(*runs, *extended);
+        }
+        Commands::Compare { runs } => {
+            println!("{}", "Running library comparison benchmarks...".green());
+            run_library_comparison(*runs);
+        }
+        Commands::Affinity { size, runs, scaling } => {
+            println!("{}", "Running thread affinity benchmark...".green());
+            run_affinity_benchmark(*size, *runs, *scaling);
+        }
+        Commands::Threshold { size, runs } => {
+            println!("{}", "Running threshold optimization...".green());
+            run_threshold_optimization(*size, *runs);
+        }
+        Commands::Figures => {
+            println!("{}", "Generating publication-quality SVG figures...".green());
+            match publication_figures::generate_all_figures() {
+                Ok(_) => println!("{}", "All figures generated in Generated_Data/Figures/".bright_green().bold()),
+                Err(e) => println!("{}", format!("Error generating figures: {}", e).red()),
+            }
+        }
         Commands::Visualize { input, output } => {
             println!("{}", "Generating visualization...".green());
             run_visualization(input, output);
+        }
+        Commands::Advanced { runs, sizes } => {
+            println!("{}", "Running advanced benchmarking analysis...".green());
+            run_advanced_benchmark(*runs, sizes);
+        }
+        Commands::Validate { runs, optimization, threading } => {
+            println!("{}", "Running cross-platform validation...".green());
+            run_cross_platform_validation(*runs, *optimization, *threading);
         }
     }
 }
@@ -166,9 +267,298 @@ fn run_comprehensive_benchmark(small: bool) {
     }
 }
 
+fn run_publication_benchmark(runs: usize, extended: bool) {
+    println!("{}", "=== Publication-Quality Comprehensive Benchmark ===".bright_magenta().bold());
+    
+    let mut runner = ComprehensiveBenchmarkRunner::new();
+    
+    // Standard data sizes for comprehensive analysis
+    // Reviewer feedback: sizes must exceed cache capacity to validate cache optimizations
+    let standard_sizes = vec![10000, 50000, 100000, 500000, 1000000];
+    let extended_sizes = vec![2000000, 5000000, 10000000];
+    
+    // 1. Comprehensive sorting benchmarks with std library comparisons
+    let benchmark_sizes = if extended {
+        [&standard_sizes[..], &extended_sizes[..]].concat()
+    } else {
+        standard_sizes.clone()
+    };
+    
+    runner.benchmark_sorting_comprehensive(&benchmark_sizes, runs);
+    
+    // 2. Calculate speedups
+    runner.calculate_speedups();
+    
+    // 3. Scalability analysis
+    println!("\n{}", "=== Scalability Analysis ===".bright_green().bold());
+    runner.analyze_scalability("Merge Sort", &standard_sizes, false);
+    runner.analyze_scalability("Merge Sort", &standard_sizes, true);
+    runner.analyze_scalability("Quick Sort", &standard_sizes, false);
+    runner.analyze_scalability("Quick Sort", &standard_sizes, true);
+    
+    // 4. Parallel efficiency analysis (using larger data to show real scalability)
+    println!("\n{}", "=== Parallel Efficiency Analysis ===".bright_green().bold());
+    let thread_counts = vec![1, 2, 4, 6, 8, 10, 12, 14]; // Physical cores only (no HT)
+    let parallel_data_size = 1_000_000; // 1M elements to exceed cache
+    runner.analyze_parallel_efficiency("Merge Sort", parallel_data_size, &thread_counts);
+    runner.analyze_parallel_efficiency("Quick Sort", parallel_data_size, &thread_counts);
+    
+    // 5. Geometry algorithms comprehensive benchmarks
+    match runner.run_geometry_benchmarks(runs) {
+        Ok(_) => println!("\n{}", "✓ Geometry algorithms benchmarked successfully!".bright_green().bold()),
+        Err(e) => println!("{}", format!("Error running geometry benchmarks: {}", e).red()),
+    }
+    
+    // 6. Matrix algorithms comprehensive benchmarks
+    match runner.run_matrix_benchmarks(runs) {
+        Ok(_) => println!("\n{}", "✓ Matrix algorithms benchmarked successfully!".bright_green().bold()),
+        Err(e) => println!("{}", format!("Error running matrix benchmarks: {}", e).red()),
+    }
+    
+    // 7. Save comprehensive results
+    match runner.save_comprehensive_results("publication_benchmark") {
+        Ok(_) => {
+            println!("\n{}", "✓ Publication-quality benchmark data generated successfully!".bright_green().bold());
+            println!("Generated files:");
+            println!("  • publication_benchmark_full_report.json - Complete structured data");
+            println!("  • publication_benchmark_detailed_results.csv - Detailed performance metrics");
+            println!("  • publication_benchmark_scalability.csv - Scalability analysis data");
+            println!("  • publication_benchmark_parallel_efficiency.csv - Parallel efficiency analysis");
+        }
+        Err(e) => println!("{}", format!("Error saving results: {}", e).red()),
+    }
+}
+
 fn run_visualization(input: &str, output: &str) {
     match visualization::generate_performance_charts(input, output) {
         Ok(_) => println!("{}", format!("Visualization saved to {}", output).green()),
         Err(e) => println!("{}", format!("Error generating visualization: {}", e).red()),
+    }
+}
+
+fn run_advanced_benchmark(_runs: usize, sizes: &[usize]) {
+    println!("{}", "=== Advanced Benchmarking Analysis ===".bright_magenta().bold());
+    println!("{}", "Cache Performance • Energy Consumption • NUMA Effects • Algorithmic Constants".cyan());
+    
+    let mut runner = AdvancedBenchmarkRunner::new();
+    
+    // Test different sorting algorithms with advanced metrics
+    for algorithm in &["merge_sort", "quick_sort"] {
+        println!("\n{}", format!("=== Advanced Analysis: {} ===", algorithm).bright_green().bold());
+        
+        match algorithm {
+            &"merge_sort" => {
+                let benchmark_fn = |size: usize| -> f64 {
+                    let mut data = DataGenerator::generate_random_integers(size);
+                    let start = std::time::Instant::now();
+                    crate::sorting::merge_sort(&mut data);
+                    start.elapsed().as_secs_f64() * 1000.0
+                };
+                
+                match runner.extended_scalability_analysis("Merge Sort", benchmark_fn, sizes) {
+                    Ok(_) => println!("Advanced merge sort analysis completed"),
+                    Err(e) => println!("Error in merge sort analysis: {}", e),
+                }
+            }
+            &"quick_sort" => {
+                let benchmark_fn = |size: usize| -> f64 {
+                    let mut data = DataGenerator::generate_random_integers(size);
+                    let start = std::time::Instant::now();
+                    crate::sorting::quick_sort(&mut data);
+                    start.elapsed().as_secs_f64() * 1000.0
+                };
+                
+                match runner.extended_scalability_analysis("Quick Sort", benchmark_fn, sizes) {
+                    Ok(_) => println!("Advanced quick sort analysis completed"),
+                    Err(e) => println!("Error in quick sort analysis: {}", e),
+                }
+            }
+            _ => {}
+        }
+    }
+    
+    // Test matrix multiplication with advanced metrics
+    println!("\n{}", "=== Advanced Analysis: Matrix Multiplication ===".bright_green().bold());
+    
+    let matrix_benchmark_fn = |size: usize| -> f64 {
+        let matrix_size = (size as f64).sqrt() as usize + 1;
+        let (matrix_a, matrix_b) = DataGenerator::generate_random_matrices(matrix_size);
+        let start = std::time::Instant::now();
+        let _ = crate::matrix::standard_multiply(&matrix_a, &matrix_b);
+        start.elapsed().as_secs_f64() * 1000.0
+    };
+    
+    let matrix_sizes: Vec<usize> = sizes.iter().map(|&s| (s as f64).sqrt() as usize + 1).collect();
+    match runner.extended_scalability_analysis("Matrix Multiplication", matrix_benchmark_fn, &matrix_sizes) {
+        Ok(_) => println!("Advanced matrix multiplication analysis completed"),
+        Err(e) => println!("Error in matrix analysis: {}", e),
+    }
+    
+    // Save advanced benchmark results
+    match runner.save_advanced_results("advanced_benchmark") {
+        Ok(_) => {
+            println!("\n{}", "Advanced benchmark analysis completed successfully!".bright_green().bold());
+            println!("Generated files:");
+            println!("  • advanced_benchmark_advanced_benchmark.json - Complete advanced metrics");
+            println!("  • advanced_benchmark_advanced_metrics.csv - Cache, energy, NUMA data");
+            println!("\n{}", "Analysis includes:".bright_yellow());
+            println!("  Cache performance (L1/L2/L3 miss rates, memory bandwidth)");
+            println!("  Energy consumption (power usage, energy efficiency)");
+            println!("  NUMA effects (memory locality, cross-node bandwidth)");
+            println!("  Algorithmic constants (empirical analysis, hidden factors)");
+        }
+        Err(e) => println!("{}", format!("Error saving advanced results: {}", e).red()),
+    }
+}
+
+fn run_library_comparison(runs: usize) {
+    println!("{}", "=== Library Comparison Benchmarks ===".bright_magenta().bold());
+    println!("{}", "Custom D&C implementations vs established libraries".cyan());
+
+    let mut runner = LibraryComparisonRunner::new();
+
+    // Sorting: test at sizes that exceed cache
+    let sort_sizes = vec![10_000, 100_000, 1_000_000];
+    runner.compare_sorting(&sort_sizes, runs);
+
+    // Matrix: test at sizes showing cache effects
+    let matrix_sizes = vec![64, 128, 256, 512];
+    runner.compare_matrix_multiply(&matrix_sizes, runs);
+
+    // Calculate relative speedups
+    runner.calculate_speedups();
+
+    // Save results
+    match runner.save_results("library") {
+        Ok(_) => {
+            println!("\n{}", "Library comparison completed!".bright_green().bold());
+            println!("Generated files in Generated_Data/Library_Comparisons/");
+        }
+        Err(e) => println!("{}", format!("Error saving results: {}", e).red()),
+    }
+}
+
+fn run_affinity_benchmark(size: usize, runs: usize, include_scaling: bool) {
+    println!("{}", "=== Thread Affinity & Core Topology Analysis ===".bright_magenta().bold());
+    println!("{}", "P-core/E-core separation | Hyperthreading impact | Thread placement".cyan());
+
+    let mut runner = AffinityBenchmarkRunner::new();
+
+    // Run comprehensive affinity benchmarks
+    runner.run_comprehensive_affinity_benchmark(size, runs);
+
+    // Optional: thread scaling with affinity control
+    if include_scaling {
+        let topology = &runner.topology;
+        let max_cores = topology.total_physical_cores;
+        let thread_counts: Vec<usize> = (1..=max_cores)
+            .filter(|&n| n == 1 || n == 2 || n == 4 || n == 6 || n == 8 || n == max_cores)
+            .collect();
+
+        runner.run_scaling_with_affinity("Merge Sort", size, &thread_counts, runs);
+        runner.run_scaling_with_affinity("Quick Sort", size, &thread_counts, runs);
+    }
+
+    // Save results
+    match runner.save_results("affinity_benchmark") {
+        Ok(_) => {
+            println!("\n{}", "Thread affinity benchmark completed!".bright_green().bold());
+            println!("Generated files in Generated_Data/Affinity_Benchmarks/");
+        }
+        Err(e) => println!("{}", format!("Error saving results: {}", e).red()),
+    }
+}
+
+fn run_threshold_optimization(size: usize, runs: usize) {
+    println!("{}", "=== Parallel Threshold Optimization ===".bright_magenta().bold());
+    println!("{}", "Finding optimal sequential/parallel crossover point".cyan());
+
+    thread_affinity::optimize_threshold("Merge Sort", size, runs);
+    println!();
+    thread_affinity::optimize_threshold("Quick Sort", size, runs);
+}
+
+fn run_cross_platform_validation(runs: usize, include_optimization: bool, include_threading: bool) {
+    println!("{}", "=== Week 3: Cross-Platform Validation ===".bright_magenta().bold());
+    println!("{}", "Data Distributions • Compiler Optimization • Thread Scaling • Statistical Analysis".cyan());
+    
+    let mut validator = CrossPlatformValidator::new();
+    
+    // 1. Data Distribution Validation
+    println!("\n{} Starting data distribution validation...", "[PHASE 1]".bright_blue());
+    match validator.validate_data_distributions(runs) {
+        Ok(_) => println!("{} Data distribution validation completed", "[SUCCESS]".bright_green()),
+        Err(e) => println!("{} Error in data distribution validation: {}", "[ERROR]".red(), e),
+    }
+    
+    // 2. Compiler Optimization Analysis (optional)
+    if include_optimization {
+        println!("\n{} Starting compiler optimization analysis...", "[PHASE 2]".bright_blue());
+        match validator.validate_compiler_optimizations(runs) {
+            Ok(_) => println!("{} Compiler optimization analysis completed", "[SUCCESS]".bright_green()),
+            Err(e) => println!("{} Error in optimization analysis: {}", "[ERROR]".red(), e),
+        }
+    }
+    
+    // 3. Extended Thread Scaling Analysis (optional)
+    let thread_scaling_results = if include_threading {
+        println!("\n{} Starting extended thread scaling analysis...", "[PHASE 3]".bright_blue());
+        match validator.validate_thread_scaling(runs) {
+            Ok(results) => {
+                println!("{} Thread scaling analysis completed", "[SUCCESS]".bright_green());
+                results
+            }
+            Err(e) => {
+                println!("{} Error in thread scaling analysis: {}", "[ERROR]".red(), e);
+                Vec::new()
+            }
+        }
+    } else {
+        Vec::new()
+    };
+    
+    // 4. Statistical Significance Testing
+    println!("\n{} Performing statistical analysis...", "[PHASE 4]".bright_blue());
+    let anova_results = match validator.perform_statistical_analysis() {
+        Ok(results) => {
+            println!("{} Statistical analysis completed", "[SUCCESS]".bright_green());
+            Some(results)
+        }
+        Err(e) => {
+            println!("{} Error in statistical analysis: {}", "[ERROR]".red(), e);
+            None
+        }
+    };
+    
+    // 5. Generate Comprehensive Report
+    println!("\n{} Generating validation report...", "[REPORT]".bright_yellow());
+    let report = validator.generate_validation_report(thread_scaling_results, anova_results);
+    
+    // 6. Save Results
+    match validator.save_validation_results(&report, "cross_platform_validation") {
+        Ok(_) => {
+            println!("\n{} Cross-platform validation completed successfully!", "[COMPLETED]".bright_green().bold());
+            println!("Generated files:");
+            println!("  • cross_platform_validation_validation_report.json - Complete validation data");
+            println!("  • cross_platform_validation_validation_results.csv - Detailed test results");
+            println!("  • cross_platform_validation_distribution_analysis.csv - Data distribution effects");
+            if include_optimization {
+                println!("  • cross_platform_validation_optimization_impact.csv - Compiler optimization impact");
+            }
+            if include_threading {
+                println!("  • cross_platform_validation_thread_scaling.csv - Thread scaling analysis");
+            }
+            println!("\n{} Validation includes:", "[ANALYSIS]".bright_yellow());
+            println!("  Data distribution testing (random, sorted, reverse, partial, duplicates)");
+            if include_optimization {
+                println!("  Compiler optimization impact analysis (O0, O1, O2, O3)");
+            }
+            if include_threading {
+                println!("  Extended thread scaling beyond available cores");
+            }
+            println!("  Statistical significance testing with ANOVA");
+            println!("  Publication-ready cross-platform validation data");
+        }
+        Err(e) => println!("{} Error saving validation results: {}", "[ERROR]".red(), e),
     }
 }

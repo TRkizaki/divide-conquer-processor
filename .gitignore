@@ -72,6 +72,14 @@ temp/
 
 results/
 output/
+benchmark_results.txt
+
+# Ignore general CSV/JSON files but allow benchmark and validation results
 *.csv
 *.json
-benchmark_results.txt
+!publication_benchmark_*.csv
+!publication_benchmark_*.json
+!advanced_benchmark_*.csv
+!advanced_benchmark_*.json
+!cross_platform_validation_*.csv
+!cross_platform_validation_*.json
