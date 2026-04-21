@@ -305,12 +305,14 @@ FORMULA: PredictedTime(n, P) =
 
 ## 7. Experimental Validation
 
-The algorithm achieves:
-- **14.8x speedup** for Merge Sort (50K elements, 8 threads)
-- **10.2x speedup** for Quick Sort (50K elements, 8 threads)  
-- **185% parallel efficiency** for optimized implementations
-- **Linear memory scaling** with input size
-- **Superior performance** vs standard library on large datasets
+Results from the accepted JAIT paper (Intel i7-13650HX, 14 physical cores, 1M-element sorts, 10 runs):
+
+- **Merge Sort (custom parallel D&C)**: 6.35× speedup over sequential custom baseline
+- **Quick Sort (custom parallel D&C, median-of-three)**: 9.36× speedup
+- **Efficiency ceiling**: ~39% at 14 cores for merge sort; effective serial fraction f_eff = 0.13 (vs. theoretical f ≈ 0.05)
+- **Optimal thresholds**: T* ≈ 8192 (merge sort), T* ≈ 4096 (quicksort)
+- **Hybrid-architecture placement**: P-cores-only outperforms all-core OS scheduling by 14% for quicksort
+- **Honest comparison vs production**: Rayon `par_sort_unstable` achieves 30.17× (≈3.2× faster than custom parallel quicksort); Intel MKL / ndarray `dot()` achieves 51.6× on 512×512 matrices (≈3× faster than custom parallel matrix multiply at 17×)
 
 ## References
 

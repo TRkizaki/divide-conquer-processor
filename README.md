@@ -4,11 +4,15 @@
 [![Rust](https://img.shields.io/badge/rust-1.89.0+-orange.svg)](https://www.rust-lang.org)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/TRkizaki/divide-conquer-processor)
 
-A comprehensive implementation and analysis of divide-and-conquer algorithms for large-scale data processing, featuring parallel implementations, extensive benchmarking, and publication-quality performance analysis.
+A framework for parallel divide-and-conquer algorithms that separates the performance contributions of algorithmic structure from those of the underlying runtime. Implements true recursive parallel decomposition via `rayon::join()` at every recursion level, formal work–span analysis, hardware-aware threshold selection for Intel's hybrid P-core/E-core architecture, and honest comparative benchmarking against production libraries (Rust std, Rayon, ndarray, Intel MKL).
+
+> **Publication:** This framework is the reference implementation for the paper *"High-Performance Divide-and-Conquer Algorithms: A Comprehensive Framework with Recursive Parallel Decomposition and Hardware-Aware Optimization"* — Tetsurou Kizaki, Dijana Capeska Bogatinoska, Amita Nandal, Aleksandar Karadimce — **accepted** to the *Journal of Advances in Information Technology (JAIT)*.
 
 ## Overview
 
-This project provides high-performance implementations of fundamental divide-and-conquer algorithms with extensive parallel optimization and rigorous performance analysis. Designed for both educational and research purposes, it includes publication-ready benchmarking tools and comprehensive documentation.
+This project addresses a central challenge in evaluating parallel divide-and-conquer implementations: the entanglement of contributions from algorithmic decomposition, the parallel runtime's work-stealing scheduler, compiler optimizations, and hardware-level effects. By implementing parallelism explicitly via `rayon::join()` at every recursion level — rather than delegating to opaque library routines — the framework makes each optimization layer independently attributable and reproducible.
+
+The framework is released as open-source software under the MIT license to support reproducible research.
 
 ## Key Features
 
@@ -69,8 +73,7 @@ divide-conquer-processor/
 │   │   └── Cross-Platform_Validation.md  # Cross-platform validation
 │   └── Research/
 │       ├── METHODOLOGY.md                # Detailed experimental methodology
-│       ├── REPRODUCIBILITY_GUIDE.md      # Complete reproduction instructions
-│       └── REPORT_FOR_PROJECT.md         # Comprehensive project analysis
+│       └── REPRODUCIBILITY_GUIDE.md      # Complete reproduction instructions
 ├── publication_benchmark_full_report.json   # Publication benchmark results
 ├── publication_benchmark_detailed_results.csv
 ├── publication_benchmark_scalability.csv
@@ -218,27 +221,37 @@ cargo run --release -- figures
 
 ## Performance Results
 
+All results below are from the accepted JAIT paper. Experimental platform: **Intel i7-13650HX** (6 P-cores @ 4.9 GHz + 8 E-cores @ 3.6 GHz, 14 physical / 20 logical cores), 24 GB DDR4, Linux 6.12.10 (Pop!_OS 22.04), Rust release mode (`-O3`), Rayon 1.8.
+
 ### Key Findings
 
-**Parallel Speedup (50K elements, optimal 8 threads):**
-- **Merge Sort**: 14.8x speedup (185% efficiency)
-- **Quick Sort**: 10.2x speedup (127% efficiency)
+**True Parallel D&C Speedup (1M elements, via `rayon::join()`):**
+- **Merge Sort**: 6.35× speedup over sequential custom baseline (custom D&C parallel)
+- **Quick Sort**: 9.36× speedup with median-of-three pivot selection
 
-**Note**: Tested on Intel i7-13650HX (6 P-cores + 8 E-cores, 20 logical threads). Optimal performance achieved at 8 threads.
+**Honest Comparison vs Production Libraries (1M elements):**
+- **Rayon `par_sort_unstable`**: 30.17× speedup — ~3.2× faster than our parallel quicksort
+- **Intel MKL / ndarray `dot()`** (512×512): 51.6× speedup — ~3× faster than our parallel matrix multiplication (17.00×)
+- Gap decomposes into ~1.5× cache blocking + ~1.4× SIMD register blocking + ~1.15× NUMA-aware scheduling (multiplicative, not additive)
 
-**Thread Affinity (P-core vs E-core):**
-- P-core-only configurations show highest per-thread performance
-- E-core-only scaling effective for throughput workloads
-- Rayon worker threads bound to cores via `start_handler` for reproducible results
+**Scalability (Amdahl's Law Analysis):**
+- Efficiency ceiling of **~39% at 14 cores** for merge sort (theoretical max ≈ 8.24×, measured 5.47×)
+- Effective serial fraction f_eff = 0.13 for merge sort, 0.11 for quicksort (vs. theoretical f = 1/log n ≈ 0.05)
+- Gap decomposition: ~40% Amdahl's law, ~25% memory bandwidth saturation, ~20% barrier synchronization, ~15% P-core/E-core heterogeneity
 
-**Library Comparison:**
-- Sorting benchmarked against `std::sort`, `std::sort_unstable`, and Rayon parallel sorts
-- Matrix operations benchmarked against ndarray
-- Honest comparison showing where custom implementations excel and where std library wins
+**Thread Affinity on Hybrid P-core/E-core:**
+- **P-cores-only outperforms all-core OS scheduling by 14%** for quicksort (12.6 ms vs 14.6 ms)
+- P-cores are ~62% faster per core than E-cores (3.73 ms/P-core vs 2.00 ms per-core throughput after normalization)
+- Rayon worker threads pinned to specific physical cores via `ThreadPoolBuilder::start_handler()` + `core_affinity`
 
-**Memory Scaling:**
-- Linear memory usage with input size
-- Efficient memory management in parallel implementations
+**Hardware-Aware Threshold Optimization:**
+- Optimal parallel-to-sequential crossover: **T* ≈ 8192** for merge sort, **T* ≈ 4096** for quicksort
+- Task-count-to-core ratio of 8–16× yields best load-balancing/overhead trade-off
+- U-shaped performance curve on recursion depth — too shallow = load imbalance, too deep = scheduling overhead
+
+**Distribution Sensitivity:**
+- Median-of-three pivot reduces quicksort's worst-case degradation from **1534×** (naive first-element pivot on sorted input) to ~4–5×
+- Matrix multiplication shows 6.3× data-distribution variance from cache-line conflicts, despite data-independent control flow
 
 ## Generated Data Files
 
@@ -272,9 +285,8 @@ All benchmark data is exported to `Generated_Data/` in JSON and CSV formats:
 ## Documentation
 
 ### Research Documentation
-- **[METHODOLOGY.md](./Documentation/Research/METHODOLOGY.md)** - Detailed experimental methodology
-- **[REPRODUCIBILITY_GUIDE.md](./Documentation/Research/REPRODUCIBILITY_GUIDE.md)** - Complete reproduction instructions
-- **[REPORT_FOR_PROJECT.md](./Documentation/Research/REPORT_FOR_PROJECT.md)** - Comprehensive project analysis
+- **[METHODOLOGY.md](./Documentation/Research/METHODOLOGY.md)** - Detailed experimental methodology (aligned with JAIT paper Section III.E)
+- **[REPRODUCIBILITY_GUIDE.md](./Documentation/Research/REPRODUCIBILITY_GUIDE.md)** - Complete reproduction instructions for paper results
 
 ### Implementation Documentation
 
@@ -313,15 +325,31 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Citation
 
-When using this work in academic research, please cite:
+When using this work in academic research, please cite the accepted JAIT paper:
+
+```bibtex
+@article{kizaki2026divideconquer,
+  title     = {High-Performance Divide-and-Conquer Algorithms: A Comprehensive
+               Framework with Recursive Parallel Decomposition and
+               Hardware-Aware Optimization},
+  author    = {Kizaki, Tetsurou and Capeska Bogatinoska, Dijana and
+               Nandal, Amita and Karadimce, Aleksandar},
+  journal   = {Journal of Advances in Information Technology (JAIT)},
+  year      = {2026},
+  note      = {Accepted},
+  url       = {https://github.com/TRkizaki/divide-conquer-processor}
+}
+```
+
+Software artifact:
 
 ```bibtex
 @software{divide_conquer_processor,
-  title={High-Performance Divide and Conquer Algorithms for Large-Scale Data Processing},
-  author={TETSUROU KIZAKI},
-  year={2025--2026},
-  url={https://github.com/TRkizaki/divide-conquer-processor},
-  version={0.1.0}
+  title   = {High-Performance Divide-and-Conquer Algorithms Framework},
+  author  = {Kizaki, Tetsurou},
+  year    = {2025--2026},
+  url     = {https://github.com/TRkizaki/divide-conquer-processor},
+  license = {MIT}
 }
 ```
 

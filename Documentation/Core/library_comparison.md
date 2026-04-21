@@ -11,6 +11,51 @@ A benchmarking module that compares the project's custom divide-and-conquer impl
 
 The Library Comparison module provides honest, head-to-head benchmarks between custom implementations and production-quality libraries. This is essential for academic credibility -- showing not just that custom algorithms work, but how they perform relative to well-optimized alternatives.
 
+## Key Results from the JAIT Paper
+
+### Parallel Sorting (1M elements, Table IV)
+
+| Algorithm | Library | Mean Time | Speedup vs Seq Custom |
+|---|---|---|---|
+| Merge Sort (Parallel) | Custom D&C | 19.1 ms | **6.35×** |
+| Quick Sort (Parallel) | Custom D&C | 12.9 ms | **9.36×** |
+| Parallel Stable Sort | Rayon | 4.3 ms | 27.91× |
+| **Parallel Unstable Sort** | **Rayon** | **4.0 ms** | **30.17×** |
+
+**Finding**: Rayon's `par_sort_unstable()` achieves **~3.2× higher throughput** than our custom parallel quicksort. This gap quantifies the difference between a pedagogical divide-and-conquer implementation and a production-optimized parallel sort combining pdqsort's adaptive partitioning with Rayon's internal optimizations. Transparently reporting this gap allows practitioners to make informed decisions: use production sorts for throughput, use our framework for understanding and research.
+
+### Matrix Multiplication (512×512, Table VI)
+
+| Algorithm | Library | Mean Time | Speedup |
+|---|---|---|---|
+| Standard O(n³) | Custom | 292.9 ms | 1.00× |
+| Strassen O(n^2.807) | Custom | 185.3 ms | 1.58× |
+| Cache-Optimized | Custom | 113.1 ms | 2.59× |
+| SIMD (AVX2) | Custom | 157.7 ms | 1.86× |
+| Parallel | Custom | 17.2 ms | **17.00×** |
+| **dot()** | **ndarray / MKL** | **5.7 ms** | **51.60×** |
+
+**Mechanistic gap decomposition**: The ~3× advantage of ndarray/Intel MKL over our best parallel implementation (51.6× vs 17×) is not attributable to a single optimization. Drawing on the Intel MKL architecture [28] and GotoBLAS design [12], it decomposes multiplicatively as:
+
+| Mechanism | Estimated Contribution |
+|---|---|
+| Multi-level cache blocking (L1/L2/L3) | 1.4–1.6× |
+| Micro-kernel SIMD register blocking | 1.3–1.5× |
+| NUMA-aware thread scheduling | 1.1–1.2× |
+| **Combined** | **≈ 2.4–2.9×** |
+
+Which closely matches the observed ~3× gap, confirming that no "silver bullet" optimization explains production-library performance — rather, it is the coordinated application of cache blocking, micro-kernel design, and thread scheduling.
+
+### Optimization Layer Hierarchy (Section IV.B)
+
+Paper quantifies the impact of individual optimization layers:
+
+1. **Parallelism** (17.00×) — dominates all other optimizations at this problem size
+2. **Cache optimization** (2.59×) — outperforms algorithmic complexity reduction (Strassen at 1.58×) at 512×512
+3. **Winograd** (2.38×) — reduces multiplications; beats Strassen due to lower overhead at this size
+4. **SIMD** (1.86×) — moderate gain, limited by data-layout overhead
+5. **Strassen** (1.58×) — asymptotic advantage only meaningful above ~1000×1000
+
 ## Sorting Comparisons
 
 ### Algorithms Benchmarked

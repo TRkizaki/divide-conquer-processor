@@ -1,5 +1,7 @@
 # Reproducibility Guide
 
+This guide describes how to reproduce the results reported in the accepted JAIT paper *"High-Performance Divide-and-Conquer Algorithms: A Comprehensive Framework with Recursive Parallel Decomposition and Hardware-Aware Optimization"* (Kizaki, Capeska Bogatinoska, Nandal, Karadimce — 2026).
+
 ## Quick Start
 
 To reproduce the publication-quality benchmark results, run:
@@ -24,15 +26,16 @@ cargo run --release -- publication --runs 20 --extended
 ### System Requirements
 
 **Minimum Requirements:**
-- **CPU**: 4+ cores recommended for parallel analysis
-- **Memory**: 8GB RAM minimum, 16GB+ recommended for extended tests
-- **Storage**: 2GB free space for benchmark data and results
-- **OS**: Linux, macOS, or Windows (Linux preferred for consistency)
+- **CPU**: 4+ physical cores (hybrid P-core/E-core desirable to reproduce Section IV.C thread affinity results)
+- **Memory**: 8 GB RAM minimum, 16 GB+ recommended for extended tests
+- **Storage**: 2 GB free space for benchmark data and results
+- **OS**: Linux (required for reproducing paper's P-core/E-core sysfs detection and affinity results)
 
-**Optimal Configuration:**
-- **CPU**: Multi-core processor (8+ cores ideal)
-- **Memory**: 24GB+ RAM for large-scale tests
-- **Storage**: SSD for faster I/O during data generation
+**Paper Platform (exact match):**
+- **CPU**: Intel Core i7-13650HX (6 P-cores @ 4.9 GHz + 8 E-cores @ 3.6 GHz, 14 physical / 20 logical)
+- **Memory**: 24 GB DDR4
+- **OS**: Linux 6.12.10 (Pop!_OS 22.04)
+- **Rust**: 1.89.0 stable
 
 ### Software Dependencies
 
@@ -157,17 +160,18 @@ cargo run --release -- all --small
 
 ### Expected Results Structure
 
-All benchmark data is output to `Generated_Data/` with the following structure:
+The `publication` command writes its four files to the **project root** (for convenient access). All other commands write to subdirectories of `Generated_Data/`.
 
 #### Generated Files
 
 ```
+<project root>/
+├── publication_benchmark_full_report.json      # from: publication command
+├── publication_benchmark_detailed_results.csv
+├── publication_benchmark_scalability.csv
+└── publication_benchmark_parallel_efficiency.csv
+
 Generated_Data/
-├── Publication_Benchmarks/            # from: publication command
-│   ├── publication_benchmark_full_report.json
-│   ├── publication_benchmark_detailed_results.csv
-│   ├── publication_benchmark_scalability.csv
-│   └── publication_benchmark_parallel_efficiency.csv
 ├── Library_Comparisons/               # from: compare command
 │   ├── library_comparison.json
 │   └── library_comparison.csv
@@ -239,14 +243,38 @@ uname -a
 
 #### 3. Performance Baselines
 
-**Expected Performance Ranges (Intel i7-13650HX, 50K elements):**
-- Merge Sort (Sequential): 15-25ms
-- Merge Sort (Parallel): 8-15ms  
-- Quick Sort (Sequential): 10-20ms
-- Quick Sort (Parallel): 5-12ms
-- std::slice::sort_unstable: 8-18ms
+**Expected Performance at 1M elements** (Intel i7-13650HX, paper Table III / IV, 10 runs):
 
-*Note: Actual values may vary based on system configuration*
+| Algorithm | Library | Mean Time | Speedup vs Seq Custom |
+|---|---|---|---|
+| Merge Sort (Sequential) | Custom D&C | ~121 ms | 1.00× |
+| Merge Sort (Parallel) | Custom D&C | ~19 ms | **6.35×** |
+| Quick Sort (Sequential) | Custom D&C | ~63 ms | 1.92× |
+| Quick Sort (Parallel) | Custom D&C | ~13 ms | **9.36×** |
+| Stable Sort | std library | ~17 ms | 6.94× |
+| Unstable Sort | std library | ~14 ms | 8.78× |
+| Parallel Stable Sort | Rayon | ~4.3 ms | **27.91×** |
+| Parallel Unstable Sort | Rayon | ~4.0 ms | **30.17×** |
+
+**Thread Scaling (Merge Sort, 1M elements, paper Table VII):**
+| Bound Cores | Mean Time | Speedup | Efficiency |
+|---|---|---|---|
+| 1 | ~122 ms | 1.04× | 103.6% |
+| 2 | ~82 ms | 1.53× | 76.5% |
+| 6 | ~35 ms | 3.63× | 60.5% |
+| 14 | ~23 ms | **5.47×** | **39.1%** |
+
+**Thread Placement (Quicksort, 1M, paper Table X):**
+| Placement | Cores | Mean Time |
+|---|---|---|
+| **P-cores only** | 12 | **~12.6 ms** |
+| E-cores only | 8 | ~16.8 ms |
+| Physical only (no HT) | 14 | ~13.4 ms |
+| All cores (OS sched) | 20 | ~14.6 ms |
+
+Key reproducibility finding: **P-cores-only outperforms all-core OS scheduling by 14%** for quicksort.
+
+*Note: ±10% variation from thermal, scheduler, and background-load conditions is normal.*
 
 ### Troubleshooting
 
@@ -303,22 +331,13 @@ export RAYON_NUM_THREADS=20
 export MALLOC_ARENA_MAX=1
 ```
 
-### Cross-Platform Considerations
+### Platform Notes
 
-#### Linux (Recommended)
-- Most stable and predictable performance
-- Better memory management for large datasets
-- More accurate timing measurements
+The paper's results — and the thread-affinity pipeline specifically — require Linux. Automatic P-core / E-core detection reads `/sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq`, which is Linux-specific.
 
-#### macOS
-- Similar performance to Linux
-- May require Xcode command line tools
-- Apple Silicon (M1/M2) will show different absolute performance
-
-#### Windows
-- Performance may vary due to Windows scheduler
-- Requires Visual Studio Build Tools
-- Consider using WSL2 for Linux-like environment
+- **Linux x86_64** (Intel hybrid CPU): full reproducibility.
+- **Linux x86_64** (homogeneous CPU, e.g. AMD Ryzen): sorting / matrix / library-comparison results reproducible; affinity results will show uniform placement strategies rather than P-core vs E-core differentiation.
+- **Other platforms** (macOS, Windows, ARM): not supported for paper reproduction. The framework may build and run, but sysfs-based topology detection falls back to homogeneous mode and results will not match the paper.
 
 ### Data Collection Best Practices
 
@@ -395,15 +414,19 @@ sha256sum publication_benchmark_*.{json,csv}
 
 ### Citation and Attribution
 
-When using these benchmarks in academic work, please cite:
+When using these benchmarks in academic work, please cite the accepted JAIT paper:
 
 ```bibtex
-@software{divide_conquer_processor,
-  title={High-Performance Divide and Conquer Algorithms for Large-Scale Data Processing},
-  author={TETSUROU KIZAKI},
-  year={2025},
-  url={https://github.com/TRkizaki/divide-conquer-processor},
-  version={0.1.0}
+@article{kizaki2026divideconquer,
+  title     = {High-Performance Divide-and-Conquer Algorithms: A Comprehensive
+               Framework with Recursive Parallel Decomposition and
+               Hardware-Aware Optimization},
+  author    = {Kizaki, Tetsurou and Capeska Bogatinoska, Dijana and
+               Nandal, Amita and Karadimce, Aleksandar},
+  journal   = {Journal of Advances in Information Technology (JAIT)},
+  year      = {2026},
+  note      = {Accepted},
+  url       = {https://github.com/TRkizaki/divide-conquer-processor}
 }
 ```
 
@@ -433,8 +456,9 @@ Logs: [attach relevant log files]
 Expected performance characteristics that indicate correct reproduction:
 
 1. **Scaling Behavior**: O(n log n) for sorting algorithms
-2. **Parallel Efficiency**: >60% efficiency with 4 threads for large datasets
+2. **Parallel efficiency at 14 cores**: ~39% for merge sort, ~37% for quicksort (paper Table VII / VIII) — *not* linear; the efficiency ceiling is expected and is a core finding of the paper (Amdahl's-law sequential fraction)
 3. **Memory Usage**: Linear scaling with data size
-4. **Standard Deviation**: <5% for stable measurements
+4. **Coefficient of variation**: mean CV < 3%, individual CVs < 5.1% across distributions
+5. **Quicksort distribution sensitivity**: custom median-of-three implementation should show ~4–5× worst-to-best ratio; naive first-element pivot variants exhibit catastrophic 1534× degradation on sorted input
 
-If your results significantly deviate from these patterns, review system configuration and environment setup.
+If your results significantly deviate from these patterns, review system configuration (CPU governor, background load, thermal throttling) and environment setup.

@@ -7,6 +7,21 @@ This document assumes familiarity with basic benchmarking. See [benchmark.md](be
 
 A publication-quality benchmarking suite that performs systematic performance analysis across all algorithm categories: sorting, matrix multiplication, computational geometry, and linear algebra. This is the primary tool for generating results suitable for academic papers.
 
+## Results Summary (JAIT Paper)
+
+This module produced the core measurements reported in the accepted paper. Headline numbers (Intel i7-13650HX, 1M elements, 10 runs):
+
+| Category | Result |
+|---|---|
+| **Parallel merge sort** | 6.35× speedup over sequential custom |
+| **Parallel quick sort** (median-of-three) | 9.36× speedup over sequential custom |
+| **Efficiency at 14 cores** | ~39% merge sort, ~37% quicksort (Amdahl ceiling) |
+| **Optimal sequential threshold** | T* ≈ 8192 (merge sort), T* ≈ 4096 (quicksort) |
+| **Measurement reliability** | mean CV < 3%, individual CVs < 5.1% |
+| **ANOVA across distributions** | F = 3.71, p = 0.05, η² = 0.329 |
+
+For the comparative numbers against Rayon/std/ndarray/MKL, see [library_comparison.md](library_comparison.md). For placement-strategy analysis on the hybrid architecture, see [thread_affinity.md](thread_affinity.md).
+
 ## Overview
 
 The comprehensive benchmark module (`comprehensive_benchmark.rs`) orchestrates large-scale experiments with:

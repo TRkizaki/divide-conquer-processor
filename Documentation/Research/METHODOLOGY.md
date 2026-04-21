@@ -2,277 +2,184 @@
 
 ## Overview
 
-This document describes the comprehensive methodology used for benchmarking divide-and-conquer algorithms in the divide-conquer-processor project. The methodology is designed to produce statistically rigorous, reproducible results suitable for academic publication.
+This document describes the methodology used for benchmarking divide-and-conquer algorithms in the divide-conquer-processor project. It is aligned with Section III.E of the accepted JAIT paper *"High-Performance Divide-and-Conquer Algorithms: A Comprehensive Framework with Recursive Parallel Decomposition and Hardware-Aware Optimization"* and reproduces its measurement protocol.
 
-## System Specifications
+## Experimental Platform
 
 ### Hardware Configuration
-- **CPU**: 13th Gen Intel(R) Core(TM) i7-13650HX
-- **Cores**: 14 physical cores
-- **Threads**: 20 logical threads (with hyperthreading)
-- **Base Frequency**: 800 MHz
-- **Maximum Frequency**: 4900 MHz
-- **Memory**: 24 GB DDR4
-- **Architecture**: x86_64
+- **CPU**: 13th Generation Intel® Core™ i7-13650HX (Raptor Lake-HX)
+- **P-cores**: 6 physical × Raptor Cove, up to 4.9 GHz, Hyper-Threading enabled (12 logical threads)
+- **E-cores**: 8 physical × Gracemont, up to 3.6 GHz, no Hyper-Threading (8 logical threads)
+- **Total**: 14 physical / 20 logical cores
+- **Cache hierarchy**: 24 MB L3 (shared); per-core L2 of 1.25 MB (P-core) / 2 MB shared per 4 E-cores
+- **Memory**: 24 GB DDR4, peak bandwidth ≈ 51.2 GB/s
+- **Architecture**: x86_64 with AVX2
 
 ### Software Environment
-- **Operating System**: Linux 6.12.10-76061203-generic (Pop!_OS 22.04)
-- **Rust Version**: 1.89.0 (29483883e 2025-08-04)
-- **Compiler Flags**: Default release mode with optimizations (-O3 equivalent)
+- **Operating System**: Linux 6.12.10 (Pop!_OS 22.04)
+- **Rust Toolchain**: rustc 1.89.0 (29483883e 2025-08-04), stable
+- **Compiler Flags**: `--release` (equivalent to `-O3`)
+- **Rayon**: version 1.8
+- **Timing**: `std::time::Instant` (nanosecond precision)
+- **Memory**: `memory-stats` 1.1
 
-## Benchmark Design
+## Theoretical Framework (Work–Span Model)
 
-### 1. Algorithm Categories
+Algorithms are characterized using the work–span (W–S) model — see paper Section III.B:
 
-#### Sorting Algorithms
-- **Merge Sort**: Sequential and parallel implementations
-- **Quick Sort**: Sequential and parallel implementations
-- **Standard Library Comparisons**: 
-  - `std::slice::sort` (stable TimSort)
-  - `std::slice::sort_unstable` (introsort)
-  - `std::slice::sort_by` (custom comparator)
-  - `rayon::par_sort` (parallel stable sort)
-  - `rayon::par_sort_unstable` (parallel unstable sort)
+- **Work** W(n): total sequential operations
+- **Span** S(n): longest dependent operation chain (critical path)
+- **Parallelism** P(n) = W(n) / S(n)
+- **Brent–Blumofe–Leiserson bound**: T_p ≤ W(n)/p + O(S(n))
+- **Serial fraction** f = S(n) / W(n), with Amdahl's law S_max(p) = 1 / (f + (1 − f)/p)
 
-#### Matrix Multiplication
-- **Standard Algorithm**: O(n³) implementation
-- **Strassen Algorithm**: Divide-and-conquer approach
+Per-algorithm analytical results (from the paper):
 
-#### Computational Geometry
-- **Closest Pair Problem**: Divide-and-conquer solution
+| Algorithm | W(n) | S(n) | f (theoretical) | f_eff (measured) |
+|---|---|---|---|---|
+| Parallel Merge Sort | Θ(n log n) | Θ(n) | ≈ 1/log n | **0.13** (at n = 1M) |
+| Parallel Quick Sort (med-of-3) | Θ(n log n) | Θ(n) | ≈ 1/log n | **0.11** (at n = 1M) |
+| Parallel Strassen | Θ(n^log₇) | Θ(n²) | — | parallelism not bottleneck |
 
-### 2. Data Generation
+f_eff is fitted to observed S(p) via least-squares regression, capturing real parallelization overhead not modeled by ideal Amdahl.
 
-#### Random Data
-- **Uniform Distribution**: Integer values in range [0, n]
-- **Seed**: Fixed for reproducibility
-- **Data Types**: 32-bit signed integers for sorting, floating-point for geometry
+## Benchmark Execution Protocol
 
-#### Matrix Generation
-- **Size**: Square matrices of varying dimensions
-- **Values**: Random floating-point numbers in range [0.0, 1.0]
+### Sample Sizes and Data Generation
 
-#### Point Generation
-- **Distribution**: Uniform random points in 2D plane
-- **Coordinates**: Floating-point values in range [0.0, 1000.0]
+- **Sorting**: 10,000 / 100,000 / 1,000,000 elements; 32-bit signed integers
+- **Matrix multiplication**: 64×64 / 128×128 / 256×256 / 512×512; f64 values in [0, 1]
+- **Closest pair**: 1,000 / 50,000 / 100,000 points; f64 coordinates in [0, 1000]
+- **Seeds are fixed** for reproducibility; fresh data is cloned per run to prevent already-sorted inputs and memory-caching artifacts
+- **Distribution sensitivity** suite: random, sorted, reverse-sorted, partially sorted (80%), duplicate-heavy (10 unique values)
 
-### 3. Measurement Methodology
+### Run Structure
 
-#### Performance Metrics
+- **Warm-up**: 1 untimed iteration per configuration to prime caches and the JIT-free hot path
+- **Timed runs**: 10 runs per configuration (default); 20 for extended mode
+- **Explicit memory barriers** between runs for temporal independence
 
-**Execution Time**:
-- Measured using `std::time::Instant`
-- High-resolution timing with nanosecond precision
-- Multiple runs to calculate statistical measures
+### Statistical Methods
 
-**Memory Usage**:
-- Physical memory consumption via `memory-stats` crate
-- Measured before and after algorithm execution
-- Delta calculation to isolate algorithm-specific usage
+- **Primary metric**: mean execution time μ
+- **Variability**: standard deviation σ, coefficient of variation CV = σ / μ
+- **Outlier detection**: interquartile range (IQR) method — flagged but not excluded
+- **Significance**: one-way ANOVA across distributions (paper reports F = 3.71, p = 0.05, η² = 0.329)
+- **Reliability threshold**: all mean CVs observed below 3%, individual CVs below 5.1% — confirming measurement noise does not dominate observed differences
 
-#### Statistical Analysis
+## Hardware-Aware Threshold Optimization
 
-**Multiple Runs**:
-- Default: 10 runs per algorithm/data size combination
-- Extended: Up to 50 runs for critical measurements
-- Outlier detection and handling
+The parallel-to-sequential crossover threshold T is determined empirically by sweeping candidate values {512, 1024, 2048, 4096, 8192, 16384, 32768} and measuring execution time at 1M elements.
 
-**Statistical Measures**:
-- **Mean (μ)**: Average execution time
-- **Standard Deviation (σ)**: Measure of variability
-- **Median**: Middle value, robust to outliers
-- **Min/Max**: Range of observations
-- **Confidence Intervals**: 95% confidence level
+The cost function balances two competing factors:
 
-#### Data Size Ranges
+```
+C_overhead(T) = c_task × (n / T)           // task-creation overhead
+C_idle(T)     = W(T) × max(0, p − n/T) / p  // idle cores below threshold
+```
 
-**Standard Benchmarks**:
-- Small: 1,000 elements
-- Medium: 5,000 - 10,000 elements  
-- Large: 25,000 - 50,000 elements
+with c_task ≈ 0.5 µs empirically measured for `rayon::join()`.
 
-**Extended Scalability**:
-- Very Large: 100,000 - 1,000,000 elements
-- Memory-limited by available system resources
+Optimal thresholds determined on the experimental platform:
+- **T* ≈ 8192** for merge sort (recursion depth ≈ 7, ≈ 128 tasks)
+- **T* ≈ 4096** for quicksort (recursion depth ≈ 8, ≈ 256 tasks)
 
-### 4. Parallel Performance Analysis
+The optimum achieves a task-count-to-core ratio of ~8–16× — enough load-balancing granularity without excessive scheduling overhead.
 
-#### Thread Scaling
-- **Thread Counts**: 1, 2, 4, 8, 14, 20 threads
-- **Mapping**: Covers single-thread to full system capacity
-- **Load Balancing**: Rayon work-stealing implementation
+## Thread Affinity Protocol
 
-#### Efficiency Metrics
-- **Speedup**: T₁ / Tₚ where T₁ is sequential time, Tₚ is parallel time
-- **Efficiency**: Speedup / P where P is number of processors
-- **Parallel Efficiency**: Percentage of ideal speedup achieved
+Rayon worker threads are pinned to specific physical cores using `ThreadPoolBuilder::start_handler()` combined with the `core_affinity` crate:
 
-### 5. Comparative Analysis
+```rust
+let pool = ThreadPoolBuilder::new()
+    .num_threads(core_ids.len())
+    .start_handler(move |thread_index| {
+        core_affinity::set_for_current(core_ids[thread_index]);
+    })
+    .build_global();
+```
 
-#### Baseline Comparisons
-- **Standard Library**: Rust std library implementations
-- **Industry Standard**: Rayon parallel implementations
-- **Cross-Algorithm**: Performance ratios between different approaches
+### Placement Strategies Evaluated
 
-#### Performance Ratios
-- **Speedup vs Sequential**: Parallel implementation improvement
-- **Speedup vs Standard Library**: Custom implementation vs std
-- **Memory Efficiency**: Memory usage per operation
+| Placement | Cores | Description |
+|---|---|---|
+| P-cores only | 12 (6 phys × 2 HT) | Highest per-thread performance |
+| E-cores only | 8 | Throughput under power budget |
+| Physical only (no HT) | 14 | All physical cores, no SMT |
+| All cores (OS-scheduled) | 20 | Default Rayon behavior (baseline) |
 
-## Data Collection Protocol
+P-core / E-core topology is detected automatically from `/sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq`.
 
-### 1. Environment Preparation
-- System idle state verification
-- Background process minimization
-- CPU frequency scaling disabled during benchmarks
-- Memory pre-allocation to reduce allocation overhead
+## Comparative Benchmarking Against Production Libraries
 
-### 2. Execution Protocol
-- **Warm-up Runs**: 3 warm-up iterations before measurement
-- **Data Isolation**: Fresh data copy for each run
-- **Memory Barriers**: Explicit memory barriers between runs
-- **Garbage Collection**: Manual cleanup between iterations
+To honestly attribute performance contributions, custom implementations are compared head-to-head with production-grade libraries under identical compiler flags (`--release`):
 
-### 3. Data Validation
-- **Correctness Verification**: Algorithm output validation
-- **Sorting Verification**: Array sorted order confirmation
-- **Stability Testing**: Equal element relative order preservation
+- **Rust standard library**: `slice::sort()` (TimSort, stable), `slice::sort_unstable()` (pdqsort)
+- **Rayon**: `par_sort()` (parallel stable), `par_sort_unstable()` (parallel pdqsort)
+- **ndarray 0.16**: `dot()` for matrix multiplication (BLAS-backed where available)
+
+Baselines for speedup calculation:
+- **Speedup vs sequential custom**: T_seq(custom) / T_par(custom) — avoids inflated numbers by using the *sequential* version of the same algorithm (not the parallel algorithm on 1 thread)
+- **Library speedup ratio**: T_custom_parallel / T_library — used for honest production comparisons
+
+## Compiler Optimization Analysis
+
+Each algorithm is compiled at O0, O1, O2, O3 and executed across the same dataset. Paper reports consistent 40–44% improvement from O0→O3 across all three algorithm classes, with matrix multiplication most responsive (43.8%) due to its regular nested-loop structure amenable to unrolling and vectorization.
+
+## Reproducibility
+
+### Version Control
+- Git commit hash of source revision is recorded in every output JSON
+- `Cargo.lock` is committed for dependency pinning
+
+### Environment Preparation (Linux)
+```bash
+# Set CPU governor to performance for stable frequency
+sudo cpupower frequency-set --governor performance
+
+# Drop page cache before heavy benchmarks
+sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
+
+# Verify no background load
+uptime
+```
+
+### Standard Execution
+```bash
+# Full paper reproduction (10 runs default)
+cargo run --release -- publication --runs 10
+
+# Extended scalability analysis
+cargo run --release -- publication --runs 20 --extended
+
+# Thread affinity experiments (Table X in paper)
+cargo run --release -- affinity --size 1000000 --runs 10 --scaling
+
+# Threshold sweep (Table IX in paper)
+cargo run --release -- threshold --size 1000000 --runs 5
+
+# Library comparison (Tables III, IV, VI in paper)
+cargo run --release -- compare --runs 10
+```
 
 ## Output Formats
 
-### 1. Structured Data (JSON)
-Complete experimental data with:
-- System specifications
-- Individual run results
-- Statistical summaries
-- Metadata and timestamps
+- **Structured JSON**: system specs, per-run results, statistical summaries, timestamps
+- **Tabular CSV**: one row per (algorithm, size, thread count) — suitable for pandas/R/Excel
+- **Text summary**: human-readable report printed to stdout
 
-### 2. Tabular Data (CSV)
-Optimized for statistical analysis:
-- **Detailed Results**: Per-run measurements
-- **Scalability Data**: Performance vs data size
-- **Parallel Efficiency**: Performance vs thread count
+See `REPRODUCIBILITY_GUIDE.md` for exact file layouts.
 
-### 3. Summary Reports
-Human-readable performance summaries with:
-- Best-performing algorithms
-- Statistical significance tests
-- Performance recommendations
+## Limitations
 
-## Reproducibility Requirements
-
-### 1. Version Control
-- **Git Commit Hash**: Exact source code version
-- **Dependency Versions**: Locked Cargo.toml dependencies
-- **Compiler Version**: Rust toolchain specification
-
-### 2. System Requirements
-- **Minimum Memory**: 8GB RAM recommended
-- **CPU Cores**: 4+ cores for parallel analysis
-- **Disk Space**: 1GB for extended benchmark data
-
-### 3. Execution Commands
-```bash
-# Standard benchmark
-cargo run --release -- publication --runs 10
-
-# Extended scalability analysis  
-cargo run --release -- publication --runs 20 --extended
-
-# Quick validation run
-cargo run --release -- publication --runs 3
-```
-
-## Statistical Significance
-
-### 1. Confidence Intervals
-- **Level**: 95% confidence intervals reported
-- **Method**: Student's t-distribution for small samples
-- **Interpretation**: True mean lies within interval with 95% probability
-
-### 2. Outlier Detection
-- **Method**: Interquartile Range (IQR) method
-- **Threshold**: Values beyond Q1 - 1.5×IQR or Q3 + 1.5×IQR
-- **Handling**: Outliers reported but not excluded from analysis
-
-### 3. Effect Size
-- **Cohen's d**: Standardized difference between means
-- **Practical Significance**: >10% performance difference threshold
-- **Statistical Power**: Minimum 80% power for detection
-
-## Quality Assurance
-
-### 1. Code Quality
-- **Compiler Warnings**: Zero warnings in release build
-- **Static Analysis**: Clippy lints enforced
-- **Testing**: Unit tests for all algorithms
-- **Documentation**: Comprehensive inline documentation
-
-### 2. Measurement Validation
-- **Timer Resolution**: Nanosecond precision verification
-- **Overhead Measurement**: Timing infrastructure overhead quantified
-- **Platform Effects**: OS scheduler impact minimization
-
-### 3. Result Validation
-- **Cross-Validation**: Multiple measurement methods
-- **Sanity Checks**: Performance trends validation
-- **Literature Comparison**: Results consistent with published research
-
-## Limitations and Considerations
-
-### 1. Hardware Limitations
-- **Single Platform**: Results specific to Intel x86_64 architecture
-- **Memory Constraints**: Large datasets limited by available RAM
-- **Thermal Throttling**: Potential CPU frequency reduction under load
-
-### 2. Software Limitations
-- **Rust-Specific**: Results applicable to Rust implementations
-- **Compiler Optimizations**: Performance dependent on Rust compiler
-- **System Load**: Background processes may affect measurements
-
-### 3. Statistical Limitations
-- **Sample Size**: Limited by computational time constraints
-- **Distribution Assumptions**: Normal distribution assumed for statistical tests
-- **Independence**: Runs assumed independent (may have cache effects)
-
-## Future Work
-
-### 1. Extended Analysis
-- **Cache Performance**: L1/L2/L3 cache miss analysis
-- **NUMA Effects**: Multi-socket system performance
-- **Energy Consumption**: Power efficiency measurements
-
-### 2. Additional Algorithms
-- **Parallel Algorithms**: More divide-and-conquer variants
-- **Hybrid Approaches**: Algorithm combination strategies
-- **Adaptive Methods**: Runtime algorithm selection
-
-### 3. Platform Expansion
-- **ARM Architecture**: Apple M1/M2, ARM server processors
-- **GPU Acceleration**: CUDA/OpenCL implementations
-- **Distributed Computing**: Multi-node implementations
+1. **Single hardware platform**: Results are specific to Intel i7-13650HX; AMD, ARM, and server-grade platforms may differ (paper Section IV.G).
+2. **Data types**: Sorting evaluated on 32-bit integers only.
+3. **No GPU comparison**: Outside the scope of this CPU-focused study.
+4. **Sequential baseline**: Custom sequential implementations prioritize pedagogical clarity, so custom parallel speedups are reported against a ~7–10× slower baseline than std-library sorts — this is disclosed explicitly rather than concealed.
 
 ## References
 
-1. **Cormen, T. H., et al.** (2009). Introduction to Algorithms, Third Edition. MIT Press.
-2. **Rayon Documentation**: https://docs.rs/rayon/
-3. **Rust Performance Book**: https://nnethercote.github.io/perf-book/
-4. **Intel VTune Profiler**: Performance analysis methodology
-5. **SPEC CPU Benchmarks**: Industry standard benchmarking practices
-
-## Appendix: Statistical Methods
-
-### Confidence Interval Calculation
-For sample mean x̄ with standard deviation s and sample size n:
-CI = x̄ ± t_{α/2,n-1} × (s/√n)
-
-### Speedup Calculation
-Speedup = T_sequential / T_parallel
-
-### Efficiency Calculation  
-Efficiency = Speedup / Number_of_Processors
-
-### Effect Size (Cohen's d)
-d = (μ₁ - μ₂) / σ_pooled
-
-Where σ_pooled is the pooled standard deviation of both samples.
+1. Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). *Introduction to Algorithms*, 4th ed. MIT Press.
+2. Blumofe, R. D., & Leiserson, C. E. (1999). Scheduling multithreaded computations by work stealing. *J. ACM*, 46(5), 720–748.
+3. Matsakis, N. (2024). *Rayon: a data parallelism library for Rust*. https://docs.rs/rayon/
+4. Kizaki, T., Capeska Bogatinoska, D., Nandal, A., & Karadimce, A. (2026). High-Performance Divide-and-Conquer Algorithms: A Comprehensive Framework with Recursive Parallel Decomposition and Hardware-Aware Optimization. *Journal of Advances in Information Technology (JAIT)*. Accepted.
